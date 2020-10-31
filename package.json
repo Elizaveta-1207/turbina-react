@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +35,30 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "Turbina single page music app",
+  "main": "./index.js",
+  "keywords": [
+    "Turbina",
+    "SPA",
+    "music",
+    "children",
+    "poetry"
+  ],
+  "authors": [
+    "Alex Kurkov",
+    "Grigory Abramov"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-kurkov/turbina-react/issues"
+  },
+  "homepage": "./",
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.5",
+    "gh-pages": "^3.1.0"
   }
 }
