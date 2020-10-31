@@ -46,6 +46,7 @@
     "poetry"
   ],
   "authors": [
+    "Elizaveta Timonina",
     "Alex Kurkov",
     "Grigory Abramov"
   ],
@@ -54,6 +55,10 @@
     "url": "https://github.com/alex-kurkov/turbina-react/issues"
   },
   "homepage": "./",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-kurkov/turbina-react.git"
+  },
   "devDependencies": {
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
