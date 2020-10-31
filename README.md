@@ -2,7 +2,7 @@
 **Single page web application**
 
 ### tests and linter status:
-[![Maintainability](https://api.codeclimate.com/v1/badges/85303ccfa256cfbe3cdb/maintainability)](https://codeclimate.com/github/alex-kurkov/turbina-react/maintainability)
+[[![Maintainability](https://api.codeclimate.com/v1/badges/053db1e58e79fc70e86f/maintainability)](https://codeclimate.com/github/alex-kurkov/turbina-react/maintainability)]
 [![Linter status](https://github.com/alex-kurkov/turbina-react/workflows/Node%20CI/badge.svg)](https://github.com/alex-kurkov/turbina-react/actions)
 
 [En](#Content) [Ru](#Содержание)
