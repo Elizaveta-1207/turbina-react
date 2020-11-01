@@ -4,6 +4,8 @@
   url('../../images/background-bottom.jpg') bottom center no-repeat;
   transition: background-position .5s ease-out;
   position: fixed;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
+  z-index: -1;
 }

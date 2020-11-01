@@ -1,5 +1,13 @@
+.body {
+  background: 
+  url('./images/background-top.jpg') top center no-repeat,
+  url('./images/background-bottom.jpg') bottom center no-repeat;
+  transition: background-position .5s ease-out;
+}
+
 .page {
-  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
   font-family: 'Inter', sans-serif;
 }
 
@@ -7,6 +15,7 @@
   padding: 10px 20px 0;
   min-height: 100vh;
   position: relative;
+  z-index: 0;
   display: flex;
   justify-content: space-between;
 }
@@ -44,9 +53,11 @@
   height: 272.03px;
 }
 
-/* .player {
-  margin-top: -80px;
-} */
+.player {
+  margin: -80px 20px 0;
+  position: relative;
+  z-index: 2;
+}
 
 /* .player__audio {
   width: 100%;
@@ -55,14 +66,15 @@
 } */
 
 .player__wrapper {
+  box-sizing: border-box;
   width: 100%;
   height: 50px;
-  border: 2px solid black;
   display: grid;
-  grid-template-columns: 1fr 90% 1fr;
+  align-items: center;
+  grid-template-columns: .5fr 12fr .5fr .5fr;
   grid-template-areas: 
-    "button title duration"
-    ". timeline timeline";
+    "button title duration subtrack"
+    ". timeline timeline .";
 }
 
 .player__btn {
@@ -72,23 +84,39 @@
   width: 28px;
   height: 28px;
   border: none;
-  background-position: center;
   cursor: pointer;
+  outline: none;
 }
 
-.play {
-  background: url(./images/play-btn.svg) no-repeat;
+.player__btn_play {
+  background: url('./images/play-btn.svg') center center no-repeat;
 }
 
-.pause {
-  background: url(./images/pause-btn.svg) no-repeat;
+.player__btn_pause {
+  background: url('./images/pause-btn.svg') center center no-repeat;
 }
+
+.player__btn_subtrack {
+  grid-area: subtrack;
+  justify-self: end;
+  background: url('./images/subtract-btn.svg') center center no-repeat;
+  width: 24px;
+  height: 24px;
+  border: none;
+}
+
+
 
 .player__timeline {
   grid-area: timeline;
-  width: 99%;
   height: 0px;
-  border: 3px solid rgba(243, 243, 243);
+  border: 3px solid rgba(243, 243, 243, .3);
+}
+
+.player__playhead {
+  margin: -3px;
+  border: 3px solid #FFFFFF;
+  width: 0;
 }
 
 .player__song-title {

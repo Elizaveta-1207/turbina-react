@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SubmitForm from './SubmitForm';
+import FormSection from './FormSection';
 import Article from './Article';
 
 export default function Main({ onFormSubmit }) {
@@ -42,7 +42,7 @@ export default function Main({ onFormSubmit }) {
             '— Дети получают невероятное удовольствие и мотивацию от того, что их творчество востребовано сверстниками и взрослыми.',
           ]} />
       </section>
-      <SubmitForm
+      <FormSection
         onFormSubmit={onFormSubmit} />
     </main>
   );

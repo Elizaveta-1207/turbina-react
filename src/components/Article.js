@@ -11,7 +11,7 @@ export default function Article({ title, content }) {
         {content.map((paragraph, i) => (
           <ArticleParagraph
             content={paragraph}
-            key={i} />
+            key={`${title}-${i}`} />
         ))}
       </div>
     </ article>
@@ -19,5 +19,5 @@ export default function Article({ title, content }) {
 }
 Article.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.array.isRequired,
 };

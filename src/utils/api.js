@@ -1,4 +1,4 @@
-import path from 'path';
+/* import path from 'path'; */
 
 class Api {
   constructor({ baseUrl, headers }) {
@@ -18,14 +18,14 @@ class Api {
       {
         title: 'Контур',
         artist: 'Хадн Дадн feat. Варя Карпова и Федя Быстров',
-        url: path.resolve(this._baseUrl, 'songs', 'song.mp3'),
+        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         text: `I love la-la-la
         oh, I love la-la-la`,
       },
       {
         title: 'THE SECOND GOAT SONG',
         artist: 'THE UPPERCASE BAND',
-        url: path.resolve(this._baseUrl, 'songs', 'song2.mp3'),
+        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         text: `gkbjerkbjretpbper kori gprop poog
         rt goiwoio ieru iii iuriiiiid d`,
       },

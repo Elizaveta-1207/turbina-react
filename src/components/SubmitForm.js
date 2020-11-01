@@ -1,25 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BlockTitle from './BlockTitle';
+import FormInput from './FormInput';
 
 export default function SubmitForm({ onFormSubmit }) {
   // onFormSubmit
   console.log(onFormSubmit);
   return (
-    <section className="form">
-      <BlockTitle title="Форма" />
-
       <form action="#" className="form__wrapper">
-        <input type="text" className="form__input" placeholder="Имя и фамилия автора" />
-        <input type="email" className="form__input" placeholder="Почта" />
-        <input type="tel" className="form__input" placeholder="Телефон" />
-        <textarea type="textarea" className="form__input" placeholder="Стихи" rows="10"></textarea>
+        <FormInput
+          type="text"
+          placeholder="Имя и фамилия автора"
+          name="name"
+          id="name" />
+        <FormInput
+          type="email"
+          placeholder="Почта"
+          name="email"
+          id="email"/>
+        <FormInput
+          type="tel"
+          placeholder="Телефон"
+          name="tel"
+          id="tel" />
+        <FormInput
+          type="textarea"
+          placeholder="Стихи"
+          rows="10"
+          name="rhyme"
+          id="rhyme" />
         <label htmlFor="ofert">
-          <input type="checkbox" className="form__input" id="ofert" />Согласен с <a href="#" className="form__ofert">офертой</a>
+          <FormInput
+            type="checkbox"
+            className="form__input"
+            name="ofert"
+            id="ofert">
+              Согласен с <a href="#" className="form__ofert">офертой</a>
+          </ FormInput>
         </label>
         <button className="form__btn">Отправить</button>
       </form>
-    </section>
   );
 }
 SubmitForm.propTypes = {
