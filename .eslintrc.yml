@@ -2,7 +2,8 @@ env:
   browser: true
   es2021: true
 extends:
-  - airbnb-base
+  - 'airbnb-base'
+  - 'plugin:react/recommended'
 parserOptions:
   ecmaFeatures:
     jsx: true
@@ -11,6 +12,5 @@ parserOptions:
 plugins:
   - react
 rules:
-  import/extensions: 0
-  no-underscore-dangle: 0
-  no-console: 0
+  'no-underscore-dangle': 0
+  'no-console': 0
