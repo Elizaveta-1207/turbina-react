@@ -38,6 +38,7 @@ function App() {
   const handleFormSubmit = 'gggg'; // !!!!! temorary
 
   return (
+<<<<<<< HEAD
     <body className="page">
       <AppContext.Provider value={currentSong}>
         <Background />
@@ -53,6 +54,25 @@ function App() {
         {isLoaderVisible && <Loader />}
       </AppContext.Provider>
     </body>
+=======
+    <>
+    <Background />
+      <body className="page" >
+        <AppContext.Provider value={currentSong}>
+          <Header />
+          <MediaPlayer
+            handlePlaybackClick={handlePlaybackClick}
+            songs={songs}
+            currentSong={currentSong}
+            isPlaying={isPlaying} />
+          <Main
+            onFormSubmit={handleFormSubmit}/>
+          <Footer />
+          {isLoaderVisible && (<Loader />)}
+        </AppContext.Provider>
+      </body>
+    </>
+>>>>>>> 808825aff00ca6f23f0074590b99a0d81d6a8f64
   );
 }
 
