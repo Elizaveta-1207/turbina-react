@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Input({
-  type, placeholder, name, id, rows = '1',
-}) {
+export default function Input({ type, placeholder, name, id, rows = '1' }) {
   return (
     <input
       type={type}
@@ -11,7 +9,8 @@ export default function Input({
       placeholder={placeholder}
       id={id}
       name={name}
-      rows={rows} />
+      rows={rows}
+    />
   );
 }
 Input.propTypes = {

@@ -8,7 +8,9 @@ class Api {
 
   // eslint-disable-next-line class-methods-use-this
   _getResponseData(response) {
-    if (response.ok) { return response.json(); }
+    if (response.ok) {
+      return response.json();
+    }
     return Promise.reject(new Error(`Server interact Error! Status: ${response.status}`));
   }
 
@@ -31,7 +33,7 @@ class Api {
       },
     ]);
   }
-/*   getSongs() {
+  /*   getSongs() {
     return fetch(`${this._baseUrl}/songs`, {
       'content-type': 'application/json',
       headers: this._headers,

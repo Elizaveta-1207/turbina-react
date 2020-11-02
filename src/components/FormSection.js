@@ -7,8 +7,7 @@ export default function FormSection({ onFormSubmit }) {
   return (
     <section className="form">
       <BlockTitle title="Форма" />
-      <SubmitForm
-        onFormSubmit={onFormSubmit} />
+      <SubmitForm onFormSubmit={onFormSubmit} />
     </section>
   );
 }

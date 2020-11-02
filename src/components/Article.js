@@ -9,12 +9,10 @@ export default function Article({ title, content }) {
       <BlockTitle title={title} />
       <div className="info__description">
         {content.map((paragraph, i) => (
-          <ArticleParagraph
-            content={paragraph}
-            key={`${title}-${i}`} />
+          <ArticleParagraph content={paragraph} key={`${title}-${i}`} />
         ))}
       </div>
-    </ article>
+    </article>
   );
 }
 Article.propTypes = {

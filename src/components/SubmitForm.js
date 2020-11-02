@@ -6,38 +6,21 @@ export default function SubmitForm({ onFormSubmit }) {
   // onFormSubmit
   console.log(onFormSubmit);
   return (
-      <form action="#" className="form__wrapper">
-        <FormInput
-          type="text"
-          placeholder="Имя и фамилия автора"
-          name="name"
-          id="name" />
-        <FormInput
-          type="email"
-          placeholder="Почта"
-          name="email"
-          id="email"/>
-        <FormInput
-          type="tel"
-          placeholder="Телефон"
-          name="tel"
-          id="tel" />
-        <FormInput
-          type="textarea"
-          placeholder="Стихи"
-          rows="10"
-          name="rhyme"
-          id="rhyme" />
-        <label htmlFor="ofert">
-          <FormInput
-            type="checkbox"
-            name="ofert"
-            id="ofert">
-              Согласен с <a href="#" className="form__ofert">офертой</a>
-          </ FormInput>
-        </label>
-        <button className="form__btn">Отправить</button>
-      </form>
+    <form action="#" className="form__wrapper">
+      <FormInput type="text" placeholder="Имя и фамилия автора" name="name" id="name" />
+      <FormInput type="email" placeholder="Почта" name="email" id="email" />
+      <FormInput type="tel" placeholder="Телефон" name="tel" id="tel" />
+      <FormInput type="textarea" placeholder="Стихи" rows="10" name="rhyme" id="rhyme" />
+      <label htmlFor="ofert">
+        <FormInput type="checkbox" name="ofert" id="ofert">
+          Согласен с{' '}
+          <a href="#" className="form__ofert">
+            офертой
+          </a>
+        </FormInput>
+      </label>
+      <button className="form__btn">Отправить</button>
+    </form>
   );
 }
 SubmitForm.propTypes = {

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function MediaPlayer({
-  songs, currentSong,
-}) {
+export default function MediaPlayer({ songs, currentSong }) {
   const audio = React.useRef(null);
   console.log(songs);
   const [audioSrc, setAudioSrc] = React.useState('#');
@@ -57,11 +55,14 @@ export default function MediaPlayer({
         preload="true"
         src={audioSrc}
         onTimeUpdate={handleTimeUpdate}
-        />
+      />
       <div className="player__wrapper">
         <button
-          className={`player__btn ${isPlayBtnVisible && 'player__btn_play'} ${isPauseBtnVisible && 'player__btn_pause'}`}
-          onClick={handlePlaybackClick} />
+          className={`player__btn ${isPlayBtnVisible && 'player__btn_play'} ${
+            isPauseBtnVisible && 'player__btn_pause'
+          }`}
+          onClick={handlePlaybackClick}
+        />
         <span className="player__song-title">{`${currentSong.title} - ${currentSong.artist}`}</span>
         <span className="player__song-duration">{timeString}</span>
         <button className="player__btn player__btn_subtrack"></button>

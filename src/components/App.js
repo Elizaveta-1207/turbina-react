@@ -17,7 +17,8 @@ function App() {
   // set initial state with mount-dependant hook = load songs array
   React.useEffect(() => {
     setLoaderVisibible(true);
-    api.getSongs()
+    api
+      .getSongs()
       .then((songsArray) => {
         setSongs(songsArray);
         setCurrentSong(songsArray[0]);
@@ -37,7 +38,7 @@ function App() {
   const handleFormSubmit = 'gggg'; // !!!!! temorary
 
   return (
-    <body className="page" >
+    <body className="page">
       <AppContext.Provider value={currentSong}>
         <Background />
         <Header />
@@ -45,11 +46,11 @@ function App() {
           handlePlaybackClick={handlePlaybackClick}
           songs={songs}
           currentSong={currentSong}
-          isPlaying={isPlaying} />
-        <Main
-          onFormSubmit={handleFormSubmit}/>
+          isPlaying={isPlaying}
+        />
+        <Main onFormSubmit={handleFormSubmit} />
         <Footer />
-        {isLoaderVisible && (<Loader />)}
+        {isLoaderVisible && <Loader />}
       </AppContext.Provider>
     </body>
   );
