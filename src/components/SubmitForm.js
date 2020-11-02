@@ -31,7 +31,6 @@ export default function SubmitForm({ onFormSubmit }) {
         <label htmlFor="ofert">
           <FormInput
             type="checkbox"
-            className="form__input"
             name="ofert"
             id="ofert">
               Согласен с <a href="#" className="form__ofert">офертой</a>

@@ -1,0 +1,26 @@
+.publishing-logo__img {
+  width: 50px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.publishing-logo__img:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1023px) {
+  .publishing-logo__img {
+    width: 45px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .publishing-logo__img {
+    width: 40px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .publishing-logo__img {
+    width: 32px;
+  }
+}

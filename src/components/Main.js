@@ -5,7 +5,7 @@ import Article from './Article';
 
 export default function Main({ onFormSubmit }) {
   return (
-    <main className="content">
+    <main>
       <section className="info">
         <Article
           title="О проекте"

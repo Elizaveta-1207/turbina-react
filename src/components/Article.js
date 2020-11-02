@@ -7,7 +7,7 @@ export default function Article({ title, content }) {
   return (
     <article className="info__article">
       <BlockTitle title={title} />
-      <div className="info__descr">
+      <div className="info__description">
         {content.map((paragraph, i) => (
           <ArticleParagraph
             content={paragraph}

@@ -1,0 +1,11 @@
+.player__wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0.5fr 12fr 1fr 0.5fr;
+  grid-template-areas:
+    "button title duration subtrack"
+    ". timeline timeline .";
+}

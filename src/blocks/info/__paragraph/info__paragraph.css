@@ -1,0 +1,7 @@
+.info__paragraph {
+  margin: 0 0 20px;
+}
+
+.info__paragraph:last-of-type {
+  margin-bottom: 0;
+}

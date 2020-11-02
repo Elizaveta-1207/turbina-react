@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 export default function MediaPlayer({
   songs, currentSong,
 }) {
+  const audio = React.useRef(null);
   console.log(songs);
-  const [audio, setAudio] = React.useState(new Audio('#'));
+  const [audioSrc, setAudioSrc] = React.useState('#');
   const [isPlaying, setPlaying] = React.useState(false);
   const [isPlayBtnVisible, setIsPlayBtnVisible] = React.useState(true);
   const [isPauseBtnVisible, setIsPauseBtnVisible] = React.useState(false);
@@ -19,26 +20,26 @@ export default function MediaPlayer({
     setIsPlayBtnVisible(!isPlayBtnVisible);
   };
 
+  const handleTimeUpdate = () => {
+    setCurrentTime(Math.floor(audio.current.currentTime));
+  };
+
   React.useEffect(() => {
-    setAudio(new Audio(currentSong.url));
+    setAudioSrc(currentSong.url);
   }, [currentSong]);
 
   React.useEffect(() => {
     if (isPlaying) {
-      audio.play();
+      audio.current.play();
     }
     if (!isPlaying) {
-      audio.pause();
+      audio.current.pause();
     }
   }, [isPlaying]);
 
-  audio.ontimeupdate = () => {
-    setCurrentTime(Math.floor(audio.currentTime));
-  };
-
   React.useEffect(() => {
     // вычисление ширины полосы прокрутки
-    const playPercent = 100 * (audio.currentTime / audio.duration);
+    const playPercent = 100 * (audio.current.currentTime / audio.current.duration);
     setPlayHeadWidth(`${playPercent}%`);
     // формирование строки времени песни
     const s = `${Math.floor(currentTime % 60)}`.padStart(2, '0');
@@ -50,14 +51,19 @@ export default function MediaPlayer({
 
   return (
     <section className="player">
-      <audio className="player__music" preload="true">
-      </audio>
+      <audio
+        ref={audio}
+        className="player__music"
+        preload="true"
+        src={audioSrc}
+        onTimeUpdate={handleTimeUpdate}
+        />
       <div className="player__wrapper">
         <button
           className={`player__btn ${isPlayBtnVisible && 'player__btn_play'} ${isPauseBtnVisible && 'player__btn_pause'}`}
           onClick={handlePlaybackClick} />
         <span className="player__song-title">{`${currentSong.title} - ${currentSong.artist}`}</span>
-    <span className="player__song-duration">{timeString}</span>
+        <span className="player__song-duration">{timeString}</span>
         <button className="player__btn player__btn_subtrack"></button>
         <div className="player__timeline">
           <div className="player__playhead" style={{ width: playHeadWidth }}></div>
@@ -69,5 +75,4 @@ export default function MediaPlayer({
 MediaPlayer.propTypes = {
   songs: PropTypes.array.isRequired,
   currentSong: PropTypes.object.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
 };

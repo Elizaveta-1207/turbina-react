@@ -1,0 +1,15 @@
+.player__btn {
+  grid-area: button;
+  justify-self: start;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.player__btn:hover {
+  opacity: 0.6;
+}
