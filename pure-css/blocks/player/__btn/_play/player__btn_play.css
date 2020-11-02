@@ -1,0 +1,24 @@
+.player__btn_play {
+  background: url(../../../../images/play-btn.svg) no-repeat;
+  background-size: 18px 22px;
+  background-position: center;
+  margin-right: 20px;
+}
+
+/* @media screen and (max-width: 1023px) {
+  .player__song-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .player__song-title {
+    font-size: 18px;
+  }
+} */
+
+@media screen and (max-width: 767px) {
+  .player__btn_play {
+    margin-right: 12px;
+  }
+}
