@@ -1,0 +1,5 @@
+.player_expanded_true {
+  margin: -280px 20px 12px;
+  transition: margin 1s ease-in-out;
+}
+

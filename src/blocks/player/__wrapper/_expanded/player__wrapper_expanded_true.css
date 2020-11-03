@@ -1,0 +1,22 @@
+.player__wrapper_expanded_true {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 48px 6fr 1fr 167px 44px;
+  grid-template-areas:
+    "button title duration mode subtrack"
+    ". timeline timeline . ."
+    ". infoblock infoblock infoblock ."
+}
+
+@media screen and (max-width: 767px) {
+  .player__wrapper_expanded_true {
+    grid-template-columns: 40px 6fr 1fr 32px;
+    grid-template-areas:
+      "button title duration subtrack"
+      ". mode mode ."
+      ". timeline timeline .";
+  }
+}

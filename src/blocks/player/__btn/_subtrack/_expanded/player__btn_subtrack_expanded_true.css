@@ -1,0 +1,5 @@
+.player__btn_subtrack_expanded_true {
+  background: url('../../../../../images/subtract-close-btn.svg') right center no-repeat;
+  transition: background 1s ease-in-out;
+}
+

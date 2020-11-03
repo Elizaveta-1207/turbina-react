@@ -10,7 +10,6 @@ import api from '../utils/api';
 
 function App() {
   // set state
-  const [isPlaying, setPlaying] = React.useState(false);
   const [songs, setSongs] = React.useState([]);
   const [currentSong, setCurrentSong] = React.useState({});
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
@@ -27,7 +26,6 @@ function App() {
   }, []);
 
   // define UI handlers
-  const handlePlaybackClick = () => setPlaying(true);
   /*   const handleFormSubmit = (data) => {
     setLoaderVisibible(true);
     api.postForm(data)
@@ -37,23 +35,19 @@ function App() {
   const handleFormSubmit = 'gggg'; // !!!!! temorary
 
   return (
-    <>
-    <Background />
+    <AppContext.Provider value={currentSong}>
+      <Background />
       <body className="page" >
-        <AppContext.Provider value={currentSong}>
-          <Header />
-          <MediaPlayer
-            handlePlaybackClick={handlePlaybackClick}
-            songs={songs}
-            currentSong={currentSong}
-            isPlaying={isPlaying} />
-          <Main
-            onFormSubmit={handleFormSubmit}/>
-          <Footer />
-          {isLoaderVisible && (<Loader />)}
-        </AppContext.Provider>
+        <Header />
+        <MediaPlayer
+          songs={songs}
+          currentSong={currentSong} />
+        <Main
+          onFormSubmit={handleFormSubmit}/>
+        <Footer />
+        {isLoaderVisible && (<Loader />)}
       </body>
-    </>
+    </AppContext.Provider>
   );
 }
 

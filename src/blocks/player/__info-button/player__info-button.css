@@ -1,0 +1,22 @@
+.player__info-button {
+  grid-area: mode;
+  width: 147px;
+  height: 40px;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.2;
+  border-radius: 30px;
+  justify-self: center;
+  padding: 8px 10px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.3s ease-in-out;
+  color: #fff;
+  background: none;
+  justify-self: end;
+}
+
+.player__info-button:hover {
+  opacity: 0.6;
+}

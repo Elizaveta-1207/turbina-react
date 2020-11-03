@@ -1,0 +1,6 @@
+.infoblock {
+  grid-area: infoblock;
+  display: block;
+  height: 300px;
+  transition: height 1s ease-in-out;
+}
