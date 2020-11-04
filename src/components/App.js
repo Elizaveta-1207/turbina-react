@@ -3,7 +3,6 @@ import Background from './Background';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import MediaPlayer from './MediaPlayer';
 import Loader from './Loader';
 import AppContext from '../contexts/AppContext';
 import api from '../utils/api';
@@ -39,8 +38,7 @@ function App() {
     <AppContext.Provider value={currentSong}>
       <Background />
       <body className="page" >
-        <Header />
-        <MediaPlayer
+        <Header
           songs={songs}
           currentSong={currentSong} />
         <Main

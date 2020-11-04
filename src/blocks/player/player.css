@@ -1,6 +1,4 @@
 @import url('./__music/player__music.css');
-@import url('./_expanded/player_expanded_false.css');
-@import url('./_expanded/player_expanded_true.css');
 @import url('./__wrapper/_expanded/player__wrapper_expanded_true.css');
 @import url('./__wrapper/_expanded/player__wrapper_expanded_false.css');
 @import url('./__song-duration/player__song-duration.css');
@@ -12,14 +10,21 @@
 @import url('./__btn/_pause/player__btn_pause.css');
 @import url('./__btn/_subtrack/player__btn_subtrack.css');
 @import url('./__info-button/player__info-button.css');
+@import url('./_expanded/player_expanded_false.css');
+@import url('./_expanded/player_expanded_true.css');
 
 .player {
-  position: relative;
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
   z-index: 2;
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .player {
     margin-bottom: 16px;
   }
-}
+} */
