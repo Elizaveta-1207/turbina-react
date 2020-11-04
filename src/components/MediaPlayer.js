@@ -67,7 +67,10 @@ export default function MediaPlayer({ songs, currentSong }) {
         <span className="player__song-duration">{timeString}</span>
         <button className="player__btn player__btn_subtrack"></button>
         <div className="player__timeline">
-          <div className="player__playhead" style={{ width: playHeadWidth }}></div>
+          <div
+            className="player__playhead"
+            style={{ width: playHeadWidth }}
+          ></div>
         </div>
       </div>
     </section>

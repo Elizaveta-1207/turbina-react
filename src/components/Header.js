@@ -12,7 +12,11 @@ export default function Header() {
         rel="noreferrer"
         target="_blank"
       >
-        <img className="publishing-logo__img" src={logoMarshak} alt="Логотип издательства" />
+        <img
+          className="publishing-logo__img"
+          src={logoMarshak}
+          alt="Логотип издательства"
+        />
       </a>
       <VerticalNavBar />
       <h1 className="header__logo-wrapper">
