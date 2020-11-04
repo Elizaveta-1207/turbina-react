@@ -15,8 +15,8 @@ export default function Header() {
         <img className="publishing-logo__img" src={logoMarshak} alt="Логотип издательства" />
       </a>
       <VerticalNavBar />
-      <h1 className="header__app-logo">
-        <img src={logoTurbina} alt="Турбина" />
+      <h1 className="header__logo-wrapper">
+        <img src={logoTurbina} alt="Турбина" className="header__app-logo" />
       </h1>
     </header>
   );

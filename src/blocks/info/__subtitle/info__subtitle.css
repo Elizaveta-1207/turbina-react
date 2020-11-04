@@ -1,0 +1,26 @@
+.info__subtitle {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: normal;
+  margin: 0 0 60px;
+}
+
+@media screen and (max-width: 1023px) {
+  .info__subtitle {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .info__subtitle {
+    margin-bottom: 36px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .info__subtitle {
+    font-size: 12px;
+    margin-bottom: 30px;
+  }
+}
