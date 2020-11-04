@@ -19,15 +19,19 @@ class Api {
         title: 'Контур',
         artist: 'Хадн Дадн feat. Варя Карпова и Федя Быстров',
         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-        text: `I love la-la-la
-        oh, I love la-la-la`,
+        text:
+`I love la-la-la
+oh, I love la-la-la
+I love moo-moo-moo
+oh, I love moo-moo-moo
+I love la-la-la
+oh, I love la-la-la`,
       },
       {
         title: 'THE SECOND GOAT SONG',
         artist: 'THE UPPERCASE BAND',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-        text: `gkbjerkbjretpbper kori gprop poog
-        rt goiwoio ieru iii iuriiiiid d`,
+        url: '../../public/songs/song1.mp3',
+        text: 'Мой милый милый мальчик Моя милая милая девочка Никогда не знаешь что будет дальше В этой гадкой зиме',
       },
     ]);
   }

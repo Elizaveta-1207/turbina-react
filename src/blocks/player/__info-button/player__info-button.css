@@ -15,8 +15,16 @@
   color: #fff;
   background: none;
   justify-self: end;
+  opacity: 100%;
 }
 
 .player__info-button:hover {
-  opacity: 0.6;
+  opacity: 60%;
+}
+
+@media screen and (max-width: 767px) {
+  .player__info-button {
+    width: 100%;
+    margin-top: 20px;
+  }
 }

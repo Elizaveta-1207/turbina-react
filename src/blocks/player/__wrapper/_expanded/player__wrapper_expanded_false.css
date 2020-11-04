@@ -1,7 +1,6 @@
 .player__wrapper_expanded_false {
   box-sizing: border-box;
   width: 100%;
-  height: 50px;
   display: grid;
   align-items: center;
   grid-template-columns: 0.5fr 12fr 1fr 44px;
@@ -16,7 +15,6 @@
     grid-template-columns: 40px 6fr 1fr 32px;
     grid-template-areas:
       "button title duration subtrack"
-      ". mode mode ."
       ". timeline timeline .";
   }
 }
