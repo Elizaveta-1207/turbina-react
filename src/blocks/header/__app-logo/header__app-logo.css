@@ -1,21 +1,3 @@
 .header__app-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(861 * 100% / 1280);
-  /* height: 272.03px; */
-  z-index: 0;
-}
-
-@media screen and (max-width: 767px) {
-  .header__app-logo {
-    width: calc(400 * 100% / 480);
-  }
-}
-
-@media screen and (max-width: 424px) {
-  .header__app-logo {
-    width: calc(304 * 100% / 310);
-  }
+  width: 100%;
 }

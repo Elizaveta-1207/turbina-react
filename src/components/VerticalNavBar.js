@@ -9,7 +9,7 @@ export default function VerticalNavBar() {
       <NavBarLink link="#" title="Spotify ↗" />
       <NavBarLink link="#" title="Apple Music ↗" />
       <NavBarLink link="#" title="VK Music ↗" />
-  </nav>
+    </nav>
   );
 }
 VerticalNavBar.propTypes = {

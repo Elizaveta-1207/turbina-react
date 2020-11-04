@@ -2,34 +2,4 @@
 @import url(./__description/info__description.css);
 @import url(./__paragraph/info__paragraph.css);
 @import url(./__title/info__title.css);
-
-.info {
-  background-color: #fff;
-  border-radius: 10px 10px 0 0;
-  padding: 64px 58px 0;
-  color: #000;
-}
-
-@media screen and (max-width: 1279px) {
-  .info {
-    padding: 56px 48px 0;
-  }
-}
-
-@media screen and (max-width: 1023px) {
-  .info {
-    padding: 48px 36px 0;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .info {
-    padding: 40px 20px 0;
-  }
-}
-
-@media screen and (max-width: 424px) {
-  .info {
-    padding: 36px 16px 0;
-  }
-}
+@import url(./__subtitle/info__subtitle.css);

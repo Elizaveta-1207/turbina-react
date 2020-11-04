@@ -1,13 +1,11 @@
 @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 900;
-    src: local('Inter-Black'),
-         url('./Inter-Black.woff2') format('woff2'),
-         url('./Inter-Black.woff') format('woff'),
-         url('./Inter-Black.otf') format('opentype');
-  }
-  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Inter-Black'), url('./Inter-Black.woff2') format('woff2'),
+    url('./Inter-Black.woff') format('woff'), url('./Inter-Black.otf') format('opentype');
+}
+
 /*   @font-face {
      font-family: 'Inter';
      font-style: normal;
@@ -18,23 +16,26 @@
           url('./Inter-Bold.otf') format('opentype');
    } */
 
-  @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 500;
-    src: local('Inter-Medium'),
-         url('./Inter-Medium.woff2') format('woff2'),
-         url('./Inter-Medium.woff') format('woff'),
-         url('./Inter-Medium.otf') format('opentype');
-  } 
-  
-  @font-face {
-    font-family: 'Inter';
-    font-style:  normal;
-    font-weight: 400;
-    src: local('Inter-Regular'),
-         url('./Inter-Regular.woff2') format('woff2'),
-         url('./Inter-Regular.woff') format('woff'),
-         url('./Inter-Regular.otf') format('opentype');
-  }
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Inter-Medium'), url('./Inter-Medium.woff2') format('woff2'),
+    url('./Inter-Medium.woff') format('woff'), url('./Inter-Medium.otf') format('opentype');
+}
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inter-Regular'), url('./Inter-Regular.woff2') format('woff2'),
+    url('./Inter-Regular.woff') format('woff'), url('./Inter-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Inter-Italic'), url('./Inter-Italic.woff2') format('woff2'),
+    url('./Inter-Italic.woff') format('woff'), url('./Inter-Italic.otf') format('opentype');
+}

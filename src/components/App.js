@@ -16,7 +16,8 @@ function App() {
   // set initial state with mount-dependant hook = load songs array
   React.useEffect(() => {
     setLoaderVisibible(true);
-    api.getSongs()
+    api
+      .getSongs()
       .then((songsArray) => {
         setSongs(songsArray);
         setCurrentSong(songsArray[0]);

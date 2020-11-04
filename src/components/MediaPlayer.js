@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import PlaybackButton from './PlaybackButton';
 import MediaInfoBlock from './MediaInfoBlock';
 
-export default function MediaPlayer({
-  songs, currentSong,
-}) {
+export default function MediaPlayer({ songs, currentSong }) {
   const audio = React.useRef(null);
   const timeline = React.useRef();
   const playhead = React.useRef();

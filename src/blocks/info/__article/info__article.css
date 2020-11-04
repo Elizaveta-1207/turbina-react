@@ -1,18 +1,18 @@
 .info__article {
-  margin-bottom: 60px;
+  margin-bottom: 90px;
   max-width: 716px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.2;
   font-weight: normal;
 }
 
-.info__article:last-of-type {
+/* .info__article:last-of-type {
   margin-bottom: 0;
-}
+} */
 
 @media screen and (max-width: 1023px) {
   .info__article {
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 48px;
   }
 }
