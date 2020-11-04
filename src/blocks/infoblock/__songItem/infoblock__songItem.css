@@ -1,5 +1,5 @@
 .infoblock__songItem {
-  display: inline;
+  display: table-cell;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
