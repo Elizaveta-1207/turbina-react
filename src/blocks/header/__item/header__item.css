@@ -1,0 +1,9 @@
+.header__item {
+  list-style-type: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.header__item:first-of-type {
+  margin-top: 0;
+}

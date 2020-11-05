@@ -1,0 +1,14 @@
+.header__btn {
+  display: none;
+  box-sizing: border-box;
+  outline: none;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 424px) {
+  .header__btn {
+    display: block;
+  }
+}

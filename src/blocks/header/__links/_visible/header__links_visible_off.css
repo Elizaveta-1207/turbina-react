@@ -1,0 +1,6 @@
+@media screen and (max-width: 424px) {
+  .header__links_visible_off {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
