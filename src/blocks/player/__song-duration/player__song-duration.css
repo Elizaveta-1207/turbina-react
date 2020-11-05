@@ -1,6 +1,8 @@
 .player__song-duration {
   grid-area: duration;
   justify-self: end;
+  display: flex;
+  align-items: flex-end;
   font-weight: 500;
   font-size: 22px;
   line-height: 1.2;
@@ -15,6 +17,7 @@
 
 @media screen and (max-width: 767px) {
   .player__song-duration {
+    align-items: center;
     font-size: 18px;
   }
 }

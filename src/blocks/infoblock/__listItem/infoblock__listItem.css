@@ -1,5 +1,5 @@
 .infoblock__listItem {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   display: table;
   table-layout: fixed;
   width: 100%;
@@ -8,3 +8,10 @@
 .infoblock__listItem:last-of-type {
   margin-bottom: 0px;
 }
+
+@media screen and (max-width: 424px) {
+  .infoblock__listItem {
+    margin-bottom: 10px;
+  }
+}
+

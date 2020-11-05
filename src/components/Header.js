@@ -21,8 +21,8 @@ export default function Header({ songs, currentSong }) {
         <img src={logoTurbina} alt="Турбина" className="header__app-logo" />
       </h1>
       <MediaPlayer
-          songs={songs}
-          currentSong={currentSong} />
+        songs={songs}
+        currentSong={currentSong} />
     </header>
   );
 }

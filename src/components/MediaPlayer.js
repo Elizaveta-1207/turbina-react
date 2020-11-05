@@ -20,7 +20,10 @@ export default function MediaPlayer({ songs, currentSong }) {
     setPlaying(!isPlaying);
   };
 
-  // надо передать стейт кнопке
+  const handleExpandClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+  // надо будет передать стейт кнопке и проверить смену песен
   const handleMediaEnd = () => {
     setPlaying(false);
   };
@@ -47,49 +50,40 @@ export default function MediaPlayer({ songs, currentSong }) {
   }, [isPlaying]);
 
   React.useEffect(() => {
-    // вычисление ширины полосы прокрутки
     const playPercent = 100 * (audio.current.currentTime / audio.current.duration);
     setPlayHeadWidth(`${playPercent}%`);
-    // формирование строки времени песни
     const s = `${Math.floor(currentTime % 60)}`.padStart(2, '0');
     const m = Math.floor(currentTime / 60);
     setTimeString(`${m}:${s}`);
   }, [currentTime]);
 
-  const handleExpandClick = () => {
-    setIsExpanded(!isExpanded);
-  };
-  // получение объекта DOM в разрезе его пиксельных координат относительно вьюпорта
   const getCoordinates = (el) => el.getBoundingClientRect();
-  // Обработка клика на таймлайн
-  const handleTimelineClick = (evt) => {
+
+  const handleTimelineChange = (evt) => {
     const timelineBeginX = getCoordinates(timeline.current).left;
-    const timelineEndX = getCoordinates(timeline.current).left;
+    const timelineEndX = getCoordinates(timeline.current).right;
     const timelineLength = getCoordinates(timeline.current).width;
-    let clickedX;
+    let targetX;
     if (evt.clientX < timelineBeginX) {
-      clickedX = timelineBeginX;
-    } else if (evt.clientX < timelineBeginX) {
-      clickedX = timelineEndX;
+      targetX = timelineBeginX;
+    } else if (evt.clientX > timelineEndX) {
+      targetX = timelineEndX;
     } else {
-      clickedX = evt.clientX;
+      targetX = evt.clientX;
     }
-    const songProgressPercentage = (clickedX - timelineBeginX) / timelineLength;
+    const songProgressPercentage = (targetX - timelineBeginX) / timelineLength;
     const songProgressSeconds = Math.round(audio.current.duration * songProgressPercentage);
     audio.current.currentTime = songProgressSeconds;
   };
 
   const handlePlayheadDrag = () => {
-    let mouseUp = false;
+    let mouseDown = true;
     window.addEventListener('mouseup', () => {
-      if (!mouseUp) {
-        mouseUp = true;
-        setPlaying(true);
-        window.removeEventListener('mouseup', () => {});
-      }
+      mouseDown = false;
+      window.removeEventListener('mouseup', () => {});
     });
     window.addEventListener('mousemove', (evt) => {
-      if (!mouseUp) handleTimelineClick(evt);
+      if (mouseDown) handleTimelineChange(evt);
     });
   };
 
@@ -101,26 +95,28 @@ export default function MediaPlayer({ songs, currentSong }) {
         preload="auto"
         src={audioSrc}
         onTimeUpdate={handleTimeUpdate}
-        onEnded={handleMediaEnd}
-        />
+        onEnded={handleMediaEnd} />
       <div className={`player__wrapper_expanded_${isExpanded}`} >
       <PlaybackButton
         isPlaying={isPlaying}
         handlePlaybackClick={handlePlaybackClick} />
-        <span className="player__song-title">{`${currentSong.title} - ${currentSong.artist}`}</span>
-        <span className="player__song-duration">{timeString}</span>
-        {isExpanded && (<button className="player__info-button" onClick={toggleContentState}>{contentIsText ? 'Текст песни' : 'Релизы'}</button>)}
-        <button
-          className={`player__btn player__btn_subtrack player__btn_subtrack_expanded_${isExpanded}`}
-          onClick={handleExpandClick}></button>
-        <div className="player__timeline" onClick={handleTimelineClick} ref={timeline}>
-          <div className="player__playhead" onMouseDown={handlePlayheadDrag} ref={playhead} style={{ width: playHeadWidth }}></div>
-        </div>
+      <span className="player__song-title">
+        {`${currentSong.title} - ${currentSong.artist}`}
+        <span className="player__song-title player__featured-text"> feat.</span>
+        {currentSong.child}</span>
+      <div className="player__song-duration">{timeString}</div>
+      {isExpanded && (<button className="player__info-button" onClick={toggleContentState}>{contentIsText ? 'Релизы' : 'Текст песни'}</button>)}
+      <button
+        className={`player__btn player__btn_subtrack player__btn_subtrack_expanded_${isExpanded}`}
+        onClick={handleExpandClick}></button>
+      <div className="player__timeline" onClick={handleTimelineChange} ref={timeline}>
+        <div className="player__playhead" onMouseDown={handlePlayheadDrag} ref={playhead} style={{ width: playHeadWidth }}></div>
+      </div>
 
-        {isExpanded && (<MediaInfoBlock
-          songs={songs}
-          currentSong={currentSong}
-          contentIsText={contentIsText} />)}
+      {isExpanded && (<MediaInfoBlock
+        songs={songs}
+        currentSong={currentSong}
+        contentIsText={contentIsText} />)}
       </div>
     </div>
   );

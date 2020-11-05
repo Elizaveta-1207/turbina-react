@@ -1,11 +1,12 @@
 @import url('./__content/infoblock__content.css');
 @import url('./__songItem/infoblock__songItem.css');
 @import url('./__songs-container/infoblock__songs-container.css');
-@import url('./__no-content-msg/infoblock__no-content-msg.css');
 @import url('./__listItem/infoblock__listItem.css');
+@import url('./__featured-text/infoblock__featured-text.css');
+@import url('./__subtitle/infoblock__subtitle.css');
 
 .infoblock {
-  display: flex;
+  display: block;
   grid-area: infoblock;
   height: 110px;
   transition: height 1s ease-in-out;

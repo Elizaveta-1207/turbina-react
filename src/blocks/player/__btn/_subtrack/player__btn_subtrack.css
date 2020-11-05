@@ -7,4 +7,12 @@
   width: 24px;
   height: 24px;
   border: none;
+  background-size: contain;
+}
+
+@media screen and (max-width: 424px) {
+  .player__btn_subtrack {
+    width: 16px;
+    height: 16px;
+  }
 }

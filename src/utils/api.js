@@ -19,7 +19,8 @@ class Api {
     return Promise.resolve([
       {
         title: 'Контур',
-        artist: 'Хадн Дадн feat. Варя Карпова и Федя Быстров',
+        artist: 'Хадн Дадн',
+        child: 'Варя Карпова и Федя Быстров',
         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         text:
 `I love la-la-la
@@ -32,7 +33,8 @@ oh, I love la-la-la`,
       {
         title: 'THE SECOND GOAT SONG',
         artist: 'THE UPPERCASE BAND',
-        url: '../../public/songs/song1.mp3',
+        child: 'lowercase little jules',
+        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
         text: 'Мой милый милый мальчик Моя милая милая девочка Никогда не знаешь что будет дальше В этой гадкой зиме',
       },
     ]);
