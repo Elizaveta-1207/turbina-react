@@ -5,8 +5,8 @@ export default function Footer() {
   const yearNow = today.getFullYear();
   return (
     <footer className="footer">
-      <p className="footer__copyright">{`@${yearNow}`}</p>
-      <p className="footer__copyright">Copyright</p>
+      <p className="footer__copyright">&copy; Маршак, {`${yearNow}`}.</p>
+      <p className="footer__copyright">Сделано студентами <a href="#" className="footer__link">Яндекс.Практикум</a></p>
     </footer>
   );
 }
