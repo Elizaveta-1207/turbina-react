@@ -8,6 +8,8 @@ export default function MediaPlayer({ songs, currentSong }) {
   const audio = React.useRef(null);
   const timeline = React.useRef();
   const playhead = React.useRef();
+  const songtitle = React.useRef();
+  const songtitleWrap = React.useRef();
 
   const [audioSrc, setAudioSrc] = React.useState('#');
   const [isPlaying, setPlaying] = React.useState(false);
@@ -16,6 +18,13 @@ export default function MediaPlayer({ songs, currentSong }) {
   const [playHeadWidth, setPlayHeadWidth] = React.useState('0%');
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [contentIsText, setContentIsText] = React.useState(true);
+  const [isSongtitleTickerActive, setIsSongtitleTickerActive] = React.useState();
+  const [songtitleWrapWidth, setSontitleWrapWidth] = React.useState();
+
+  window.onresize = () => {
+    const { width } = songtitleWrap.current.getBoundingClientRect();
+    setSontitleWrapWidth(width);
+  };
 
   const handlePlaybackClick = () => {
     setPlaying(!isPlaying);
@@ -88,6 +97,12 @@ export default function MediaPlayer({ songs, currentSong }) {
     });
   };
 
+  React.useEffect(() => {
+    console.log(`songtitleWrapWidth: ${songtitleWrapWidth}`);
+    const songtitleTextWidth = songtitle.current.getBoundingClientRect().width;
+    setIsSongtitleTickerActive(songtitleWrapWidth <= songtitleTextWidth);
+  }, [songtitleWrapWidth]);
+
   return (
     <div className={`player player_expanded_${isExpanded}`}>
       <audio
@@ -101,9 +116,9 @@ export default function MediaPlayer({ songs, currentSong }) {
       <PlaybackButton
         isPlaying={isPlaying}
         handlePlaybackClick={handlePlaybackClick} />
-      <span className="player__song-title">
-        <Ticker duration = '12s' active={true}>
-          <div>
+      <span ref={songtitleWrap} className="player__song-title">
+        <Ticker duration = '12s' active={isSongtitleTickerActive}>
+          <div ref={songtitle} style={{ width: 'min-content' }}>
             {currentSong.title} - {currentSong.artist}
             <span className="player__song-title player__featured-text"> feat.</span>
             {currentSong.child}
