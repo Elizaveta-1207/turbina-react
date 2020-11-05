@@ -1,4 +1,3 @@
-@import url('./__music/player__music.css');
 @import url('./__wrapper/_expanded/player__wrapper_expanded_true.css');
 @import url('./__wrapper/_expanded/player__wrapper_expanded_false.css');
 @import url('./__song-duration/player__song-duration.css');
@@ -10,9 +9,9 @@
 @import url('./__btn/_pause/player__btn_pause.css');
 @import url('./__btn/_subtrack/player__btn_subtrack.css');
 @import url('./__info-button/player__info-button.css');
+@import url('./__featured-text/player__featured-text.css');
 @import url('./_expanded/player_expanded_false.css');
 @import url('./_expanded/player_expanded_true.css');
-@import url('./__featured-text/player__featured-text.css');
 
 .player {
   position: absolute;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlaybackButton from './PlaybackButton';
 import MediaInfoBlock from './MediaInfoBlock';
+import Ticker from './Ticker';
 
 export default function MediaPlayer({ songs, currentSong }) {
   const audio = React.useRef(null);
@@ -101,9 +102,15 @@ export default function MediaPlayer({ songs, currentSong }) {
         isPlaying={isPlaying}
         handlePlaybackClick={handlePlaybackClick} />
       <span className="player__song-title">
-        {`${currentSong.title} - ${currentSong.artist}`}
-        <span className="player__song-title player__featured-text"> feat.</span>
-        {currentSong.child}</span>
+        <Ticker duration = '12s' active={true}>
+          <div>
+            {currentSong.title} - {currentSong.artist}
+            <span className="player__song-title player__featured-text"> feat.</span>
+            {currentSong.child}
+          </div>
+        </ Ticker>
+      </span>
+
       <div className="player__song-duration">{timeString}</div>
       {isExpanded && (<button className="player__info-button" onClick={toggleContentState}>{contentIsText ? 'Релизы' : 'Текст песни'}</button>)}
       <button

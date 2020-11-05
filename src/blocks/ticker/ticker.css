@@ -1,0 +1,10 @@
+@import url('./__wrap/ticker__wrap.css');
+@import url('./__item/ticker__item.css');
+
+.ticker {
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+  padding-left: 100%;
+  box-sizing: content-box;
+}
