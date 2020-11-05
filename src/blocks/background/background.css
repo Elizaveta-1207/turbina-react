@@ -1,10 +1,60 @@
+/* @keyframes gradient {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: blue;
+  }
+  50% {
+    background-color: black;
+  }
+  75% {
+    background-color: orange;
+  }
+  100% {
+    background-color: aqua;
+  }
+} */
+
+/* @keyframes rotation {
+  from {
+    background: linear-gradient(45deg, #eaa4a6 0%, hsla(352, 96%, 45%, 0) 70%),
+      linear-gradient(135deg, #212d80 10%, hsla(253, 95%, 42%, 0) 80%),
+      linear-gradient(225deg, #275b82 10%, hsla(179, 91%, 45%, 0) 80%),
+      linear-gradient(315deg, #4e7b6c 100%, hsla(119, 96%, 49%, 0) 70%);
+  }
+
+  to {
+    background: linear-gradient(
+        315deg,
+        #4e7b6c 100%,
+        hsla(119, 96%, 49%, 0) 70%
+      ),
+      linear-gradient(225deg, #275b82 10%, hsla(179, 91%, 45%, 0) 80%),
+      linear-gradient(135deg, #212d80 10%, hsla(253, 95%, 42%, 0) 80%),
+      linear-gradient(45deg, #eaa4a6 0%, hsla(352, 96%, 45%, 0) 70%);
+  }
+} */
+
+/* .rotation {
+  animation: rotation 20s linear infinite;
+} */
+
 .background {
-  background: url('../../images/background-top.jpg') top center no-repeat,
-    url('../../images/background-bottom.jpg') bottom center no-repeat;
+  background: url("../../images/background-top.jpg") top center no-repeat,
+    url("../../images/background-bottom.jpg") bottom center no-repeat;
   transition: background-position 0.5s ease-out;
   position: fixed;
   background-size: cover;
-  width: 120vw;
-  height: 120vh;
+  width: 100%;
+  height: 100%;
   z-index: -1;
+  background: linear-gradient(45deg, #eaa4a6 0%, hsla(352, 96%, 45%, 0) 70%),
+    linear-gradient(135deg, #212d80 10%, hsla(253, 95%, 42%, 0) 80%),
+    linear-gradient(225deg, #275b82 10%, hsla(179, 91%, 45%, 0) 80%),
+    linear-gradient(315deg, #4e7b6c 100%, hsla(119, 96%, 49%, 0) 70%);
+  /* background-color: #fffa02;
+  animation: gradient 2s linear infinite; */
+  /* animation: rotation 20s linear infinite; */
+  object-fit: cover;
 }
