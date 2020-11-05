@@ -1,0 +1,9 @@
+.infoblock__songItem {
+  display: table-cell;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}

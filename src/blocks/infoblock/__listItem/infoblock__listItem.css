@@ -1,0 +1,10 @@
+.infoblock__listItem {
+  margin-bottom: 12px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.infoblock__listItem:last-of-type {
+  margin-bottom: 0px;
+}

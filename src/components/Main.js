@@ -8,7 +8,7 @@ export default function Main({ onFormSubmit }) {
     <main className="main-info">
       <section className="info">
         <Article
-          title="О проекте."
+          title="О проекте"
           content={[
             `Мы знаем, что наши дети постоянно существуют в режиме непрекращающегося
             творческого процесса. Мы видим это, когда ребёнок что-то напевает,
@@ -36,7 +36,7 @@ export default function Main({ onFormSubmit }) {
           ]}
         />
         <Article
-          title="Тезисы."
+          title="Тезисы"
           content={[
             ' \u2022 Дети никогда не прекращают творить и круто стараться быть на них похожими в этом',
             ' \u2022 Детское бессознательное помогает родителям понять, что происходит внутри семьи',

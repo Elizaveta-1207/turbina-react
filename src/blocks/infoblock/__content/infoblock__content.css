@@ -1,0 +1,11 @@
+.infoblock__content {
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 500;
+  white-space: pre;
+  margin: 4px;
+}
+
+.infoblock__content:last-of-type {
+  margin-bottom: 0px;
+}

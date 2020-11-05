@@ -1,15 +1,10 @@
+@import url('./_expanded/player__btn_subtrack_expanded_false.css');
+@import url('./_expanded/player__btn_subtrack_expanded_true.css');
+
 .player__btn_subtrack {
   grid-area: subtrack;
   justify-self: end;
-  background: url(../../../../images/subtract-btn.svg) right center no-repeat;
   width: 24px;
   height: 24px;
   border: none;
-  margin-left: 20px;
-}
-
-@media screen and (max-width: 767px) {
-  .player__btn_subtrack {
-    margin-left: 12px;
-  }
 }

@@ -1,0 +1,5 @@
+.player_expanded_false {
+  height: 80px;
+  transition: height 1s ease-in-out;
+}
+

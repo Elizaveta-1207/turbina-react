@@ -1,0 +1,35 @@
+@import url('./__content/infoblock__content.css');
+@import url('./__songItem/infoblock__songItem.css');
+@import url('./__songs-container/infoblock__songs-container.css');
+@import url('./__no-content-msg/infoblock__no-content-msg.css');
+@import url('./__listItem/infoblock__listItem.css');
+
+.infoblock {
+  display: flex;
+  grid-area: infoblock;
+  height: 110px;
+  transition: height 1s ease-in-out;
+  margin-top: 40px;
+  overflow-y: inherit;
+  overflow-x: hidden;
+  padding-right: 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .infoblock {
+    margin-top: 30px;
+    height: 80px;
+  }
+}
+
+.infoblock::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 3px;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.infoblock::-webkit-scrollbar-thumb {
+  height: 35px;
+  background-color: rgba(255, 255, 255, .3);
+  border-radius: 1px;
+}
