@@ -1,0 +1,10 @@
+.vertical-links-bar__btn_action_close {
+  background: none;
+  width: 32px;
+  height: 32px;
+  color: inherit;
+}
+
+.vertical-links-bar__btn_action_close::before {
+  content: '\2716';
+}

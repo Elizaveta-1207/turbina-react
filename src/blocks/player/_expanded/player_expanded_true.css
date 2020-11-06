@@ -1,16 +1,16 @@
 .player_expanded_true {
-  height: 240px;
+  height: 210px;
   transition: height 1s ease-in-out;
 }
 
 @media screen and (max-width: 767px) {
   .player_expanded_true {
-    height: 232px;
+    height: 200px;
   }
 }
 
 @media screen and (max-width: 424px) {
   .player_expanded_true {
-    height: 220px;
+    height: 190px;
   }
 }

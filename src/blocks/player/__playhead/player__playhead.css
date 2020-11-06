@@ -1,6 +1,5 @@
 .player__playhead {
   height: 6px;
   width: 1px;
-  background-color: #ffffff;
   max-width: 100%;
 }

@@ -3,3 +3,14 @@
   transition: height 1s ease-in-out;
 }
 
+@media screen and (max-width: 767px) {
+  .player_expanded_false  {
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .player_expanded_false  {
+    height: 40px;
+  }
+}

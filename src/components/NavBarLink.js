@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function NavBarLink({ link, title }) {
   return (
-    <a href={link} className="header__link" rel="noreferrer" target="_blank">
+    <a href={link} className="navbar-link" rel="noreferrer" target="_blank">
       {title}
     </a>
   );

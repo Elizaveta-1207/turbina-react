@@ -5,9 +5,6 @@
 @import url('./__timeline/player__timeline.css');
 @import url('./__btn/player__btn.css');
 @import url('./__playhead/player__playhead.css');
-@import url('./__btn/_play/player__btn_play.css');
-@import url('./__btn/_pause/player__btn_pause.css');
-@import url('./__btn/_subtrack/player__btn_subtrack.css');
 @import url('./__info-button/player__info-button.css');
 @import url('./__featured-text/player__featured-text.css');
 @import url('./_expanded/player_expanded_false.css');
@@ -15,7 +12,7 @@
 
 .player {
   position: absolute;
-  bottom: 12px;
+  bottom: 32px;
   left: 0;
   width: 100%;
   padding: 20px;
@@ -31,6 +28,7 @@
 
 @media screen and (max-width: 424px) {
   .player {
+    bottom: 20px;
     padding: 8px;
   }
 }

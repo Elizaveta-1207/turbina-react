@@ -1,0 +1,17 @@
+@import url('./_visible/vertical-links-bar__links_visible_off.css');
+@import url('./_visible/vertical-links-bar__links_visible_on.css');
+
+.vertical-links-bar__links {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 424px) {
+  .vertical-links-bar__links {
+    transition: visibility .3s, opacity .3s linear;
+  }
+}

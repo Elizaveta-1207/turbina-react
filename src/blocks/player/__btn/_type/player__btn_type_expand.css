@@ -1,0 +1,4 @@
+.player__btn_type_expand {
+  grid-area: subtrack;
+  justify-self: end;
+}

@@ -3,7 +3,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: white;
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
   font-style: italic;

@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import logoMarshak from '../images/logo-marshak.svg';
-import logoTurbina from '../images/logo-turbina.svg';
-import VerticalNavBar from './VerticalNavBar';
+import LogoMarshak from './LogoMarshak';
+import LogoTurbina from './LogoTurbina';
+import VerticalLinksBar from './VerticalLinksBar';
 import MediaPlayer from './MediaPlayer';
+import AppContext from '../contexts/AppContext';
 
 export default function Header({ songs, currentSong }) {
+  const { header } = React.useContext(AppContext);
+  const { color } = header.style;
+
   return (
     <header className="header">
       <a
@@ -14,15 +18,16 @@ export default function Header({ songs, currentSong }) {
         rel="noreferrer"
         target="_blank"
       >
-        <img className="publishing-logo__img" src={logoMarshak} alt="Логотип издательства" />
+        <LogoMarshak fill={color}/>
       </a>
-      <VerticalNavBar />
+      <VerticalLinksBar color={color} />
       <h1 className="header__logo-wrapper">
-        <img src={logoTurbina} alt="Турбина" className="header__app-logo" />
+        <LogoTurbina fill={color} />
       </h1>
       <MediaPlayer
         songs={songs}
-        currentSong={currentSong} />
+        currentSong={currentSong}
+        color={color}/>
     </header>
   );
 }

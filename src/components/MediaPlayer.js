@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaybackButton from './PlaybackButton';
+import ExpandButton from './ExpandButton';
 import MediaInfoBlock from './MediaInfoBlock';
 import Ticker from './Ticker';
 
-export default function MediaPlayer({ songs, currentSong }) {
+export default function MediaPlayer({ songs, currentSong, color }) {
   const audio = React.useRef(null);
   const timeline = React.useRef();
   const playhead = React.useRef();
@@ -98,13 +99,12 @@ export default function MediaPlayer({ songs, currentSong }) {
   };
 
   React.useEffect(() => {
-    console.log(`songtitleWrapWidth: ${songtitleWrapWidth}`);
     const songtitleTextWidth = songtitle.current.getBoundingClientRect().width;
     setIsSongtitleTickerActive(songtitleWrapWidth <= songtitleTextWidth);
   }, [songtitleWrapWidth]);
 
   return (
-    <div className={`player player_expanded_${isExpanded}`}>
+    <div className={`player player_expanded_${isExpanded}`} style={{ color }}>
       <audio
         ref={audio}
         className="player__music"
@@ -113,32 +113,38 @@ export default function MediaPlayer({ songs, currentSong }) {
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleMediaEnd} />
       <div className={`player__wrapper_expanded_${isExpanded}`} >
-      <PlaybackButton
-        isPlaying={isPlaying}
-        handlePlaybackClick={handlePlaybackClick} />
-      <span ref={songtitleWrap} className="player__song-title">
-        <Ticker duration = '12s' active={isSongtitleTickerActive}>
-          <div ref={songtitle} style={{ width: 'min-content' }}>
-            {currentSong.title} - {currentSong.artist}
-            <span className="player__song-title player__featured-text"> feat.</span>
-            {currentSong.child}
-          </div>
-        </ Ticker>
-      </span>
+        <PlaybackButton
+          color={color}
+          isPlaying={isPlaying}
+          handlePlaybackClick={handlePlaybackClick} />
+        <span ref={songtitleWrap} className="player__song-title">
+          <Ticker duration = '12s' active={isSongtitleTickerActive}>
+            <div ref={songtitle} style={{ width: 'min-content' }}>
+              {currentSong.title} - {currentSong.artist}
+              <span className="player__song-title player__featured-text"> feat.</span>
+              {currentSong.child}
+            </div>
+          </ Ticker>
+        </span>
 
-      <div className="player__song-duration">{timeString}</div>
-      {isExpanded && (<button className="player__info-button" onClick={toggleContentState}>{contentIsText ? 'Релизы' : 'Текст песни'}</button>)}
-      <button
-        className={`player__btn player__btn_subtrack player__btn_subtrack_expanded_${isExpanded}`}
-        onClick={handleExpandClick}></button>
-      <div className="player__timeline" onClick={handleTimelineChange} ref={timeline}>
-        <div className="player__playhead" onMouseDown={handlePlayheadDrag} ref={playhead} style={{ width: playHeadWidth }}></div>
-      </div>
+        <div className="player__song-duration">{timeString}</div>
+        {isExpanded && (<button className="player__info-button" onClick={toggleContentState}>{contentIsText ? 'Релизы' : 'Текст песни'}</button>)}
+        <ExpandButton
+          onClick={handleExpandClick}
+          isExpanded={isExpanded}
+          color={color} />
+        <div className="player__timeline" onClick={handleTimelineChange} ref={timeline}>
+          <div
+            className="player__playhead"
+            onMouseDown={handlePlayheadDrag}
+            ref={playhead}
+            style={{ width: playHeadWidth, backgroundColor: color }}></div>
+        </div>
 
-      {isExpanded && (<MediaInfoBlock
-        songs={songs}
-        currentSong={currentSong}
-        contentIsText={contentIsText} />)}
+        {isExpanded && (<MediaInfoBlock
+          songs={songs}
+          currentSong={currentSong}
+          contentIsText={contentIsText} />)}
       </div>
     </div>
   );
@@ -146,4 +152,5 @@ export default function MediaPlayer({ songs, currentSong }) {
 MediaPlayer.propTypes = {
   songs: PropTypes.array.isRequired,
   currentSong: PropTypes.object.isRequired,
+  color: PropTypes.string.isRequired,
 };

@@ -11,11 +11,12 @@
   justify-self: center;
   padding: 0 10px;
   text-align: center;
-  border: 2px solid #fff;
+  border: 2px solid;
+  border-color: inherit;
   cursor: pointer;
   outline: none;
   transition: opacity 0.3s ease-in-out;
-  color: #fff;
+  color: inherit;
   background: none;
   justify-self: end;
   opacity: 100%;

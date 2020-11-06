@@ -1,16 +1,16 @@
-.header__btn_action_open {
+.vertical-links-bar__btn_action_open {
   padding: 7px 16px;
   font-weight: normal;
   font-size: 12px;
   line-height: 1.2;
-  color: #fff;
+  color: inherit;
   background-color: transparent;
 }
 
-.header__btn_action_open:hover {
+.vertical-links-bar__btn_action_open:hover {
   font-style: italic;
 }
 
-.header__btn_action_open::before {
+.vertical-links-bar__btn_action_open::before {
   content: 'Стриминги';
 }

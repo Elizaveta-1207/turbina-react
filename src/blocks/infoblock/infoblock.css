@@ -6,6 +6,7 @@
 @import url('./__subtitle/infoblock__subtitle.css');
 
 .infoblock {
+  color: inherit;
   display: block;
   grid-area: infoblock;
   height: 110px;

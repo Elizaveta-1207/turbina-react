@@ -6,6 +6,7 @@ import Footer from './Footer';
 import Loader from './Loader';
 import AppContext from '../contexts/AppContext';
 import api from '../utils/api';
+import config from '../turbinaconfig';
 
 function App() {
   // set state
@@ -14,6 +15,7 @@ function App() {
   const [currentSong, setCurrentSong] = React.useState({});
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
 
+  console.log(config);
   // лучше потом по ID
   // TODO! можно через useEffect сделать
   const generatePlaylist = (song = {}, list = []) => {
@@ -50,7 +52,7 @@ function App() {
   const handleFormSubmit = 'gggg'; // !!!!! temorary
 
   return (
-    <AppContext.Provider value={''}>
+    <AppContext.Provider value={config}>
       <Background />
       <body className="page" >
         <Header

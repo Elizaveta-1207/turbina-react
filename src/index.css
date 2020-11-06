@@ -4,6 +4,8 @@
 @import url('./blocks/page/page.css');
 @import url('./blocks/header/header.css');
 @import url('./blocks/publishing-logo/publishing-logo.css');
+@import url('./blocks/vertical-links-bar/vertical-links-bar.css');
+@import url('./blocks/navbar-link/navbar-link.css');
 @import url('./blocks/player/player.css');
 @import url('./blocks/main-info/main-info.css');
 @import url('./blocks/infoblock/infoblock.css');

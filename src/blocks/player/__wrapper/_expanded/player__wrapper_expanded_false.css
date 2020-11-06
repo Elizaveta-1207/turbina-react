@@ -1,19 +1,19 @@
 .player__wrapper_expanded_false {
+  color: inherit;
   box-sizing: border-box;
   width: 100%;
   display: grid;
   align-items: center;
-  grid-template-columns: 48px 12fr 1fr 44px;
+  grid-template-columns: 40px 12fr 1fr 40px;
   grid-template-rows: 35px 6px;
   grid-template-areas:
     "button title duration subtrack"
     ". timeline timeline .";
 }
 
-
 @media screen and (max-width: 767px) {
   .player__wrapper_expanded_false {
-    grid-template-columns: 40px 6fr 1fr 32px;
+    grid-template-columns: 24px 6fr 1fr 24px;
     grid-template-rows: 24px 6px;
     grid-template-areas:
       "button title duration subtrack"

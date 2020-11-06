@@ -1,0 +1,19 @@
+@import url('./_action/vertical-links-bar__btn_action_close.css');
+@import url('./_action/vertical-links-bar__btn_action_open.css');
+
+.vertical-links-bar__btn {
+  display: none;
+  box-sizing: border-box;
+  outline: none;
+  border: 2px solid;
+  border-color: inherit;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+@media screen and (max-width: 424px) {
+  .vertical-links-bar__btn {
+    display: block;
+  }
+}

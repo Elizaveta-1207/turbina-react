@@ -1,0 +1,4 @@
+.player__btn_play {
+  grid-area: button;
+  justify-self: start;
+}
