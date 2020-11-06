@@ -9,7 +9,7 @@
 
 ### **Content**
   - [About](#About-Turbina-web-project)
-  - [Usage](#Usage)
+  - [Cofiguring app](#Cofiguring-app)
   - [Submitting new poem](#Submitting-new-poem)
   - [Further development](#Further-development)
 
@@ -17,18 +17,41 @@
 ## About Turbina web project
 blah-blah-blah
 
-## Usage
-When used on command line type
+## Cofiguring app
+The app can be configured by changing data of `turbinaconfig.js` in `/src/` directory
+
+### You can: ###
+- Set color of logos, player texts and buttons, streamings menu buttons by changing `header.style.color` value 
+```js
+  header: {
+    style: {
+      color: '#fff',
+    },
+  },
+```
+- Customize background logo by changing `customBackground` key and providing custom image url in `background` key
+```js
+  background: {
+    isStatic: true,
+    customBackground: false,
+    style: {
+      background: 'url([your url here])',
+    },
+  },
+```
+! As of Nov, 06, 2020 the field `isStatic` is not active !
+
+- Provide your custom texts and titles for three InfoBlocks in subsequent article keys
 
 ## Submitting new poem
-Output 
+ 
 
 ## Further development
 
 
 ### **Содержание**
   - [О проекте](#О-проекте)
-  - [Как пользоваться приложением](#Как-пользоваться-приложением)
+  - [Конфигурация приложения](#Конфигурация-приложения)
   - [Отправка стихотворения](#Отправка-стихотворения)
   - [Развитие проекта](#Развитие-проекта)
 
@@ -36,7 +59,7 @@ Output
 ## О проекте
 врыа
 
-## Как пользоваться приложением
+## Конфигурация приложения
 ффффф
 
 ## Отправка стихотворения
