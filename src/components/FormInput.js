@@ -8,6 +8,7 @@ export default function Input({ type, placeholder, name, id, rows = '1' }) {
       className="form__input"
       placeholder={placeholder}
       id={id}
+    {/* не уверен что тут айдишник нужен) что с ним дальше делать */}
       name={name}
       rows={rows}
     />

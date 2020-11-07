@@ -9,6 +9,7 @@ export default function Main({ onFormSubmit }) {
   return (
     <main className="main-info">
       <section className="info">
+    {/* тут тоже не уверен что есть необходимость в дополнительном блоке */}
         <Article
           title={texts.article1.title}
           content={texts.article1.content}

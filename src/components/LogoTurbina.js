@@ -25,3 +25,5 @@ export default function LogoTurbina({ fill }) {
 LogoTurbina.propTypes = {
   fill: PropTypes.string.isRequired,
 };
+
+// лучше все иконки выделииь в отдельную папку еще) чтобы диференцировать от остальных компонентов

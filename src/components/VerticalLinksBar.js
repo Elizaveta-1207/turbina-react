@@ -19,6 +19,7 @@ export default function VerticalLinksBar({ color }) {
         <li className="vertical-links-bar__item"><NavBarLink link="#" title="Spotify ↗" /></li>
         <li className="vertical-links-bar__item"><NavBarLink link="#" title="Apple Music ↗" /></li>
         <li className="vertical-links-bar__item"><NavBarLink link="#" title="VK Music ↗" /></li>
+      {/* лучше выделить их в конфиги, чтобы это можно было быстро редактировать) сделайте тупо массив объектов с тайтлом и ссылкой и рендерите через map */}
       </ul>
     </div>
   );

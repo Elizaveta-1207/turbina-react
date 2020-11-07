@@ -6,6 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p className="footer__copyright">&copy; Маршак, {`${yearNow}`}.</p>
+      {/* второй параграф тут не копирайт) лучше переименовать второй элемент */}
       <p className="footer__copyright">Сделано студентами <a href="#" className="footer__link">Яндекс.Практикум</a></p>
     </footer>
   );

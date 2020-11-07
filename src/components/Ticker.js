@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Ticker(props) {
   const { children, duration = '15s', active = false } = props;
+  // а тут получается что если нет active, то классов вообще не будет в размеке?
   return (
     <div className={active && 'ticker'}>
       <div className={active && 'ticker__wrap'} style={{ animationDuration: duration }}>

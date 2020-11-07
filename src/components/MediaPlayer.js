@@ -87,7 +87,7 @@ export default function MediaPlayer({ songs, currentSong, color }) {
     audio.current.currentTime = songProgressSeconds;
   };
 
-  const handlePlayheadDrag = () => {
+  const аhandlePlayheadDrag = () => {
     let mouseDown = true;
     window.addEventListener('mouseup', () => {
       mouseDown = false;
@@ -97,6 +97,7 @@ export default function MediaPlayer({ songs, currentSong, color }) {
       if (mouseDown) handleTimelineChange(evt);
     });
   };
+  // аhandlePlayheadDrag нигде не используется?
 
   React.useEffect(() => {
     const songtitleTextWidth = songtitle.current.getBoundingClientRect().width;
@@ -105,6 +106,16 @@ export default function MediaPlayer({ songs, currentSong, color }) {
 
   return (
     <div className={`player player_expanded_${isExpanded}`} style={{ color }}>
+      {/* вот для таких составных классов лучше исспользовать библиотеку classnames, это будет работать примерно вот так
+      import classnames from 'classnames'
+      className={
+        classnames(
+          'player',
+          `player_expanded_${isExpanded}`
+        )
+      }
+
+      */}
       <audio
         ref={audio}
         className="player__music"
@@ -113,6 +124,7 @@ export default function MediaPlayer({ songs, currentSong, color }) {
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleMediaEnd} />
       <div className={`player__wrapper_expanded_${isExpanded}`} >
+        {/* тут модификатор бел элемента, ошибка по БЭМ */}
         <PlaybackButton
           color={color}
           isPlaying={isPlaying}

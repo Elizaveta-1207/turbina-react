@@ -14,7 +14,9 @@ export default function Header({ songs, currentSong }) {
     <header className="header">
       <a
         href="https://marshakbooks.ru/"
+        {/* лучше вынести адрес сайта в конфиг чтобы можно было его поменять оперативно */}
         className="publishing-logo"
+      {/* точно ли тут нужен отдельный блок для логотипа? */}
         rel="noreferrer"
         target="_blank"
       >

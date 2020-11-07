@@ -30,6 +30,7 @@ export default function MediaInfoBlock({ songs, currentSong, contentIsText }) {
           (<>
           <p className="infoblock__subtitle">Текст песни</p>
           <span className="infoblock__content"> {`${currentSong.text}`} </span></>),
+          // а зачем тут шаблонная строка? там же по сути просто текст из свойства
         );
         break;
       default:

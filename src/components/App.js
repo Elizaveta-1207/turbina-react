@@ -16,6 +16,9 @@ function App() {
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
 
   console.log(config);
+  // не забудьте убрать потом все консоли
+
+
   // лучше потом по ID
   // TODO! можно через useEffect сделать
   const generatePlaylist = (song = {}, list = []) => {
@@ -55,6 +58,7 @@ function App() {
     <AppContext.Provider value={config}>
       <Background />
       <body className="page" >
+    {/* body тут не нужен) проверьте, у вас сейчас в разметке два body. body берется тут из html файла в public */}
         <Header
           songs={songs}
           currentSong={currentSong}
@@ -63,6 +67,7 @@ function App() {
           onFormSubmit={handleFormSubmit}/>
         <Footer />
         {isLoaderVisible && (<Loader />)}
+      {/* можно не оборачивать в скобки Loader тут */}
       </body>
     </AppContext.Provider>
   );

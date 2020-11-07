@@ -7,6 +7,7 @@ export default function SubmitForm({ onFormSubmit }) {
   console.log(onFormSubmit);
   return (
     <form action="#" className="form__wrapper">
+      {/* action не нужен, если отправка будет через js */}
       <FormInput type="text" placeholder="Имя и фамилия автора" name="name" id="name" />
       <FormInput type="email" placeholder="Почта" name="email" id="email" />
       <FormInput type="tel" placeholder="Телефон" name="tel" id="tel" />
@@ -25,6 +26,7 @@ export default function SubmitForm({ onFormSubmit }) {
     </form>
   );
 }
+
 SubmitForm.propTypes = {
   onFormSubmit: PropTypes.string.isRequired,
 };

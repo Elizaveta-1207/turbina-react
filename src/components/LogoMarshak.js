@@ -8,7 +8,9 @@ export default function LogoMarshak({ fill }) {
     </svg>
   );
 }
+// я бы тут сделал какое то дефолтное значение для fill с возможностью его переопределения  типа fill={fill || '#...'}
 
 LogoMarshak.propTypes = {
   fill: PropTypes.string.isRequired,
+  // и тогда отсюда убрать isRequired
 };
