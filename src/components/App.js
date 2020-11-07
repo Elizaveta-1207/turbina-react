@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components/macro';
 import Background from './Background';
 import Header from './Header';
 import Main from './Main';
@@ -7,6 +8,21 @@ import Loader from './Loader';
 import AppContext from '../contexts/AppContext';
 import api from '../utils/api';
 import config from '../turbinaconfig';
+
+const Page = styled.body`
+  min-width: 320px;
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: "Inter", Arial, sans-serif;
+  color: #fff;
+  padding: 0 10px;
+  transition: background-position 0.5s ease-out;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+`;
 
 function App() {
   // set state
@@ -49,12 +65,12 @@ function App() {
       .catch((error) => console.log(error))
       .finally(() => setLoaderVisibible(false));
   }; */
-  const handleFormSubmit = 'gggg'; // !!!!! temorary
+  const handleFormSubmit = () => {};
 
   return (
     <AppContext.Provider value={config}>
       <Background />
-      <body className="page" >
+      <Page>
         <Header
           songs={songs}
           currentSong={currentSong}
@@ -63,7 +79,7 @@ function App() {
           onFormSubmit={handleFormSubmit}/>
         <Footer />
         {isLoaderVisible && (<Loader />)}
-      </body>
+      </Page>
     </AppContext.Provider>
   );
 }

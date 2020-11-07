@@ -1,9 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
+
+const Paragraph = styled.p`
+  margin: 0 0 20px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
 
 export default function ArticleParagraph({ content }) {
-  return <p className="info__paragraph">{content}</p>;
+  return (<Paragraph>{content}</Paragraph>);
 }
+
 ArticleParagraph.propTypes = {
-  content: PropTypes.string.isRequired,
+  content: PropTypes.string,
 };

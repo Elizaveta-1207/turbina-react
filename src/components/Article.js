@@ -1,21 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BlockTitle from './BlockTitle';
+import styled from 'styled-components/macro';
 import ArticleParagraph from './ArticleParagraph';
+import BlockTitle from './BlockTitle';
+
+const InfoArticle = styled.article`
+  margin-bottom: 90px;
+  max-width: 716px;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: normal;
+
+  @media screen and (max-width: 1023px) {
+    font-size: 15px;
+    margin-bottom: 48px;
+  }
+
+  @media screen and (max-width: 424px) {
+    font-size: 12px;
+    margin-bottom: 36px;
+  }
+`;
 
 export default function Article({ title, content }) {
   return (
-    <article className="info__article">
+    <InfoArticle>
       <BlockTitle title={title} />
-      <div className="info__description">
         {content.map((paragraph, i) => (
           <ArticleParagraph content={paragraph} key={`${title}-${i}`} />
         ))}
-      </div>
-    </article>
+    </InfoArticle>
   );
 }
 Article.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.array.isRequired,
+  title: PropTypes.string,
+  content: PropTypes.array,
 };

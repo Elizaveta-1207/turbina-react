@@ -6,7 +6,7 @@ import SubmitForm from './SubmitForm';
 
 export default function FormSection({ onFormSubmit }) {
   return (
-    <section className="form">
+    <section>
       <BlockTitle title="Форма" />
       <BlockSubtitle subtitle="Заполняя эту форму, вы становитесь частью проекта" />
       <SubmitForm onFormSubmit={onFormSubmit} />
@@ -14,5 +14,5 @@ export default function FormSection({ onFormSubmit }) {
   );
 }
 FormSection.propTypes = {
-  onFormSubmit: PropTypes.string.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
 };
