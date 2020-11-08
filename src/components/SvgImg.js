@@ -6,7 +6,7 @@ export default function SvgImg({ viewBox, children, fill, title = 'изобра�
     <svg
       style={{ width: 'inherit', height: 'inherit' }}
       role="img"
-      aria-label={title + description}
+      aria-label={`${title} ${description}`}
       viewBox={viewBox}
       fill={fill}
       xmlns="http://www.w3.org/2000/svg">

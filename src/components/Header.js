@@ -1,34 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
 import LogoMarshak from './LogoMarshak';
 import LogoTurbina from './LogoTurbina';
 import VerticalLinksBar from './VerticalLinksBar';
 import MediaPlayer from './MediaPlayer';
 import AppContext from '../contexts/AppContext';
 
+const AppHeader = styled.header`
+  box-sizing: border-box;
+  padding: 20px 10px 0;
+  height: calc(100vh - 20px);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+
+  @media screen and (max-width: 767px) {
+    height: calc(100vh - 10px);
+  }
+`;
+
 export default function Header({ songs, currentSong }) {
   const { header } = React.useContext(AppContext);
   const { color } = header.style;
 
   return (
-    <header className="header">
-      <a
-        href="https://marshakbooks.ru/"
-        className="publishing-logo"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <LogoMarshak fill={color}/>
-      </a>
+    <AppHeader>
+      <LogoMarshak fill={color}/>
       <VerticalLinksBar color={color} />
-      <h1 className="header__logo-wrapper">
-        <LogoTurbina fill={color} />
-      </h1>
+      <LogoTurbina fill={color} />
       <MediaPlayer
         songs={songs}
         currentSong={currentSong}
         color={color}/>
-    </header>
+    </AppHeader>
   );
 }
 

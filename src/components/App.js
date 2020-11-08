@@ -31,7 +31,6 @@ function App() {
   const [currentSong, setCurrentSong] = React.useState({});
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
 
-  console.log(config);
   // лучше потом по ID
   // TODO! можно через useEffect сделать
   const generatePlaylist = (song = {}, list = []) => {

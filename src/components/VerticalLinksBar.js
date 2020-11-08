@@ -1,30 +1,62 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
 import NavBarLink from './NavBarLink';
+import LinksContainer from './LinksContainer';
+import LinksContainerItem from './LinksContainerItem';
+import LinksLayoutButton from './LinksLayoutButton';
+
+const StyledLinksBar = styled.div`
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  align-items: flex-end;
+  color: ${(props) => props.color};
+`;
 
 export default function VerticalLinksBar({ color }) {
-  const [isMenuVisible, setIsMenuVisible] = React.useState(false);
+  const [linksVisible, setLinksVisible] = React.useState(true);
+  const [isMobileLayout, setIsMobileLayout] = React.useState(false);
 
-  const handleButtonClick = () => {
-    setIsMenuVisible(!isMenuVisible);
+  const setLinksLayout = () => {
+    if (window.screen.width > 425) {
+      setIsMobileLayout(false);
+      setLinksVisible(true);
+    } else {
+      setIsMobileLayout(true);
+      setLinksVisible(false);
+    }
+  };
+  React.useEffect(() => {
+    setLinksLayout();
+  }, []);
+
+  window.addEventListener('resize', () => {
+    setLinksLayout();
+    window.removeEventListener('onresize', () => {});
+  });
+
+  const handleLinksLayoutButtonClick = () => {
+    setLinksVisible(!linksVisible);
   };
   return (
-    <div className="vertical-links-bar" style={{ color }}>
-      <button
-        className={`vertical-links-bar__btn ${isMenuVisible ? 'vertical-links-bar__btn_action_close' : 'vertical-links-bar__btn_action_open'}`}
-        onClick={handleButtonClick}>
-      </button>
-      <ul className={`vertical-links-bar__links ${isMenuVisible ? 'vertical-links-bar__links_visible_on' : 'vertical-links-bar__links_visible_off'}`}>
-        <li className="vertical-links-bar__item"><NavBarLink link="#" title="Яндекс.Музыка ↗" /></li>
-        <li className="vertical-links-bar__item"><NavBarLink link="#" title="Spotify ↗" /></li>
-        <li className="vertical-links-bar__item"><NavBarLink link="#" title="Apple Music ↗" /></li>
-        <li className="vertical-links-bar__item"><NavBarLink link="#" title="VK Music ↗" /></li>
-      </ul>
-    </div>
+    <StyledLinksBar color={color}>
+      {isMobileLayout
+        && <LinksLayoutButton
+            onClick={handleLinksLayoutButtonClick}
+            linksVisible={linksVisible} />
+      }
+      <LinksContainer linksVisible={linksVisible}>
+        <LinksContainerItem><NavBarLink link="#" title="Яндекс.Музыка ↗" /></LinksContainerItem>
+        <LinksContainerItem><NavBarLink link="#" title="Spotify ↗" /></LinksContainerItem>
+        <LinksContainerItem><NavBarLink link="#" title="Apple Music ↗" /></LinksContainerItem>
+        <LinksContainerItem><NavBarLink link="#" title="VK Music ↗" /></LinksContainerItem>
+      </LinksContainer>
+    </StyledLinksBar>
   );
 }
 VerticalLinksBar.propTypes = {
-  link: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  link: PropTypes.string,
+  title: PropTypes.string,
+  color: PropTypes.string,
 };

@@ -1,14 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
 
-export default function NavBarLink({ link, title }) {
-  return (
-    <a href={link} className="navbar-link" rel="noreferrer" target="_blank">
+const StyledLink = styled.a`
+  display: block;
+  margin-top: 10px;
+  padding: 8px 20px;
+  color: inherit;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.2;
+  border: 2px solid;
+  border-color: inherit;
+  box-sizing: border-box;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+  &:hover {
+    font-style: italic;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 7px 16px;
+    font-size: 14px;
+  }
+  
+  @media screen and (max-width: 424px) {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+`;
+
+const NavBarLink = ({ link, title }) => (
+    <StyledLink href={link} rel="noreferrer" target="_blank">
       {title}
-    </a>
-  );
-}
+    </StyledLink>
+);
 NavBarLink.propTypes = {
   link: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
+
+export default NavBarLink;

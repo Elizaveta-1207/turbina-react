@@ -25,11 +25,9 @@ export default {
   },
   background: {
     isStatic: true,
-    customBackground: false,
-    // если customBackground == true, применятся стили ниже:
-    style: {
-      background: 'url(https://img2.akspic.ru/image/113523-sinij-nebo-muzyka-liniya-atmosfera-1920x1080.jpg)',
-    },
+    customImg: false,
+    // если customBackground == true, на фон применится картинка по адресу ниже:
+    customImgUrl: 'url(https://img2.akspic.ru/image/113523-sinij-nebo-muzyka-liniya-atmosfera-1920x1080.jpg)',
   },
   // определяет цвет кнопок, логотипов и текстов в стримингах и плеере
   header: {

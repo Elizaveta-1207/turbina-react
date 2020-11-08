@@ -20,12 +20,15 @@ export default function MediaPlayer({ songs, currentSong, color }) {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [contentIsText, setContentIsText] = React.useState(true);
   const [isSongtitleTickerActive, setIsSongtitleTickerActive] = React.useState();
-  const [songtitleWrapWidth, setSontitleWrapWidth] = React.useState();
+  const [songtitleWrapWidth, setSontitleWrapWidth] = React.useState(0);
 
-  window.onresize = () => {
-    const { width } = songtitleWrap.current.getBoundingClientRect();
+  const getCoordinates = (el) => el.getBoundingClientRect();
+
+  window.addEventListener('resize', () => {
+    if (!songtitleWrap.current) return;
+    const { width } = getCoordinates(songtitleWrap.current);
     setSontitleWrapWidth(width);
-  };
+  });
 
   const handlePlaybackClick = () => {
     setPlaying(!isPlaying);
@@ -67,8 +70,6 @@ export default function MediaPlayer({ songs, currentSong, color }) {
     const m = Math.floor(currentTime / 60);
     setTimeString(`${m}:${s}`);
   }, [currentTime]);
-
-  const getCoordinates = (el) => el.getBoundingClientRect();
 
   const handleTimelineChange = (evt) => {
     const timelineBeginX = getCoordinates(timeline.current).left;

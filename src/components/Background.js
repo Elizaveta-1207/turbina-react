@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import AppContext from '../contexts/AppContext';
-/* import PropTypes from 'prop-types'; */
+import defaultBackground from '../images/background-bottom.jpg';
 
 const StaticBackground = styled.div`
-  background: 
-  url('../../images/background-bottom.jpg') center no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: ${(props) => props.url};
   transition: background-position 0.5s ease-out;
   position: fixed;
   background-size: cover;
-  width: 100vw;
+  width: 120vw;
   height: 100vh;
   z-index: -1;
 `;
@@ -18,6 +19,11 @@ export default function Background() {
   const { background } = React.useContext(AppContext);
 
   return background.isStatic && (
-    <StaticBackground style={background.customBackground ? background.style : {}} />
+    <StaticBackground
+      url={background.customImg
+        ? background.customImgUrl
+        : `url(${defaultBackground})`} />
+  /* style={background.customBackground ?
+     background.custom : { 'background-image': `url(${defaultBackground}` }} /> */
   );
 }

@@ -1,7 +1,0 @@
-@media screen and (max-width: 424px) {
-  .vertical-links-bar__links_visible_off {
-    color: inherit;
-    visibility: hidden;
-    opacity: 0;
-  }
-}
