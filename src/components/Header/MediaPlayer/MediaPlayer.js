@@ -64,7 +64,6 @@ const Timeline = styled.div`
   height: 6px;
   cursor: pointer;
   background-color: rgba(243, 243, 243, 0.3);
-
   @media screen and (max-width: 767px) {
     margin-top: 8px;
   }
@@ -89,7 +88,6 @@ const Songtitle = styled.span`
   
   font-weight: ${(props) => (props.featured ? '400' : '500')};
   font-style: ${(props) => (props.featured ? 'italic' : 'normal')};
-
   @media screen and (max-width: 1023px) {
     font-size: 20px;
   }
@@ -104,14 +102,14 @@ const TickerTextContainer = styled.div`
   width: min-content;
 `;
 
-const MediaPlayer = ({ songs, currentSong, color }) => {
+const MediaPlayer = ({ audia, songs, currentSong, color }) => {
+  console.log(audia);
   const audio = React.useRef();
   const timeline = React.useRef();
   const playhead = React.useRef();
   const songtitle = React.useRef();
   const songtitleWrap = React.useRef();
 
-  const [audioSrc, setAudioSrc] = React.useState('#');
   const [duration, setDuration] = React.useState(0);
   const [isPlaying, setPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
@@ -152,13 +150,8 @@ const MediaPlayer = ({ songs, currentSong, color }) => {
   };
 
   React.useEffect(() => {
-    setAudioSrc(currentSong.url);
-  }, [currentSong]);
-
-  React.useEffect(() => {
-    if (!audio) return;
-    setDuration(audio.current.duration);
-  }, [audio]);
+    if (audio) setDuration(audio.current.duration);
+  }, []);
 
   React.useEffect(() => {
     if (isPlaying) {
@@ -207,8 +200,8 @@ const MediaPlayer = ({ songs, currentSong, color }) => {
     <Player isExpanded={isExpanded} color={color}>
       <audio
         ref={audio}
-        preload="auto"
-        src={audioSrc}
+        preload="metadata"
+        src={currentSong.url}
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleMediaEnd} />
 
@@ -252,6 +245,7 @@ MediaPlayer.propTypes = {
   songs: PropTypes.array.isRequired,
   currentSong: PropTypes.object.isRequired,
   color: PropTypes.string.isRequired,
+  audia: PropTypes.string.isRequired,
 };
 
 export default MediaPlayer;

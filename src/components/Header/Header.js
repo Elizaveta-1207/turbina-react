@@ -21,7 +21,7 @@ const AppHeader = styled.header`
   }
 `;
 
-export default function Header({ songs, currentSong }) {
+export default function Header({ audio, songs, currentSong }) {
   const { header } = React.useContext(AppContext);
   const { color } = header.style;
 
@@ -31,6 +31,7 @@ export default function Header({ songs, currentSong }) {
       <VerticalLinksBar color={color} />
       <LogoTurbina fill={color} />
       <MediaPlayer
+        audia={audio}
         songs={songs}
         currentSong={currentSong}
         color={color}/>
@@ -41,4 +42,5 @@ export default function Header({ songs, currentSong }) {
 Header.propTypes = {
   songs: PropTypes.array.isRequired,
   currentSong: PropTypes.object.isRequired,
+  audio: PropTypes.object.isRequired,
 };

@@ -25,11 +25,13 @@ const Page = styled.body`
 `;
 
 function App() {
-  // set state
+  const currentAudio = React.useRef();
+
   const [initPlaylist, setInitPlaylist] = React.useState([]);
   const [songs, setSongs] = React.useState([]);
   const [currentSong, setCurrentSong] = React.useState({});
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
+  const [audio, setAudio] = React.useState(false);
 
   // лучше потом по ID
   // TODO! можно через useEffect сделать
@@ -43,11 +45,15 @@ function App() {
     api
       .getSongs()
       .then((songsArray) => {
-        // возможно потом будет метка, какую песню из архива выводить первой
         const initialSong = songsArray[0];
         setInitPlaylist(songsArray);
         generatePlaylist(initialSong, songsArray);
         setCurrentSong(initialSong);
+        return initialSong.url;
+      })
+      .then((url) => {
+        currentAudio.current.src = url;
+        setAudio(currentAudio.current);
       })
       .catch((error) => console.log(error))
       .finally(() => setLoaderVisibible(false));
@@ -55,7 +61,6 @@ function App() {
 
   const handleSongChange = (song) => {
     generatePlaylist(song, initPlaylist);
-    setCurrentSong(song);
   };
   // define UI handlers
   /*   const handleFormSubmit = (data) => {
@@ -68,12 +73,15 @@ function App() {
 
   return (
     <AppContext.Provider value={config}>
+      <audio ref={currentAudio} />
       <Background />
       <Page>
         <Header
+          audio={audio}
           songs={songs}
           currentSong={currentSong}
           handleSongChange={handleSongChange} />
+
         <Main
           onFormSubmit={handleFormSubmit}/>
         <Footer />
