@@ -19,7 +19,7 @@ const LinksContainerItem = ({ children }) => (
     </LiItem>
 );
 LinksContainerItem.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.array,
 };
 
 export default LinksContainerItem;

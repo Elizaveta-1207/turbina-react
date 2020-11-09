@@ -40,5 +40,5 @@ export default function Main({ onFormSubmit }) {
   );
 }
 Main.propTypes = {
-  onFormSubmit: PropTypes.string.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
 };

@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import RoundedButton from '../../CommonUtils/Templates/RoundedButton';
 
-const StyledFormButton = styled.button`
-  border: 2px solid #000000;
+const StyledFormButton = styled(RoundedButton)`
+  border-color: #000
   background-color: transparent;
   box-sizing: border-box;
-  border-radius: 30px;
-  outline: none;
-  cursor: pointer;
   margin-top: 40px;
   font-size: 18px;
   line-height: 1.2;

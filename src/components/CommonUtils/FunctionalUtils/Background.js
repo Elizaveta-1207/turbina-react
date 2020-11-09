@@ -15,7 +15,7 @@ const StaticBackground = styled.div`
   z-index: -1;
 `;
 
-export default function Background() {
+const Background = () => {
   const { background } = React.useContext(AppContext);
 
   return background.isStatic
@@ -25,4 +25,6 @@ export default function Background() {
         ? background.customImgUrl
         : `url(${defaultBackground})`} />)
     : (<>no bg yet</>);
-}
+};
+
+export default Background;

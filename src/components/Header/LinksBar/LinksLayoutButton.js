@@ -27,16 +27,16 @@ const Styledbutton = styled.button`
   }
 `;
 
-export default function LinksLayoutButton({ onClick, linksVisible }) {
-  return (
+const LinksLayoutButton = ({ onClick, linksVisible }) => (
     <Styledbutton
         onClick={onClick}
         linksVisible={linksVisible}>
     </Styledbutton>
+);
 
-  );
-}
 LinksLayoutButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  linksVisible: PropTypes.bool.isRequired,
+  linksVisible: PropTypes.bool,
 };
+
+export default LinksLayoutButton;

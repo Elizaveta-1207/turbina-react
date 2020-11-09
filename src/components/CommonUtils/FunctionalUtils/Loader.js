@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components/macro';
 
-const ReactStyleLoader = styled.div`
+const Loader = styled.div`
   position: absolute;
   z-index: 101505;
   top: 50%;
@@ -64,6 +63,4 @@ const ReactStyleLoader = styled.div`
   }
 `;
 
-export default function Loader() {
-  return (<ReactStyleLoader/>);
-}
+export default Loader;

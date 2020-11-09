@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
@@ -28,6 +29,7 @@ const TickerWrap = styled.div`
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-name: ticker;
+  animation-duration: ${(props) => props.duration};
 `;
 
 const TickerContent = styled.div`
@@ -35,12 +37,18 @@ const TickerContent = styled.div`
   padding: 0 4px;
 `;
 
-export default function Ticker(props) {
-  const { children, duration = '15s', active = false } = props;
-  return active
+const Ticker = (props) => {
+  const { children, duration = '15s', parentWidth, childWidth } = props;
+  const [isActive, setIsActive] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsActive(parentWidth <= childWidth);
+  }, [parentWidth, childWidth]);
+
+  return isActive
     ? (
         <StyledTicker>
-          <TickerWrap style={{ animationDuration: duration }}>
+          <TickerWrap duration={duration}>
             <TickerContent>
               {children}
             </TickerContent>
@@ -48,10 +56,14 @@ export default function Ticker(props) {
         </StyledTicker>
     )
     : (<> { children } </>);
-}
+};
 
 Ticker.propTypes = {
   duration: PropTypes.string.isRequired,
   children: PropTypes.array.isRequired,
   active: PropTypes.bool.isRequired,
+  parentWidth: PropTypes.number.isRequired,
+  childWidth: PropTypes.number.isRequired,
 };
+
+export default Ticker;

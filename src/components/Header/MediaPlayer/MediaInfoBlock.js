@@ -1,7 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
 
-export default function MediaInfoBlock({ songs, currentSong, contentIsText }) {
+const InfoBlock = styled.div`
+  color: inherit;
+  display: block;
+  grid-area: infoblock;
+  height: 110px;
+  transition: height 1s ease-in-out;
+  margin-top: 40px;
+  overflow-y: inherit;
+  overflow-x: hidden;
+  padding-right: 12px;
+  @media screen and (max-width: 767px) {
+    margin-top: 30px;
+    height: 80px;
+  }
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 3px;
+    background-color: rgba(255, 255, 255, .1);
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 35px;
+    background-color: rgba(255, 255, 255, .3);
+    border-radius: 1px;
+  }
+`;
+
+const MediaInfoBlock = ({ songs, currentSong, contentIsText }) => {
   const [content, setContent] = React.useState('');
 
   const generateSongsList = (songsList) => {
@@ -37,12 +64,12 @@ export default function MediaInfoBlock({ songs, currentSong, contentIsText }) {
     }
   }, [contentIsText]);
 
-  return (
-    <div className="infoblock">{content}</div>
-  );
-}
+  return (<InfoBlock>{content}</InfoBlock>);
+};
 MediaInfoBlock.propTypes = {
   currentSong: PropTypes.object.isRequired,
   songs: PropTypes.array.isRequired,
   contentIsText: PropTypes.bool.isRequired,
 };
+
+export default MediaInfoBlock;
