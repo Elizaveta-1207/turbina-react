@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import AppContext from '../contexts/AppContext';
-import defaultBackground from '../images/background-bottom.jpg';
+import AppContext from '../../../contexts/AppContext';
+import defaultBackground from '../../../images/background-bottom.jpg';
 
 const StaticBackground = styled.div`
   background-position: center;
@@ -10,7 +10,7 @@ const StaticBackground = styled.div`
   transition: background-position 0.5s ease-out;
   position: fixed;
   background-size: cover;
-  width: 120vw;
+  width: 100vw;
   height: 100vh;
   z-index: -1;
 `;
@@ -18,12 +18,11 @@ const StaticBackground = styled.div`
 export default function Background() {
   const { background } = React.useContext(AppContext);
 
-  return background.isStatic && (
+  return background.isStatic
+    ? (
     <StaticBackground
       url={background.customImg
         ? background.customImgUrl
-        : `url(${defaultBackground})`} />
-  /* style={background.customBackground ?
-     background.custom : { 'background-image': `url(${defaultBackground}` }} /> */
-  );
+        : `url(${defaultBackground})`} />)
+    : (<>no bg yet</>);
 }

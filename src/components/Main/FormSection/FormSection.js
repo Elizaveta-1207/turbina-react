@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BlockTitle from './BlockTitle';
-import BlockSubtitle from './BlockSubtitle';
+import BlockTitle from '../../CommonUtils/TextUtils/BlockTitle';
+import BlockSubtitle from '../../CommonUtils/TextUtils/BlockSubtitle';
 import SubmitForm from './SubmitForm';
 
 export default function FormSection({ onFormSubmit }) {

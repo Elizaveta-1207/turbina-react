@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import LogoMarshak from './LogoMarshak';
-import LogoTurbina from './LogoTurbina';
-import VerticalLinksBar from './VerticalLinksBar';
-import MediaPlayer from './MediaPlayer';
-import AppContext from '../contexts/AppContext';
+import LogoMarshak from '../CommonUtils/ImageUtils/LogoMarshak';
+import LogoTurbina from '../CommonUtils/ImageUtils/LogoTurbina';
+import VerticalLinksBar from './LinksBar/VerticalLinksBar';
+import MediaPlayer from './MediaPlayer/MediaPlayer';
+import AppContext from '../../contexts/AppContext';
 
 const AppHeader = styled.header`
   box-sizing: border-box;

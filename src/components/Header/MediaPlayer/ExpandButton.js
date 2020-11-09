@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SvgImg from './SvgImg';
+import SvgImg from '../../CommonUtils/ImageUtils/SvgImg';
 
 export default function ExpandButton({ color, isExpanded, onClick }) {
   const handleClick = () => {

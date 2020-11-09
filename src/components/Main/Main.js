@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import FormSection from './FormSection';
-import Article from './Article';
-import AppContext from '../contexts/AppContext';
+import FormSection from './FormSection/FormSection';
+import Article from './ArticleSection/Article';
+import AppContext from '../../contexts/AppContext';
 
 const MainInfo = styled.main`
   background-color: #fff;

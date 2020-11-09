@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlaybackButton from './PlaybackButton';
 import ExpandButton from './ExpandButton';
 import MediaInfoBlock from './MediaInfoBlock';
-import Ticker from './Ticker';
+import Ticker from '../../CommonUtils/TextUtils/Ticker';
 
 export default function MediaPlayer({ songs, currentSong, color }) {
   const audio = React.useRef(null);
