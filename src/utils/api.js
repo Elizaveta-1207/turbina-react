@@ -20,6 +20,7 @@ class Api {
       {
         title: 'Контур',
         artist: 'Хадн Дадн',
+        id: 'lkhjjhiiuyiuybh656547',
         child: 'Варя Карпова и Федя Быстров',
         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         text:
@@ -33,6 +34,7 @@ oh, I love la-la-la`,
       {
         title: 'THE SECOND GOAT SONG',
         artist: 'THE UPPERCASE BAND',
+        id: 'lkhjewrrg22423547',
         child: 'lowercase little jules',
         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
         text: 'Мой милый милый мальчик Моя милая милая девочка Никогда не знаешь что будет дальше В этой гадкой зиме',
