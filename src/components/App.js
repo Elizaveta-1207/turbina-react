@@ -9,7 +9,7 @@ import AppContext from '../contexts/AppContext';
 import api from '../utils/api';
 import config from '../turbinaconfig';
 
-const Page = styled.body`
+const Page = styled.div`
   min-width: 320px;
   max-width: 1280px;
   margin: 0 auto;
@@ -25,43 +25,26 @@ const Page = styled.body`
 `;
 
 function App() {
-  const currentAudio = React.useRef();
-
+  // eslint-disable-next-line no-unused-vars
   const [initPlaylist, setInitPlaylist] = React.useState([]);
   const [songs, setSongs] = React.useState([]);
-  const [currentSong, setCurrentSong] = React.useState({});
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
-  const [audio, setAudio] = React.useState(false);
 
-  // лучше потом по ID
-  // TODO! можно через useEffect сделать
-  const generatePlaylist = (song = {}, list = []) => {
-    const playlist = list.filter((i) => i.url !== song.url);
+  /*   const generatePlaylist = (song = {}, list = []) => {
+    const playlist = list.filter((i) => i.id !== song.id);
     setSongs(playlist);
-  };
+  }; */
 
   React.useEffect(() => {
     setLoaderVisibible(true);
     api
       .getSongs()
       .then((songsArray) => {
-        const initialSong = songsArray[0];
-        setInitPlaylist(songsArray);
-        generatePlaylist(initialSong, songsArray);
-        setCurrentSong(initialSong);
-        return initialSong.url;
-      })
-      .then((url) => {
-        currentAudio.current.src = url;
-        setAudio(currentAudio.current);
+        setSongs(songsArray);
       })
       .catch((error) => console.log(error))
       .finally(() => setLoaderVisibible(false));
   }, []);
-
-  const handleSongChange = (song) => {
-    generatePlaylist(song, initPlaylist);
-  };
   // define UI handlers
   /*   const handleFormSubmit = (data) => {
     setLoaderVisibible(true);
@@ -73,17 +56,10 @@ function App() {
 
   return (
     <AppContext.Provider value={config}>
-      <audio ref={currentAudio} />
       <Background />
       <Page>
-        <Header
-          audio={audio}
-          songs={songs}
-          currentSong={currentSong}
-          handleSongChange={handleSongChange} />
-
-        <Main
-          onFormSubmit={handleFormSubmit}/>
+        <Header songs={songs} />
+        <Main onFormSubmit={handleFormSubmit} />
         <Footer />
         {isLoaderVisible && (<Loader />)}
       </Page>
