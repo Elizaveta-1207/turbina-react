@@ -36,12 +36,10 @@ const MediaPlayer = ({ color }) => {
   const [songTitleTextWidth, setSongTitleTextWidth] = useState();
   const [songtitleWrapWidth, setSontitleWrapWidth] = useState(0);
 
-  const getCoordinates = (el) => el.getBoundingClientRect();
-
   window.addEventListener('resize', () => {
     if (!songtitleWrap.current && !songtitle.current) return;
-    const parentWidth = getCoordinates(songtitleWrap.current).width;
-    const childWidth = getCoordinates(songtitle.current).width;
+    const parentWidth = songtitleWrap.current.getBoundingClientRect().width;
+    const childWidth = songtitle.current.getBoundingClientRect().width;
     setSongTitleTextWidth(childWidth);
     setSontitleWrapWidth(parentWidth);
   });
@@ -53,10 +51,6 @@ const MediaPlayer = ({ color }) => {
   const handleExpandClick = () => {
     setIsExpanded(!isExpanded);
   };
-  // здесь логика переключения песни на следующую из массива, либо назад
-  const handleMediaEnd = () => {
-    setPlaying(false);
-  };
 
   const handleTimeUpdate = (evt) => {
     setCurrentTime(Math.floor(evt.target.currentTime));
@@ -66,8 +60,10 @@ const MediaPlayer = ({ color }) => {
     setContentIsText(!contentIsText);
   };
   const handleSongChange = (song) => {
-    audio.current.src = song.audioFile;
+    setPlaying(false);
     setCurrentSong(song);
+    audio.current.src = song.audioFile;
+    audio.current.autoplay = true;
     setPlaying(true);
   };
   useEffect(() => {
@@ -90,20 +86,19 @@ const MediaPlayer = ({ color }) => {
   }, [currentTime]);
 
   const handleTimelineChange = (evt) => {
-    const timelineBeginX = getCoordinates(timeline.current).left;
-    const timelineEndX = getCoordinates(timeline.current).right;
-    const timelineLength = getCoordinates(timeline.current).width;
+    const { left, right, width } = timeline.current.getBoundingClientRect();
     let targetX;
-    if (evt.clientX < timelineBeginX) {
-      targetX = timelineBeginX;
-    } else if (evt.clientX > timelineEndX) {
-      targetX = timelineEndX;
+    if (evt.clientX < left) {
+      targetX = left;
+    } else if (evt.clientX > right) {
+      targetX = right;
     } else {
       targetX = evt.clientX;
     }
-    const songProgressPercentage = (targetX - timelineBeginX) / timelineLength;
-    const songProgressSeconds = Math.round(audio.current.duration * songProgressPercentage);
+    const songProgressPercentage = (targetX - left) / width;
+    const songProgressSeconds = Math.floor(audio.current.duration * songProgressPercentage);
     audio.current.currentTime = songProgressSeconds;
+    audio.current.play();
   };
 
   const handlePlayheadDrag = () => {
@@ -117,11 +112,25 @@ const MediaPlayer = ({ color }) => {
     });
   };
 
+  const handleMediaEnd = () => {
+    setPlaying();
+    const currentIndex = playlist.indexOf(currentSong);
+    let newSong;
+    if (currentIndex + 1 < playlist.length) {
+      newSong = playlist[currentIndex + 1];
+    } else {
+      [newSong] = playlist;
+    }
+    handleSongChange(newSong);
+  };
+
   return (
     <Player isExpanded={isExpanded} color={color}>
       <audio
         ref={audio}
         src={currentSong.audioFile}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleMediaEnd} />
 
