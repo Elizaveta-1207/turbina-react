@@ -6,26 +6,20 @@ import MediaInfoBlock from './MediaInfoBlock';
 import Ticker from '../../CommonUtils/TextUtils/Ticker';
 import TimeIndicator from './TimeIndicator';
 import PlayerInfoButton from './PlayerInfoButton';
+import Timeline from './Timeline';
 import {
   Player,
   PlayerWrapper,
-  Timeline,
-  PlayHead,
   Songtitle,
   TickerTextContainer,
 } from './StyledPlayerComponents/index';
 import playlist from '../../../playlist';
-// eslint-disable-next-line no-unused-vars
-import throttle from '../../../utils/throttle';
 
 const MediaPlayer = ({ color }) => {
   const audio = React.useRef();
-  const timeline = React.useRef();
-  const playhead = React.useRef();
   const songtitle = React.useRef();
   const songtitleWrap = React.useRef();
 
-  // eslint-disable-next-line no-unused-vars
   const [currentSong, setCurrentSong] = useState(playlist[0]);
   const [duration, setDuration] = useState(0);
   const [isPlaying, setPlaying] = useState(false);
@@ -53,7 +47,8 @@ const MediaPlayer = ({ color }) => {
   };
 
   const handleTimeUpdate = (evt) => {
-    setCurrentTime(Math.floor(evt.target.currentTime));
+    const songTime = Math.floor(evt.target.currentTime);
+    if (songTime !== currentTime) setCurrentTime(songTime);
   };
 
   const toggleContentState = () => {
@@ -66,9 +61,6 @@ const MediaPlayer = ({ color }) => {
     audio.current.autoplay = true;
     setPlaying(true);
   };
-  useEffect(() => {
-    setDuration(audio.current.duration);
-  }, []);
 
   useEffect(() => {
     if (isPlaying) {
@@ -85,31 +77,9 @@ const MediaPlayer = ({ color }) => {
     setPlayHeadWidth(`${playPercent}%`);
   }, [currentTime]);
 
-  const handleTimelineChange = (evt) => {
-    const { left, right, width } = timeline.current.getBoundingClientRect();
-    let targetX;
-    if (evt.clientX < left) {
-      targetX = left;
-    } else if (evt.clientX > right) {
-      targetX = right;
-    } else {
-      targetX = evt.clientX;
-    }
-    const songProgressPercentage = (targetX - left) / width;
-    const songProgressSeconds = Math.floor(audio.current.duration * songProgressPercentage);
-    audio.current.currentTime = songProgressSeconds;
+  const handleTimelineChange = (sec) => {
+    audio.current.currentTime = sec;
     audio.current.play();
-  };
-
-  const handlePlayheadDrag = () => {
-    let mouseDown = true;
-    window.addEventListener('mouseup', () => {
-      mouseDown = false;
-      window.removeEventListener('mouseup', () => {});
-    });
-    window.addEventListener('mousemove', (evt) => {
-      if (mouseDown) handleTimelineChange(evt);
-    });
   };
 
   const handleMediaEnd = () => {
@@ -132,6 +102,7 @@ const MediaPlayer = ({ color }) => {
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onTimeUpdate={handleTimeUpdate}
+        onLoadedData={() => setDuration(audio.current.duration)}
         onEnded={handleMediaEnd} />
 
       <PlayerWrapper isExpanded={isExpanded}>
@@ -155,13 +126,11 @@ const MediaPlayer = ({ color }) => {
           onClick={handleExpandClick}
           isExpanded={isExpanded}
           color={color} />
-        <Timeline onClick={handleTimelineChange} ref={timeline}>
-          <PlayHead
-            onMouseDown={handlePlayheadDrag}
-            ref={playhead}
-            width={playHeadWidth}
-            color={color}/>
-        </Timeline>
+        <Timeline
+          handleTimelineChange={handleTimelineChange}
+          color={color}
+          duration={duration}
+          playHeadWidth={playHeadWidth} />
         {isExpanded && (<MediaInfoBlock
           handleSongChange={handleSongChange}
           playlist={playlist}

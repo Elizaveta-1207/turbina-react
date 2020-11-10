@@ -25,22 +25,15 @@ const Page = styled.div`
 `;
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
-  const [initPlaylist, setInitPlaylist] = React.useState([]);
-  const [songs, setSongs] = React.useState([]);
+  const [playlist, setPlaylist] = React.useState([]);
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
-
-  /*   const generatePlaylist = (song = {}, list = []) => {
-    const playlist = list.filter((i) => i.id !== song.id);
-    setSongs(playlist);
-  }; */
 
   React.useEffect(() => {
     setLoaderVisibible(true);
     api
       .getSongs()
       .then((songsArray) => {
-        setSongs(songsArray);
+        setPlaylist(songsArray);
       })
       .catch((error) => console.log(error))
       .finally(() => setLoaderVisibible(false));
@@ -58,7 +51,7 @@ function App() {
     <AppContext.Provider value={config}>
       <Background />
       <Page>
-        <Header songs={songs} />
+        <Header playlist={playlist} />
         <Main onFormSubmit={handleFormSubmit} />
         <Footer />
         {isLoaderVisible && (<Loader />)}

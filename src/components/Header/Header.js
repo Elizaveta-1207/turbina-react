@@ -21,7 +21,7 @@ const AppHeader = styled.header`
   }
 `;
 
-export default function Header({ songs }) {
+export default function Header({ playlist }) {
   const { header } = React.useContext(AppContext);
   const { color } = header.style;
 
@@ -31,14 +31,12 @@ export default function Header({ songs }) {
       <VerticalLinksBar color={color} />
       <LogoTurbina fill={color} />
       <MediaPlayer
-        songs={songs}
+        songs={playlist}
         color={color}/>
     </AppHeader>
   );
 }
 
 Header.propTypes = {
-  songs: PropTypes.array.isRequired,
-  currentSong: PropTypes.object.isRequired,
-  handleSongChange: PropTypes.func.isRequired,
+  playlist: PropTypes.array.isRequired,
 };

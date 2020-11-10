@@ -7,7 +7,6 @@ import SongItem from './SongItem';
 import Featured from './Featured';
 import Player from './Player';
 import PlayerWrapper from './PlayerWrapper';
-import Timeline from './Timeline';
 import PlayHead from './PlayHead';
 import Songtitle from './Songtitle';
 import TickerTextContainer from './TickerTextContainer';
@@ -22,7 +21,6 @@ export {
   Featured,
   Player,
   PlayerWrapper,
-  Timeline,
   PlayHead,
   Songtitle,
   TickerTextContainer,
