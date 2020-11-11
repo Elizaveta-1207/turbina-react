@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import SvgImg from '../../CommonUtils/ImageUtils/SvgImg';
 
 const PlayButton = styled.button`
   color: inherit;
@@ -9,7 +8,6 @@ const PlayButton = styled.button`
   height: 24px;
   padding: 0;
   border: none;
-  cursor: pointer;
   outline: none;
   background: none;
   transition: opacity 0.3s ease-in-out;
@@ -18,16 +16,27 @@ const PlayButton = styled.button`
     height: 16px;
   }
 `;
+const ClickablePath = styled.path`
+cursor: pointer;
+`;
+const SvgButton = styled.svg`
+width: 100%;
+height: 100%;
+`;
 
 const PlaybackButton = ({ color, isPlaying, handlePlaybackClick }) => (
-    <PlayButton onClick={handlePlaybackClick}>
-      <SvgImg
-        viewBox="0 0 26 24"
+    <PlayButton>
+      <SvgButton onClick={handlePlaybackClick}
+        viewBox="0 0 50 50"
         fill={color} >
         {isPlaying
-          ? (<path fillRule="evenodd" clipRule="evenodd" d="M1 0C0.447266 0 0 0.447266 0 1V17C0 17.5527 0.447266 18 1 18H3C3.55273 18 4 17.5527 4 17V1C4 0.447266 3.55273 0 3 0H1ZM11 0C10.4473 0 10 0.447266 10 1V17C10 17.5527 10.4473 18 11 18H13C13.5527 18 14 17.5527 14 17V1C14 0.447266 13.5527 0 13 0H11Z" fill={color}/>)
-          : (<path d="M18.47 11.3307C19.668 12.1211 19.668 13.8789 18.47 14.6693L3.10149 24.81C1.77177 25.6873 6.9507e-07 24.7337 7.64706e-07 23.1406L1.65123e-06 2.85939C1.72086e-06 1.2663 1.77177 0.312659 3.10149 1.19004L18.47 11.3307Z" fill={color}/>)}
-      </SvgImg>
+          ? <>(
+          <ClickablePath d="M9.56 2.07l5.74 0c1.58,0 2.87,1.29 2.87,2.87l0 40.19c0,1.58 -1.29,2.87 -2.87,2.87l-5.74 0c-1.59,0 -2.87,-1.29 -2.87,-2.87l0 -40.19c0,-1.58 1.28,-2.87 2.87,-2.87z" fill={color}/>
+          <ClickablePath d="M35.39 2.07l5.74 0c1.59,0 2.87,1.29 2.87,2.87l0 40.19c0,1.58 -1.28,2.87 -2.87,2.87l-5.74 0c-1.59,0 -2.87,-1.29 -2.87,-2.87l0 -40.19c0,-1.58 1.28,-2.87 2.87,-2.87z" fill={color}/>
+          )
+          </>
+          : (<ClickablePath d="M42.91 21.38c2.26,1.46 2.26,4.73 0,6.19l-29.05 18.81c-2.51,1.63 -5.86,-0.14 -5.86,-3.09l0 -37.63c0,-2.95 3.35,-4.72 5.86,-3.09l29.05 18.81z" fill={color}/>)}
+      </SvgButton>
     </PlayButton>
 );
 PlaybackButton.propTypes = {
