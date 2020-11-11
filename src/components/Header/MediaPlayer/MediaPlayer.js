@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-mixed-operators */
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import PlaybackButton from './PlaybackButton';
@@ -14,11 +17,14 @@ import {
   TickerTextContainer,
 } from './StyledPlayerComponents/index';
 import playlist from '../../../playlist';
+import throttle from '../../../utils/throttle';
+
+const AudioContext = window.AudioContext || window.webkitAudioContext;
 
 const MediaPlayer = ({ color }) => {
-  const audio = React.useRef();
-  const songtitle = React.useRef();
-  const songtitleWrap = React.useRef();
+  const audio = React.useRef(null);
+  const songtitle = React.useRef(null);
+  const songtitleWrap = React.useRef(null);
 
   const [currentSong, setCurrentSong] = useState(playlist[0]);
   const [duration, setDuration] = useState(0);
@@ -27,8 +33,35 @@ const MediaPlayer = ({ color }) => {
   const [playHeadWidth, setPlayHeadWidth] = useState('0%');
   const [isExpanded, setIsExpanded] = useState(false);
   const [contentIsText, setContentIsText] = useState(true);
-  const [songTitleTextWidth, setSongTitleTextWidth] = useState();
+  const [songTitleTextWidth, setSongTitleTextWidth] = useState(0);
   const [songtitleWrapWidth, setSontitleWrapWidth] = useState(0);
+  const [audioCtx, setAudioCtx] = useState(null);
+  const [audioData, setAudioData] = useState('');
+
+  // делаем привязку источника звука и выстраиваем граф звукового потока
+  //  через ноды-обработчики после начального рендера
+  React.useEffect(() => {
+    const audioContext = new AudioContext();
+    const audioSource = audioContext.createMediaElementSource(audio.current);
+    // потом прикрутим через эту ноду управление звуком и вставим эту ноду в граф звукового потока
+    // const volumeNode = audioContext.createGain();
+    const analyser = audioContext.createAnalyser();
+    const processor = audioContext.createScriptProcessor(1024);
+    analyser.fftSize = 128;
+
+    audioSource.connect(processor).connect(audioContext.destination);
+    audioSource.connect(analyser).connect(audioContext.destination);
+    setAudioCtx(audioContext);
+
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    processor.onaudioprocess = () => {
+      analyser.getByteFrequencyData(dataArray);
+      const data = dataArray.toString();
+      setAudioData(data);
+    };
+  }, []);
 
   window.addEventListener('resize', () => {
     if (!songtitleWrap.current && !songtitle.current) return;
@@ -65,6 +98,7 @@ const MediaPlayer = ({ color }) => {
   useEffect(() => {
     if (isPlaying) {
       audio.current.play();
+      audioCtx.resume();
     }
     if (!isPlaying) {
       audio.current.pause();
@@ -72,6 +106,7 @@ const MediaPlayer = ({ color }) => {
   }, [isPlaying]);
 
   useEffect(() => {
+    console.log(audioData);
     setDuration(audio.current.duration);
     const playPercent = 100 * (audio.current.currentTime / audio.current.duration);
     setPlayHeadWidth(`${playPercent}%`);
@@ -104,7 +139,6 @@ const MediaPlayer = ({ color }) => {
         onTimeUpdate={handleTimeUpdate}
         onLoadedData={() => setDuration(audio.current.duration)}
         onEnded={handleMediaEnd} />
-
       <PlayerWrapper isExpanded={isExpanded}>
         <PlaybackButton
           color={color}
