@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import FormButton from './FormButton';
@@ -109,11 +109,11 @@ color: red;
 
 export default function SubmitForm({ onFormSubmit }) {
   const [errors, setErrors] = useState({
-    tel: null,
+    tel: '',
   });
   const [values, setValues] = useState({});
   const [checked, setChecked] = useState(false);
-  const [anyInputInvalid, setAnyInputInvalid] = useState();
+  const [anyInputInvalid, setAnyInputInvalid] = useState(true);
   const [showError, setShowError] = useState({});
 
   const checkFormValidity = () => {
@@ -123,14 +123,22 @@ export default function SubmitForm({ onFormSubmit }) {
     setAnyInputInvalid(any);
   };
 
+  useEffect(() => {
+    setErrors(validate(values));
+  }, [values]);
+
+  useEffect(() => {
+    checkFormValidity();
+  }, [errors]);
+
   const handleInputChange = (e) => {
+    console.log(e);
     const key = e.target.id;
+    if (key === 'ofert') setChecked(!checked);
     const value = (key === 'ofert')
       ? e.target.checked
       : e.target.value;
     setValues({ ...values, [key]: value });
-    setErrors(validate(values));
-    checkFormValidity();
   };
 
   return (
@@ -201,15 +209,16 @@ export default function SubmitForm({ onFormSubmit }) {
     </InputWrapper>
 
       <OfertWrap>
-        <FormInput
-        onChange={handleInputChange}
-        onFocus={() => setShowError({ ofert: true })}
-        onBlur={() => setShowError({})}
-        type="checkbox"
-        name="ofert"
-        autoComplete="off"
-        id="ofert" />
-        <CheckboxLabel onClick={() => setChecked(!checked)} htmlFor="ofert" checkedRender={checked}/>
+        <CheckboxLabel htmlFor="ofert" checkedRender={checked}>
+          <FormInput
+          checked={checked}
+          onChange={handleInputChange}
+          onFocus={() => setShowError({ ofert: true })}
+          onBlur={() => { setShowError({}); }}
+          type="checkbox"
+          name="ofert"
+          id="ofert" />
+        </CheckboxLabel>
         <CheckboxLabelText>
           Согласен с{' '}
           <OfertLink href="#">офертой</OfertLink>
