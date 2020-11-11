@@ -10,14 +10,13 @@ const InfoButton = styled(RoundedButton)`
   padding: 0 10px;
   font-weight: 400;
   font-size: 16px;
-  font-style: italic;
   border-color: inherit;
   color: inherit;
   transition: opacity 0.3s ease-in-out;
   justify-self: end;
-  opacity: 100%;
+
   &:hover {
-    opacity: 60%;
+    font-style: italic;;
   }
   @media screen and (max-width: 767px) {
     width: 100%;

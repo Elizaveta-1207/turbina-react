@@ -29,3 +29,11 @@
   src: local('Inter-Italic'), url('./Inter-Italic.woff2') format('woff2'),
     url('./Inter-Italic.woff') format('woff'), url('./Inter-Italic.otf') format('opentype');
 }
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Inter-MediumItalic'), url('./Inter-MediumItalic.woff2') format('woff2'),
+    url('./Inter-MediumItalic.woff') format('woff'), url('./Inter-MediumItalic.ttf') format('truetype');
+}

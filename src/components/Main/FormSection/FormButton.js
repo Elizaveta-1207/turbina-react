@@ -34,8 +34,7 @@ const StyledFormButton = styled(RoundedButton)`
   `
     : `
   &:hover {
-    background-color: #d18aad6e;
-    border: 2px solid #d18aad00;
+    font-style: italic;
   }
   `)}
 `;
