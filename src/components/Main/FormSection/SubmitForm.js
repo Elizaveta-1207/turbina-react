@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
@@ -132,7 +131,6 @@ export default function SubmitForm({ onFormSubmit }) {
   }, [errors]);
 
   const handleInputChange = (e) => {
-    console.log(e);
     const key = e.target.id;
     if (key === 'ofert') setChecked(!checked);
     const value = (key === 'ofert')

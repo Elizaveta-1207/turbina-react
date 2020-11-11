@@ -51,7 +51,7 @@ const TimeIndicator = ({ currentTime, duration }) => {
       default:
         throw new Error(`no such mode in TimeIndicator module. Mode: ${indicationMode}`);
     }
-  }, [currentTime, duration]);
+  }, [currentTime, duration, indicationMode]);
 
   const handleIndicatorClick = () => {
     const currentIndex = modes.indexOf(indicationMode);
@@ -60,7 +60,7 @@ const TimeIndicator = ({ currentTime, duration }) => {
   };
 
   return (
-    <Indicator onClick={handleIndicatorClick}>
+    <Indicator onClick={() => handleIndicatorClick()}>
       {timeString}
     </Indicator>
   );
