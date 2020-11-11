@@ -17,7 +17,7 @@ const MediaInfoBlock = ({ playlist, currentSong, contentIsText, handleSongChange
     if (playlist.length === 1) return (<Subtitle>Пока что у нас только 1 релиз</Subtitle>);
     return (
       <>
-      <Subtitle>Релизы</Subtitle>
+      <Subtitle>Релизы:</Subtitle>
       <SongsContainer>
         {playlist
           .map((song) => (
@@ -39,7 +39,7 @@ const MediaInfoBlock = ({ playlist, currentSong, contentIsText, handleSongChange
       case true:
         setContent(
           (<>
-          <Subtitle>Текст песни</Subtitle>
+          <Subtitle>Текст песни:</Subtitle>
           <BlockContent> {`${currentSong.text}`} </BlockContent></>),
         );
         break;

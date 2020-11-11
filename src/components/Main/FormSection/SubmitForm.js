@@ -11,6 +11,10 @@ const StyledForm = styled.form`
 `;
 const OfertLink = styled.a`
   color: #000;
+
+  &:hover {
+    font-style: italic;
+  }
 `;
 const CheckboxLabel = styled.label`
   display: inline-block;
@@ -61,7 +65,6 @@ const FormInput = styled.input`
 
   &:focus {
     outline: none;
-    border-bottom: 2px solid #d18aad;
   }
 
   &[type='checkbox'] {
@@ -224,7 +227,7 @@ export default function SubmitForm({ onFormSubmit }) {
         </CheckboxLabelText>
       </OfertWrap>
       <FormButton
-        text="Отправить"
+        text="Отправить форму"
         onClick={onFormSubmit}
         disabled={anyInputInvalid} />
     </StyledForm>
