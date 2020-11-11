@@ -16,6 +16,11 @@ const StyledInput = styled.input`
   line-height: 1.2;
   color: #000;
 
+/*   &::after {
+    content: ${(props) => props.error && props.error};
+    font-weight: normal;
+    font-size: 16px;
+  } */
   &::placeholder {
     color: #00000080;
     font-weight: normal;
@@ -36,11 +41,6 @@ const StyledInput = styled.input`
     clip: rect(0 0 0 0);
   }
 
-  &[type='checkbox']:checked + .form__input_visible-checkbox {
-    background-color: #000;
-    transition: 0.1s;
-  }
-
   &:nth-last-child(3) {
     margin-bottom: 40px;
   }
@@ -55,7 +55,7 @@ const StyledInput = styled.input`
   }
 `;
 
-export default function Input({ type, placeholder, name, id, rows = '1' }) {
+export default function Input({ error, type, placeholder, name, id, rows = '1' }) {
   return (
     <StyledInput
       type={type}
@@ -63,6 +63,7 @@ export default function Input({ type, placeholder, name, id, rows = '1' }) {
       id={id}
       name={name}
       rows={rows}
+      error={error}
     />
   );
 }
@@ -72,4 +73,9 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   rows: PropTypes.string,
+  checked: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
 };

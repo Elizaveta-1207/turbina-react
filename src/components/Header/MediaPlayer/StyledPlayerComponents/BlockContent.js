@@ -4,7 +4,7 @@ const BlockContent = styled.span`
   font-size: 20px;
   line-height: 1.2;
   font-weight: 500;
-  white-space: normal;
+  white-space: pre-line;
   font-style: italic;
   font-family: Inter, Arial, sans-serif;
   &:last-of-type {

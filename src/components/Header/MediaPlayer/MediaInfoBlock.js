@@ -20,10 +20,9 @@ const MediaInfoBlock = ({ playlist, currentSong, contentIsText, handleSongChange
       <Subtitle>Релизы</Subtitle>
       <SongsContainer>
         {playlist
-          .filter((song) => song.id !== currentSong.id)
           .map((song) => (
             <ListItem key={song.id}>
-              <SongItem onClick={
+              <SongItem current={song.id === currentSong.id} onClick={
                 () => handleSongChange(song)}>
                 {`${song.title} - ${song.artist}`}
                 <Featured> feat. </Featured>

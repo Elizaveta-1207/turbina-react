@@ -5,7 +5,7 @@ const Subtitle = styled.p`
   color: inherit;
   padding: 0;
   font-family: Inter, Arial, sans-serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;

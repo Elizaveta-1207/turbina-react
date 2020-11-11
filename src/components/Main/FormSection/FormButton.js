@@ -13,11 +13,6 @@ const StyledFormButton = styled(RoundedButton)`
   padding: 19px 24px;
   transition: background-color 0.3s ease-in-out;
 
-  &:hover {
-    background-color: #d18aad6e;
-    border: 2px solid #d18aad00;
-  }
-
   @media screen and (max-width: 1023px) {
     margin-top: 70px;
     font-size: 16px;
@@ -32,18 +27,30 @@ const StyledFormButton = styled(RoundedButton)`
     font-size: 12px;
     padding: 10px 20px;
   }
+  ${(props) => (props.disabled === 'true'
+    ? `
+  cursor: default;
+  opacity: .4;
+  `
+    : `
+  &:hover {
+    background-color: #d18aad6e;
+    border: 2px solid #d18aad00;
+  }
+  `)}
 `;
 
-export default function FormButton({ onClick, text }) {
+// eslint-disable-next-line no-unused-vars
+export default function FormButton({ disabled = 'true', text }) {
   return (
-      <StyledFormButton
+      <StyledFormButton as="button"
       className="form__btn"
-      onClick = {onClick}>
+      disabled={disabled ? 'true' : ''}>
         {text}
       </StyledFormButton>
   );
 }
 FormButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
   text: PropTypes.string,
+  disabled: PropTypes.bool,
 };
