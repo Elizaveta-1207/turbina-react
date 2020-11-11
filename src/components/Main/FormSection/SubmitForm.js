@@ -154,6 +154,7 @@ export default function SubmitForm({ onFormSubmit }) {
       name="name"
       placeholder="Имя и фамилия автора"
       id="name"
+      autoComplete="off"
       noValidate ></FormInput>
       {errors.name && <ErrorIndicator/>}
       {(errors.name && showError.name) && <ErrorMessage>{errors.name}</ErrorMessage>}
