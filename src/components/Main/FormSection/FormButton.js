@@ -41,7 +41,7 @@ const StyledFormButton = styled(RoundedButton)`
 `;
 
 // eslint-disable-next-line no-unused-vars
-export default function FormButton({ disabled = 'true', text }) {
+export default function FormButton({ disabled = true, text }) {
   return (
       <StyledFormButton as="button"
       className="form__btn"

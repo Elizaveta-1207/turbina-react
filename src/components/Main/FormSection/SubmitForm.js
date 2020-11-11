@@ -28,6 +28,12 @@ const CheckboxLabel = styled.span`
 `;
 const CheckboxLabelText = styled.span`
   margin-left: 20px;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+`;
+const LabelOfert = styled.label`
+margin-top: 20px;
 `;
 const FormInput = styled.input`
   box-sizing: border-box;
@@ -38,13 +44,16 @@ const FormInput = styled.input`
   margin-bottom: 10px;
   border: none;
   border-bottom: 2px solid #000;
-  padding: 0 4px;
+  padding: 0 8px;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: normal;
   font-size: 16px;
   line-height: 1.2;
   color: #000;
 
   &::placeholder {
     color: #00000080;
+    font-family: Inter, Arial, sans-serif;
     font-weight: normal;
     font-size: 16px;
     line-height: 1.2;
@@ -63,7 +72,7 @@ const FormInput = styled.input`
     clip: rect(0 0 0 0);
   }
 
-  &:nth-last-child(3) {
+  &:nth-last-child(4) {
     margin-bottom: 40px;
   }
 
@@ -76,68 +85,144 @@ const FormInput = styled.input`
     }
   }
 `;
+const ErrorMessage = styled.div`
+width: 100%;
+height: fit-content;
+font-family: Inter, Arial, sans-serif;
+font-weight: 400;
+font-size: 16px;
+color: red;
+margin-bottom: 12px`;
+const InputWrapper = styled.div`
+position: relative;
+`;
+const ErrorIndicator = styled.div`
+position: absolute;
+top: 20px;
+left: -5px;
+color: red;
+&::before {
+  content: '*';
+}
+`;
 
 export default function SubmitForm({ onFormSubmit }) {
-  const [values, setValues] = useState({
-    email: null,
-    tel: null,
-    name: null,
-    rhyme: '',
-    ofert: false,
-  });
-  const errors = {};
+  const [errors, setErrors] = useState({});
+  const [values, setValues] = useState({});
   const [checked, setChecked] = useState(false);
   const [anyInputInvalid, setAnyInputInvalid] = useState();
+  const [showError, setShowError] = useState({});
 
   const checkFormValidity = () => {
     const any = Object
       .values(errors)
-      .some((i) => i !== null);
+      .some((i) => i !== false);
     setAnyInputInvalid(any);
-    console.log('any');
-    console.log(any);
   };
 
   const handleInputChange = (e) => {
     const key = e.target.id;
-    switch (key) {
-      case 'ofert':
-        setValues({ ...values, ofert: !checked });
-        break;
-      default:
-        setValues({ ...values, [key]: e.target.value });
-    }
-    validate(values, errors);
+    setValues({ ...values, [key]: e.target.value });
+    setErrors(validate(values));
     checkFormValidity();
-    console.log('errors');
-    console.log(errors);
-    console.log('values');
-    console.log(values);
   };
+
   const handleCheckboxClick = () => {
+    setValues({ ...values, ofert: !checked });
     setChecked(!checked);
+    setErrors(validate(values));
+    checkFormValidity();
   };
 
   return (
     <StyledForm action="#">
-      <FormInput value={values.name} error={errors.name} onChange={handleInputChange} onBlur={handleInputChange} type="text" placeholder="Имя и фамилия автора" name="name" id="name" noValidate />
-      <FormInput value={values.email} error={errors.email} onChange={handleInputChange} onBlur={handleInputChange} type="email" placeholder="Почта" name="email" id="email" noValidate />
-      <FormInput value={values.tel} error={errors.tel} onChange={handleInputChange} onBlur={handleInputChange} type="tel" placeholder="Телефон" name="tel" id="tel" noValidate />
-      <FormInput value={values.rhyme} error={errors.rhyme} onChange={handleInputChange} onBlur={handleInputChange} type="textarea" placeholder="Стихи" rows="10" name="rhyme" id="rhyme" noValidate />
-      <label htmlFor="ofert">
-        <FormInput checked={checked} error={errors.ofert} onChange={handleInputChange} onBlur={handleInputChange} type="checkbox" name="ofert" id="ofert" />
+    <InputWrapper>
+      <FormInput
+      value={values.name}
+      onChange={handleInputChange}
+      error={errors.name}
+      onFocus={() => setShowError({ ...showError, name: true })}
+      onBlur={() => setShowError({})}
+      type="text"
+      name="name"
+      placeholder="Имя и фамилия автора"
+      id="name"
+      noValidate ></FormInput>
+      {errors.name && <ErrorIndicator/>}
+      {(errors.name && showError.name) && <ErrorMessage>{errors.name}</ErrorMessage>}
+    </InputWrapper>
+
+    <InputWrapper>
+      <FormInput
+      value={values.email}
+      onChange={handleInputChange}
+      onFocus={() => setShowError({ email: true })}
+      onBlur={() => setShowError({})}
+      type="email"
+      placeholder="Почта"
+      name="email"
+      id="email"
+      autoComplete="off"
+      noValidate />
+      {errors.email && <ErrorIndicator/>}
+      {(errors.email && showError.email) && <ErrorMessage>{errors.email}</ErrorMessage>}
+    </InputWrapper>
+
+    <InputWrapper>
+      <FormInput
+      value={values.tel}
+      onChange={handleInputChange}
+      onFocus={() => setShowError({ tel: true })}
+      onBlur={() => setShowError({})}
+      type="tel"
+      name="tel"
+      placeholder="Телефон"
+      id="tel"
+      autoComplete="off"
+      noValidate />
+      {errors.tel && <ErrorIndicator/>}
+      {(errors.tel && showError.tel) && <ErrorMessage>{errors.tel}</ErrorMessage>}
+    </InputWrapper>
+
+    <InputWrapper>
+      <FormInput
+      value={values.rhyme}
+      onChange={handleInputChange}
+      onFocus={() => setShowError({ rhyme: true })}
+      onBlur={() => setShowError({})}
+      type="textarea"
+      placeholder="Стихи"
+      rows="10"
+      name="rhyme"
+      id="rhyme"
+      autoComplete="off"
+      noValidate />
+      {errors.rhyme && <ErrorIndicator/>}
+      {(errors.rhyme && showError.rhyme) && <ErrorMessage>{errors.rhyme}</ErrorMessage>}
+    </InputWrapper>
+
+      <LabelOfert htmlFor="ofert">
+        <FormInput
+        checked={checked}
+        onChange={handleInputChange}
+        onFocus={() => setShowError({ ofert: true })}
+        onBlur={() => setShowError({})}
+        type="checkbox"
+        name="ofert"
+        autoComplete="off"
+        id="ofert" />
         <CheckboxLabel
-        onClick={handleCheckboxClick} checked={checked}/>
+        onClick={() => handleCheckboxClick()} checked={checked}/>
         <CheckboxLabelText>
           Согласен с{' '}
           <OfertLink href="#">офертой</OfertLink>
         </CheckboxLabelText>
-      </label>
+        {(errors.ofert && showError.ofert) && <ErrorMessage>{errors.ofert}</ErrorMessage>}
+      </LabelOfert>
       <FormButton
         text="Отправить"
         onClick={onFormSubmit}
-        disabled={anyInputInvalid}
-      />
+        disabled={anyInputInvalid} />
     </StyledForm>
   );
 }
