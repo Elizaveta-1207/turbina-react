@@ -46,7 +46,8 @@ const TimeIndicator = ({ currentTime, duration }) => {
         setTimeString(`${minRemained}:${secRemained}`);
         break;
       case 'elapsed/duration':
-        setTimeString(`${mElapsed}:${sElapsed}/${minDuration}:${secDuration}`);
+      // eslint-disable-next-line no-restricted-globals
+        if (!isNaN(duration)) setTimeString(`${mElapsed}:${sElapsed}/${minDuration}:${secDuration}`);
         break;
       default:
         throw new Error(`no such mode in TimeIndicator module. Mode: ${indicationMode}`);
