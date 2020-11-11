@@ -19,7 +19,7 @@ export default function Footer() {
   const yearNow = today.getFullYear();
   return (
     <StyledFooter>
-      <Copyright text={`&copy; Маршак, ${yearNow}`} />
+      <Copyright text={`\u00A9 Маршак, ${yearNow}`} />
       <Copyright text="Сделано студентами ">
         <FooterLink href="#" text ="Яндекс.Практикум" />
       </Copyright>

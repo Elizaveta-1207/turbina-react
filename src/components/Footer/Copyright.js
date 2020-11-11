@@ -20,9 +20,10 @@ const StyledCopyright = styled.p`
   }
 `;
 
-export default function Copyright({ text }) {
-  return (<StyledCopyright>{text}</StyledCopyright>);
+export default function Copyright({ text, children }) {
+  return (<StyledCopyright>{text}{children}</StyledCopyright>);
 }
 Copyright.propTypes = {
   text: PropTypes.string,
+  children: PropTypes.array,
 };
