@@ -8,12 +8,12 @@ const PlayerWrapper = styled.div`
   align-items: center;
   grid-template-rows: 35px 6px;
   grid-template-columns: ${(props) => (props.isExpanded
-    ? '40px 6fr 1fr 167px 40px'
-    : '40px 12fr 1fr 40px')};
+    ? '176px 62px 6fr 1fr 114px 145px 43px'
+    : '44px 12fr 1fr 40px')};
   grid-template-areas: ${(props) => (props.isExpanded
-    ? `'button title duration mode subtrack'
-      '. timeline timeline . .'
-      '. infoblock infoblock infoblock .'`
+    ? `'cover button title duration clip mode subtrack'
+      'cover . timeline timeline . . .'
+      'cover . infoblock infoblock infoblock infoblock .'`
     : `'button title duration subtrack'
       '. timeline timeline .'`)};
   
@@ -22,7 +22,8 @@ const PlayerWrapper = styled.div`
     grid-template-areas: ${(props) => (props.isExpanded
     ? `'button title duration subtrack'
         '. timeline timeline .'
-        '. mode mode .'
+        '. cover cover .'
+        '. clip mode .'
         '. infoblock infoblock .'`
     : `'button title duration subtrack'
         '. timeline timeline .'`)}

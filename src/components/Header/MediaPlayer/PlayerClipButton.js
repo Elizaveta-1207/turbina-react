@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import RoundedButton from '../../CommonUtils/Templates/RoundedButton';
 
-const InfoButton = styled(RoundedButton)`
-  grid-area: mode;
-  width: 135px;
+const ClipButton = styled(RoundedButton)`
+  grid-area: clip;
+  width: 94px;
   height: 35px;
   padding: 0 10px;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
-  border-color: inherit;
-  color: inherit;
+  border: none;
+  background: #fff;
+  color: #000;
   justify-self: end;
+
+  &::before {
+    content: 'Клип';
+  }
 
   &:hover {
     font-style: italic;;
@@ -27,13 +32,12 @@ const InfoButton = styled(RoundedButton)`
   }
 `;
 
-const PlayerInfoButton = ({ onClick, contentIsText }) => (
-  <InfoButton onClick={onClick}>{contentIsText ? 'Релизы' : 'Текст песни'}</InfoButton>
+const PlayerClipButton = () => (
+  <ClipButton></ClipButton>
 );
 
-PlayerInfoButton.propTypes = {
+PlayerClipButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  contentIsText: PropTypes.bool,
 };
 
-export default PlayerInfoButton;
+export default PlayerClipButton;

@@ -4,12 +4,11 @@ import styled from 'styled-components/macro';
 
 const StyledLink = styled.a`
   display: block;
-  margin-top: 10px;
   padding: 8px 20px;
   color: inherit;
   font-weight: normal;
   font-size: 18px;
-  line-height: 1.2;
+  line-height: 19px;
   border: 2px solid;
   border-color: inherit;
   box-sizing: border-box;

@@ -24,7 +24,7 @@ const MediaInfoBlock = ({ playlist, currentSong, contentIsText, handleSongChange
             <ListItem key={song.id}>
               <SongItem current={song.id === currentSong.id} onClick={
                 () => handleSongChange(song)}>
-                {`${song.title} - ${song.artist}`}
+                {`${song.title} — ${song.artist}`}
                 <Featured> feat. </Featured>
                 {song.child}
               </SongItem>

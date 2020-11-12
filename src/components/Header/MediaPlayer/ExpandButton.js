@@ -12,6 +12,10 @@ const PlayButton = styled.button`
   background: none;
   justify-self: end;
   transition: opacity 0.3s ease-in-out;
+  &:hover {
+    opacity: .6;
+  }
+
   @media screen and (max-width: 767px) {
     width: 16px;
     height: 16px;

@@ -9,8 +9,8 @@ import AppContext from '../../contexts/AppContext';
 
 const AppHeader = styled.header`
   box-sizing: border-box;
-  padding: 20px 10px 0;
-  height: calc(100vh - 20px);
+  padding: 15px 15px 0;
+  height: calc(100vh - 10px);
   position: relative;
   display: flex;
   justify-content: space-between;

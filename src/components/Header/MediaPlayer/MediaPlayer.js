@@ -10,6 +10,8 @@ import Ticker from '../../CommonUtils/TextUtils/Ticker';
 import TimeIndicator from './TimeIndicator';
 import PlayerInfoButton from './PlayerInfoButton';
 import Timeline from './Timeline';
+import PlayerClipButton from './PlayerClipButton';
+import PlayerSongCover from './PlayerSongCover';
 import {
   Player,
   PlayerWrapper,
@@ -140,6 +142,7 @@ const MediaPlayer = ({ color }) => {
         onLoadedData={() => setDuration(audio.current.duration)}
         onEnded={handleMediaEnd} />
       <PlayerWrapper isExpanded={isExpanded}>
+      {isExpanded && (<PlayerSongCover />)}
         <PlaybackButton
           color={color}
           isPlaying={isPlaying}
@@ -147,7 +150,7 @@ const MediaPlayer = ({ color }) => {
         <Songtitle ref={songtitleWrap}>
           <Ticker duration = '12s' parentWidth={songtitleWrapWidth} childWidth={songTitleTextWidth}>
             <TickerTextContainer ref={songtitle}>
-              {currentSong.title} - {currentSong.artist}
+              {currentSong.title} — {currentSong.artist}
               <Songtitle featured> feat.</Songtitle>
               {currentSong.child}
             </TickerTextContainer>
@@ -156,6 +159,8 @@ const MediaPlayer = ({ color }) => {
         <TimeIndicator currentTime={currentTime} duration={duration}/>
         {isExpanded
         && (<PlayerInfoButton onClick={toggleContentState} contentIsText={contentIsText} />)}
+        {isExpanded
+        && (<PlayerClipButton />)}
         <ExpandButton
           onClick={handleExpandClick}
           isExpanded={isExpanded}

@@ -5,7 +5,7 @@ import styled from 'styled-components/macro';
 const LiItem = styled.a`
   color: inherit;
   list-style-type: none;
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   padding: 0;
 
   &:first-of-type {

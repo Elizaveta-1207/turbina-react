@@ -8,8 +8,8 @@ const Indicator = styled.div`
   justify-self: end;
   display: flex;
   align-items: flex-end;
-  font-weight: 500;
-  font-size: 22px;
+  font-weight: 400;
+  font-size: 20px;
   line-height: 1.2;
   color: inherit;
   @media screen and (max-width: 1023px) {

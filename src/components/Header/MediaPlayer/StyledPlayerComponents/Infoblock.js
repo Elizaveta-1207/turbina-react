@@ -6,7 +6,7 @@ const InfoBlock = styled.div`
   grid-area: infoblock;
   height: 110px;
   transition: height 1s ease-in-out;
-  margin-top: 40px;
+  margin-top: 31px;
   overflow-y: inherit;
   overflow-x: hidden;
   padding-right: 12px;

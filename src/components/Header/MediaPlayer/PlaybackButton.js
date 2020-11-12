@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
 const PlayButton = styled.button`
+  grid-area: button;
+  justify-self: center;
   color: inherit;
   width: 24px;
   height: 24px;
@@ -11,6 +13,10 @@ const PlayButton = styled.button`
   outline: none;
   background: none;
   transition: opacity 0.3s ease-in-out;
+  &:hover {
+    opacity: .6;
+  }
+
   @media screen and (max-width: 767px) {
     width: 16px;
     height: 16px;
