@@ -5,7 +5,7 @@ import PlayHead from './StyledPlayerComponents/PlayHead';
 
 const StyledTimeline = styled.div`
   grid-area: timeline;
-  height: 6px;
+  height: 4px;
   cursor: pointer;
   background-color: rgba(243, 243, 243, 0.3);
   @media screen and (max-width: 767px) {

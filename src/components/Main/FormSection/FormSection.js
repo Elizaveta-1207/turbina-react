@@ -7,7 +7,7 @@ import SubmitForm from './SubmitForm';
 export default function FormSection({ onFormSubmit }) {
   return (
     <section>
-      <BlockTitle title="Форма" />
+      <BlockTitle title="Форма." />
       <BlockSubtitle subtitle="Заполняя эту форму, вы становитесь частью проекта" />
       <SubmitForm onFormSubmit={onFormSubmit} />
     </section>

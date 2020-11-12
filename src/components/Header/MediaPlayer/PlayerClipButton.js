@@ -12,16 +12,8 @@ const ClipButton = styled(RoundedButton)`
   font-size: 16px;
   border: none;
   background: #fff;
-  color: #000;
   justify-self: end;
 
-  &::before {
-    content: 'Клип';
-  }
-
-  &:hover {
-    font-style: italic;;
-  }
   @media screen and (max-width: 767px) {
     width: 100%;
     margin-top: 20px;

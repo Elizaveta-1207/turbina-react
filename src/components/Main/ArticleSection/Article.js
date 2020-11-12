@@ -5,10 +5,10 @@ import ArticleParagraph from './ArticleParagraph';
 import BlockTitle from '../../CommonUtils/TextUtils/BlockTitle';
 
 const InfoArticle = styled.article`
-  margin-bottom: 90px;
-  max-width: 716px;
+  margin-bottom: 92px;
+  max-width: 760px;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 22px;
   font-weight: normal;
 
   @media screen and (max-width: 1023px) {

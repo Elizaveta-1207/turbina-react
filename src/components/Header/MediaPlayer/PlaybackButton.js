@@ -4,10 +4,9 @@ import styled from 'styled-components/macro';
 
 const PlayButton = styled.button`
   grid-area: button;
-  justify-self: center;
   color: inherit;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   padding: 0;
   border: none;
   outline: none;

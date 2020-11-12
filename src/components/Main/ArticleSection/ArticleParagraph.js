@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
 const Paragraph = styled.p`
-  margin: 0 0 20px;
+  margin: 0 0 22px;
 
   &:last-of-type {
     margin-bottom: 0;

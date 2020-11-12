@@ -19,6 +19,10 @@ const AppHeader = styled.header`
   @media screen and (max-width: 767px) {
     height: calc(100vh - 10px);
   }
+
+  @media screen and (max-width: 425px) {
+    padding: 13px 5px 0;
+  }
 `;
 
 export default function Header({ playlist }) {

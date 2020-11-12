@@ -4,7 +4,7 @@ import Copyright from './Copyright';
 import FooterLink from './FooterLink';
 
 const StyledFooter = styled.footer`
-  padding: 20px 5px;
+  padding: 20px 15px;
   display: flex;
   justify-content: space-between;
 
@@ -19,7 +19,7 @@ export default function Footer() {
   const yearNow = today.getFullYear();
   return (
     <StyledFooter>
-      <Copyright text={`\u00A9 Маршак, ${yearNow}`} />
+      <Copyright text={`\u00A9 Маршак, ${yearNow}.`} />
       <Copyright text="Сделано студентами ">
         <FooterLink href="#" text="Яндекс.Практикум" />
       </Copyright>
