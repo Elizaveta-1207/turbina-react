@@ -36,13 +36,23 @@ const MediaPlayer = ({ color }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [contentIsText, setContentIsText] = useState(true);
   const [songTitleTextWidth, setSongTitleTextWidth] = useState(0);
-  const [songtitleWrapWidth, setSontitleWrapWidth] = useState(0);
+  const [songtitleWrapWidth, setSontitleWrapWidth] = useState(1);
   const [audioCtx, setAudioCtx] = useState(null);
   const [audioData, setAudioData] = useState('');
 
   // делаем привязку источника звука и выстраиваем граф звукового потока
   //  через ноды-обработчики после начального рендера
+
+  const setTickerDimensions = () => {
+    if (!songtitleWrap.current || !songtitle.current) return;
+    const parentWidth = songtitleWrap.current.getBoundingClientRect().width;
+    const childWidth = songtitle.current.getBoundingClientRect().width;
+    setSongTitleTextWidth(childWidth);
+    setSontitleWrapWidth(parentWidth);
+  };
+
   React.useEffect(() => {
+    setTickerDimensions();
     const audioContext = new AudioContext();
     const audioSource = audioContext.createMediaElementSource(audio.current);
     // потом прикрутим через эту ноду управление звуком и вставим эту ноду в граф звукового потока
@@ -65,13 +75,7 @@ const MediaPlayer = ({ color }) => {
     };
   }, []);
 
-  window.addEventListener('resize', () => {
-    if (!songtitleWrap.current && !songtitle.current) return;
-    const parentWidth = songtitleWrap.current.getBoundingClientRect().width;
-    const childWidth = songtitle.current.getBoundingClientRect().width;
-    setSongTitleTextWidth(childWidth);
-    setSontitleWrapWidth(parentWidth);
-  });
+  window.addEventListener('resize', () => setTickerDimensions());
 
   const handlePlaybackClick = () => {
     setPlaying(!isPlaying);
