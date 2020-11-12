@@ -4,15 +4,16 @@ const InfoBlock = styled.div`
   color: inherit;
   display: block;
   grid-area: infoblock;
-  height: 110px;
+  height: 100%;
   transition: height 1s ease-in-out;
-  margin-top: 31px;
   overflow-y: inherit;
   overflow-x: hidden;
-  padding-right: 12px;
+  padding: 0 8px 0 0;
+  @media screen and (max-width: 1023px) {
+    padding: 8px 12px 4px 30px;
+  }
   @media screen and (max-width: 767px) {
-    margin-top: 30px;
-    height: 80px;
+    padding: 4px 8px;
   }
   &::-webkit-scrollbar {
     -webkit-appearance: none;

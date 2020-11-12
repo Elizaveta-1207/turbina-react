@@ -157,10 +157,6 @@ const MediaPlayer = ({ color }) => {
           </ Ticker>
         </Songtitle>
         <TimeIndicator currentTime={currentTime} duration={duration}/>
-        {isExpanded
-        && (<PlayerInfoButton onClick={toggleContentState} contentIsText={contentIsText} />)}
-        {isExpanded
-        && (<PlayerClipButton />)}
         <ExpandButton
           onClick={handleExpandClick}
           isExpanded={isExpanded}
@@ -170,7 +166,12 @@ const MediaPlayer = ({ color }) => {
           color={color}
           duration={duration}
           playHeadWidth={playHeadWidth} />
-        {isExpanded && (<MediaInfoBlock
+        {isExpanded
+          && (<PlayerInfoButton onClick={toggleContentState} contentIsText={contentIsText} />)}
+        {isExpanded
+          && (<PlayerClipButton />)}
+        {isExpanded
+          && (<MediaInfoBlock
           handleSongChange={handleSongChange}
           playlist={playlist}
           currentSong={currentSong}
@@ -181,9 +182,7 @@ const MediaPlayer = ({ color }) => {
 };
 MediaPlayer.propTypes = {
   songs: PropTypes.array.isRequired,
-  currentSong: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired,
-  handleSongChange: PropTypes.func.isRequired,
+  color: PropTypes.string,
 };
 
 export default MediaPlayer;

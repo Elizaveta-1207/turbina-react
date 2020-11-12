@@ -8,19 +8,20 @@ const Player = styled.div`
   padding: 0 25px;
   box-sizing: border-box;
   z-index: 2;
-  transition: height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
   color: ${(props) => props.color};
-  height: ${(props) => (props.isExpanded ? '176px' : '40px')};
+  max-height: ${(props) => (props.isExpanded ? '300px' : '40px')};
   @media screen and (max-width: 1023px) {
-    padding: 16px;
+    padding: 0 16px;
   }
   @media screen and (max-width: 767px) {
-    height: ${(props) => (props.isExpanded ? '200px' : '60px')};
+    max-height: ${(props) => (props.isExpanded ? '95vh' : '40px')};
+    bottom: 8px;
   }
   @media screen and (max-width: 424px) {
-    bottom: 20px;
-    padding: 8px;
-    height: ${(props) => (props.isExpanded ? '400px' : '40px')};
+    bottom: 8px;
+    padding: 0 8px;
+    max-height: ${(props) => (props.isExpanded ? '95vh' : '40px')};
   }
 `;
 
