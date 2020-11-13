@@ -36,6 +36,12 @@
   }
 } */
 
+@keyframes rotation {
+  100% {
+    background-position: 0 300px;
+  }
+}
+
 /* .rotation {
   animation: rotation 20s linear infinite;
 } */
@@ -49,12 +55,33 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(45deg, #eaa4a6 0%, hsla(352, 96%, 45%, 0) 70%),
+  /* background: linear-gradient(45deg, #eaa4a6 0%, hsla(352, 96%, 45%, 0) 70%),
+    linear-gradient(135deg, #212d80 10%, hsla(253, 95%, 42%, 0) 80%),
+    linear-gradient(225deg, #275b82 10%, hsla(179, 91%, 45%, 0) 80%),
+    linear-gradient(315deg, #4e7b6c 100%, hsla(119, 96%, 49%, 0) 70%); */
+  background: linear-gradient(#212d80, #275b82, #4e7b6c, #9c9089, #eaa4a6, #a08590,#212d80);
+  /* background-color: #fffa02;
+  animation: gradient 2s linear infinite; */
+  animation: rotation 15s linear infinite alternate;
+  object-fit: cover;
+  /* position: relative;
+  overflow: hidden;
+  background-color: transparent; */
+}
+
+/* .background:after {
+  content: '';
+  display: block;
+  z-index: -1;
+  position: absolute;
+  top: -2rem; right: 0; bottom: -2rem; left: 0;
+  background-image: linear-gradient(45deg, #eaa4a6 0%, hsla(352, 96%, 45%, 0) 70%),
     linear-gradient(135deg, #212d80 10%, hsla(253, 95%, 42%, 0) 80%),
     linear-gradient(225deg, #275b82 10%, hsla(179, 91%, 45%, 0) 80%),
     linear-gradient(315deg, #4e7b6c 100%, hsla(119, 96%, 49%, 0) 70%);
-  /* background-color: #fffa02;
-  animation: gradient 2s linear infinite; */
-  /* animation: rotation 20s linear infinite; */
-  object-fit: cover;
+  animation: rotate-gradient linear 1s infinite;
 }
+
+@keyframes rotate-gradient {
+  to { transform: rotate(360deg) }
+} */
