@@ -1,4 +1,22 @@
 export default {
+  links: [
+    { link: 'https://music.yandex.ru/home',
+      title: 'Яндекс.Музыка ↗',
+      id: '123874618rn',
+    },
+    { link: 'https://music.yandex.ru/home',
+      title: 'Spotify ↗',
+      id: '12wef4618rn',
+    },
+    { link: 'https://music.yandex.ru/home',
+      title: 'Apple Music ↗',
+      id: '123fds618rn',
+    },
+    { link: 'https://music.yandex.ru/home',
+      title: 'VK Music ↗',
+      id: '123833218rn',
+    },
+  ],
   texts: {
     article1: {
       title: 'О проекте.',

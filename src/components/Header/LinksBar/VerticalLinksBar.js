@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import AppContext from '../../../contexts/AppContext';
 import NavBarLink from './NavBarLink';
 import LinksContainer from './LinksContainer';
 import LinksContainerItem from './LinksContainerItem';
@@ -24,6 +25,7 @@ const StyledLinksBar = styled.div`
 const VerticalLinksBar = ({ color, isBlurred }) => {
   const [linksVisible, setLinksVisible] = React.useState(true);
   const [isMobileLayout, setIsMobileLayout] = React.useState(false);
+  const { links } = React.useContext(AppContext);
 
   const setLinksLayout = () => {
     if (window.screen.width > 425) {
@@ -54,10 +56,11 @@ const VerticalLinksBar = ({ color, isBlurred }) => {
             linksVisible={linksVisible} />
       }
       <LinksContainer linksVisible={linksVisible}>
-        <LinksContainerItem><NavBarLink link="#" title="Яндекс.Музыка ↗" /></LinksContainerItem>
-        <LinksContainerItem><NavBarLink link="#" title="Spotify ↗" /></LinksContainerItem>
-        <LinksContainerItem><NavBarLink link="#" title="Apple Music ↗" /></LinksContainerItem>
-        <LinksContainerItem><NavBarLink link="#" title="VK Music ↗" /></LinksContainerItem>
+        {links.map(({ link, title, id }) => (
+          <LinksContainerItem key={id}>
+            <NavBarLink link={link} title={title} />
+          </LinksContainerItem>))
+        }
       </LinksContainer>
     </StyledLinksBar>
   );
