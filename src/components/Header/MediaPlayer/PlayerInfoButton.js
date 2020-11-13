@@ -19,7 +19,6 @@ const InfoButton = styled(RoundedButton)`
   }
   @media screen and (max-width: 767px) {
     width: 95%;
-    margin-top: 20px;
   }
   @media screen and (max-width: 424px) {
     font-size: 12px;

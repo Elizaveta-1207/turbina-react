@@ -19,7 +19,7 @@ const PlayerWrapper = styled.div`
       'cover . infoblock infoblock infoblock infoblock .'`
     : `'button title duration subtrack'
       '. timeline timeline .'`)};
-  
+
   @media screen and (max-width: 1023px) {
     grid-template-rows: ${(props) => (props.isExpanded
     ? '34px 6px 20px 112px'
@@ -35,11 +35,31 @@ const PlayerWrapper = styled.div`
     : `'button title duration subtrack'
         '. timeline timeline .'`)}
   }
+
   @media screen and (max-width: 767px) {
     grid-template-rows: ${(props) => (props.isExpanded
     ? '24px 6px 20px minmax(240px, 1fr) 20px 31px 30px 80px'
-    : '24px 6px 0px 0px 0px 0px 0px')};
-    grid-template-columns: 24px 1fr 2fr 24px;
+    : '24px 6px')};
+    grid-template-columns: 24px minmax(94px,1fr) 7fr 24px;
+    grid-template-areas: ${(props) => (props.isExpanded
+    ? `'button title duration subtrack'
+        '. timeline timeline .'
+        '. . . .'
+        '. cover cover .'
+        '. . . .'
+        '. clip mode .'
+        '. . . .'
+        '. infoblock infoblock .'`
+    : `'button title duration subtrack'
+        '. timeline timeline .'`)}
+  }
+
+
+  @media screen and (max-width: 424px) {
+    grid-template-rows: ${(props) => (props.isExpanded
+    ? '24px 6px 20px minmax(240px, 1fr) 20px 31px 30px 80px'
+    : '24px 6px')};
+    grid-template-columns: 24px minmax(84px,1fr) 3fr 24px;
     grid-template-areas: ${(props) => (props.isExpanded
     ? `'button title duration subtrack'
         '. timeline timeline .'
