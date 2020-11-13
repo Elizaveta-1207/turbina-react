@@ -122,7 +122,7 @@ export default function SubmitForm({ onFormSubmit }) {
   const [buttonText, setButtonText] = useState('Отправить форму');
   const [submitFailed, setSubmitFailed] = useState(false);
   const [submitError, setSubmitError] = useState(null);
- 
+
   const checkFormValidity = () => {
     const any = Object
       .values(errors)
