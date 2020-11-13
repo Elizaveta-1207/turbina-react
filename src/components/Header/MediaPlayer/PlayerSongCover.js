@@ -1,9 +1,11 @@
 import styled from 'styled-components/macro';
+import defaultCover from '../../../images/defaultCover.jpg';
 
 const PlayerSongCover = styled.div`
   grid-area: cover;
   width: 100%;
-  background: url(https://music-facts.ru/pictures/songs/_src/Kino/Zvezda_po_imeni_solntse.jpg) center center no-repeat;
+  background: ${(props) => (props.cover || `url(${defaultCover})`)
+};
   background-size: cover;
   background-position: center; 
   padding-bottom: 100%;

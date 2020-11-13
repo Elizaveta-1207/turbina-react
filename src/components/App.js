@@ -30,6 +30,7 @@ function App() {
 
   React.useEffect(() => {
     setLoaderVisibible(true);
+    // здесь имитация обращения к апи
     api
       .getSongs()
       .then((songsArray) => {
@@ -38,21 +39,34 @@ function App() {
       .catch((error) => console.log(error))
       .finally(() => setLoaderVisibible(false));
   }, []);
-  // define UI handlers
-  /*   const handleFormSubmit = (data) => {
+
+  const onFormSubmit = (data) => {
+    // здесь имитация обращения к апи
     setLoaderVisibible(true);
-    api.postForm(data)
-      .catch((error) => console.log(error))
+    api
+      .postForm(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+        /*         return Promise.reject(new Error({
+          error: 'Упс, что-то пошло не так и форма не отправилась, попробуйте ещё раз!',
+        })); */
+      })
       .finally(() => setLoaderVisibible(false));
-  }; */
-  const handleFormSubmit = () => {};
+
+    return Promise.resolve({
+      successMessage: 'Ура, форма отправлена!',
+    });
+  };
 
   return (
     <AppContext.Provider value={config}>
       <Background />
       <Page>
         <Header playlist={playlist} />
-        <Main onFormSubmit={handleFormSubmit} />
+        <Main onFormSubmit={onFormSubmit} />
         <Footer />
         {isLoaderVisible && (<Loader />)}
       </Page>

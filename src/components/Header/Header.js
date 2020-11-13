@@ -30,13 +30,20 @@ const Header = ({ playlist }) => {
   const { color } = header.style;
   const [isPlayingLogo, setIsPlayingLogo] = useState();
   const [border, setBorder] = useState();
+  const [isExpandedPlayer, setIsExpandedPlayer] = useState();
 
   return (
     <AppHeader>
-      <LogoMarshak fill={color}/>
-      <VerticalLinksBar color={color} />
-      <LogoTurbina fill={color} isPlaying={isPlayingLogo} border={border} />
+      <LogoMarshak isBlurred={isExpandedPlayer} fill={color}/>
+      <VerticalLinksBar isBlurred={isExpandedPlayer} color={color} />
+      <LogoTurbina
+        isBlurred={isExpandedPlayer}
+        fill={color}
+        isPlaying={isPlayingLogo}
+        border={border} />
       <MediaPlayer
+        playlist={playlist}
+        setIsExpandedPlayer={setIsExpandedPlayer}
         songs={playlist}
         color={color}
         setIsPlayingLogo={setIsPlayingLogo}

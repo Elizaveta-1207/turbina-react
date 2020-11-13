@@ -16,6 +16,10 @@ const TitleLogo = styled.h1`
 
   @media screen and (max-width: 767px) {
     width: calc(400 * 100% / 480);
+    ${(props) => props.isBlurred && `
+    filter: blur(5px);
+    transition: filter 2s;
+    `}
   }
 
   @media screen and (max-width: 424px) {
@@ -28,8 +32,8 @@ const StyledSvg = styled.svg`
   pointer-events: all;
 `;
 
-const LogoTurbina = ({ fill, isPlaying, border }) => (
-    <TitleLogo>
+const LogoTurbina = ({ fill, isPlaying, border, isBlurred }) => (
+    <TitleLogo isBlurred={isBlurred}>
       <StyledSvg
         viewBox="0 0 861 273"
         >
@@ -64,10 +68,12 @@ LogoTurbina.propTypes = {
   fill: PropTypes.string,
   isPlaying: PropTypes.bool,
   border: PropTypes.number,
+  isBlurred: PropTypes.bool,
 };
 
 LogoTurbina.defaultProps = {
   fill: '#fff',
+  isBlurred: false,
   isPlaying: false,
   border: 90,
 };

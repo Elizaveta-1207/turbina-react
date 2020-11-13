@@ -1,9 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import RoundedButton from '../../CommonUtils/Templates/RoundedButton';
 
-const ClipButton = styled(RoundedButton)`
+const PlayerClipButton = styled(RoundedButton)`
   grid-area: clip;
   width: 94px;
   height: 35px;
@@ -23,13 +21,5 @@ const ClipButton = styled(RoundedButton)`
     height: 31px;
   }
 `;
-
-const PlayerClipButton = () => (
-  <ClipButton></ClipButton>
-);
-
-PlayerClipButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
 
 export default PlayerClipButton;

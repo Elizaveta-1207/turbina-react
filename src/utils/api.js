@@ -1,4 +1,6 @@
-/* import path from 'path'; */
+/* eslint-disable class-methods-use-this */
+import song1 from '../songs/song1.mp3';
+import song3 from '../songs/song3.mp3';
 
 class Api {
   constructor({ baseUrl, headers }) {
@@ -6,7 +8,6 @@ class Api {
     this._headers = headers;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   _getResponseData(response) {
     if (response.ok) {
       return response.json();
@@ -14,15 +15,16 @@ class Api {
     return Promise.reject(new Error(`Server interact Error! Status: ${response.status}`));
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getSongs() {
     return Promise.resolve([
       {
         title: 'Контур',
         artist: 'Хадн Дадн',
-        id: 'lkhjjhiiuyiuybh656547',
+        id: '423441',
+        cover: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSsWKgn9uYGGRHN20B3-oD2dCuOTrxCn__tuw&usqp=CAU)',
+        clip: 'https://youtu.be/XkQp5L4h1Vg',
         child: 'Варя Карпова и Федя Быстров',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        audioFile: song1,
         text:
 `I love la-la-la
 oh, I love la-la-la
@@ -34,9 +36,9 @@ oh, I love la-la-la`,
       {
         title: 'THE SECOND GOAT SONG',
         artist: 'THE UPPERCASE BAND',
-        id: 'lkhjewrrg22423547',
+        id: '222233',
         child: 'lowercase little jules',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
+        audioFile: song3,
         text: 'Мой милый милый мальчик Моя милая милая девочка Никогда не знаешь что будет дальше В этой гадкой зиме',
       },
     ]);
@@ -49,6 +51,10 @@ oh, I love la-la-la`,
     })
       .then((res) => this._getResponseData(res));
   } */
+
+  postForm() {
+    return Promise.resolve('ok');
+  }
 }
 
 export default new Api({

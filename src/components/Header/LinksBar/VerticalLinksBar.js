@@ -12,9 +12,16 @@ const StyledLinksBar = styled.div`
   flex-direction: column;
   align-items: flex-end;
   color: ${(props) => props.color};
+  @media screen and (max-width: 767px) {
+    ${(props) => props.isBlurred
+      && `
+      transition: filter 2s;
+      filter: blur(5px);
+      opacity: .5;`}
+  }
 `;
 
-export default function VerticalLinksBar({ color }) {
+const VerticalLinksBar = ({ color, isBlurred }) => {
   const [linksVisible, setLinksVisible] = React.useState(true);
   const [isMobileLayout, setIsMobileLayout] = React.useState(false);
 
@@ -40,7 +47,7 @@ export default function VerticalLinksBar({ color }) {
     setLinksVisible(!linksVisible);
   };
   return (
-    <StyledLinksBar color={color}>
+    <StyledLinksBar isBlurred={isBlurred} color={color}>
       {isMobileLayout
         && <LinksLayoutButton
             onClick={handleLinksLayoutButtonClick}
@@ -54,9 +61,14 @@ export default function VerticalLinksBar({ color }) {
       </LinksContainer>
     </StyledLinksBar>
   );
-}
-VerticalLinksBar.propTypes = {
-  link: PropTypes.string,
-  title: PropTypes.string,
-  color: PropTypes.string,
 };
+VerticalLinksBar.propTypes = {
+  color: PropTypes.string,
+  isBlurred: PropTypes.bool,
+};
+VerticalLinksBar.defaultProps = {
+  color: '#fff',
+  isBlurred: false,
+};
+
+export default VerticalLinksBar;

@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-mixed-operators */
-/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import PlaybackButton from './PlaybackButton';
@@ -19,11 +16,10 @@ import {
   TickerTextContainer,
 } from './StyledPlayerComponents/index';
 import playlist from '../../../playlist';
-import throttle from '../../../utils/throttle';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 
-const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
+const MediaPlayer = ({ color, setIsPlayingLogo, setBorder, setIsExpandedPlayer }) => {
   const audio = React.useRef(null);
   const songtitle = React.useRef(null);
   const songtitleWrap = React.useRef(null);
@@ -38,7 +34,6 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   const [songTitleTextWidth, setSongTitleTextWidth] = useState(0);
   const [songtitleWrapWidth, setSontitleWrapWidth] = useState(1);
   const [audioCtx, setAudioCtx] = useState(null);
-  const [audioData, setAudioData] = useState('');
 
   const setTickerDimensions = () => {
     if (!songtitleWrap.current || !songtitle.current) return;
@@ -69,9 +64,8 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
       analyser.getByteFrequencyData(dataArray);
       const analysed = dataArray
         .reduce((acc, i) => acc + i, 0) / dataArray.length;
-      const border = 100 - (analysed / 128 * 100);
+      const border = 100 - ((analysed / 128) * 100);
       setBorder(border);
-      setAudioData(border);
     };
   }, []);
 
@@ -85,7 +79,10 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   const handleExpandClick = () => {
     setIsExpanded(!isExpanded);
   };
-  useEffect(() => setTickerDimensions(), [isExpanded]);
+  useEffect(() => {
+    setTickerDimensions();
+    setIsExpandedPlayer(isExpanded);
+  }, [isExpanded]);
 
   const handleTimeUpdate = (evt) => {
     const songTime = Math.floor(evt.target.currentTime);
@@ -95,6 +92,7 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   const toggleContentState = () => {
     setContentIsText(!contentIsText);
   };
+
   const handleSongChange = (song) => {
     setPlaying(false);
     setCurrentSong(song);
@@ -114,7 +112,6 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   }, [isPlaying]);
 
   useEffect(() => {
-    console.log(audioData);
     setDuration(audio.current.duration);
     const playPercent = 100 * (audio.current.currentTime / audio.current.duration);
     setPlayHeadWidth(`${playPercent}%`);
@@ -147,41 +144,41 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
         onTimeUpdate={handleTimeUpdate}
         onLoadedData={() => setDuration(audio.current.duration)}
         onEnded={handleMediaEnd} />
-      <PlayerWrapper isExpanded={isExpanded}>
-      {isExpanded && (<PlayerSongCover />)}
-        <PlaybackButton
-          color={color}
-          isPlaying={isPlaying}
-          handlePlaybackClick={handlePlaybackClick} />
-        <Songtitle ref={songtitleWrap}>
-          <Ticker duration = '12s' parentWidth={songtitleWrapWidth} childWidth={songTitleTextWidth}>
-            <TickerTextContainer ref={songtitle}>
-              {currentSong.title} — {currentSong.artist}
-              <Songtitle featured> feat.</Songtitle>
-              {currentSong.child}
-            </TickerTextContainer>
-          </ Ticker>
-        </Songtitle>
-        <TimeIndicator currentTime={currentTime} duration={duration}/>
-        <ExpandButton
-          onClick={handleExpandClick}
-          isExpanded={isExpanded}
-          color={color} />
-        <Timeline
-          handleTimelineChange={handleTimelineChange}
-          color={color}
-          duration={duration}
-          playHeadWidth={playHeadWidth} />
-        {isExpanded
-          && (<PlayerInfoButton onClick={toggleContentState} contentIsText={contentIsText} />)}
-        {isExpanded
-          && (<PlayerClipButton />)}
-        {isExpanded
-          && (<MediaInfoBlock
-          handleSongChange={handleSongChange}
-          playlist={playlist}
-          currentSong={currentSong}
-          contentIsText={contentIsText} />)}
+      <PlayerWrapper isExpanded={isExpanded} hasClip={currentSong.clip}>
+      <PlaybackButton
+        color={color}
+        isPlaying={isPlaying}
+        handlePlaybackClick={handlePlaybackClick} />
+      <Songtitle ref={songtitleWrap}>
+        <Ticker duration = '12s' parentWidth={songtitleWrapWidth} childWidth={songTitleTextWidth}>
+          <TickerTextContainer ref={songtitle}>
+            {currentSong.title} — {currentSong.artist}
+            <Songtitle featured> feat.</Songtitle>
+            {currentSong.child}
+          </TickerTextContainer>
+        </ Ticker>
+      </Songtitle>
+      <TimeIndicator currentTime={currentTime} duration={duration}/>
+      <ExpandButton
+        onClick={handleExpandClick}
+        isExpanded={isExpanded}
+        color={color} />
+      <Timeline
+        handleTimelineChange={handleTimelineChange}
+        color={color}
+        duration={duration}
+        playHeadWidth={playHeadWidth} />
+      {isExpanded && (<PlayerSongCover cover={currentSong.cover} />)}
+      {isExpanded
+        && (<PlayerInfoButton onClick={toggleContentState} contentIsText={contentIsText} />)}
+      {isExpanded && currentSong.clip
+        && (<PlayerClipButton href={currentSong.clip} target="_blank"/>)}
+      {isExpanded
+        && (<MediaInfoBlock
+        handleSongChange={handleSongChange}
+        playlist={playlist}
+        currentSong={currentSong}
+        contentIsText={contentIsText} />)}
       </PlayerWrapper>
     </Player>
   );
@@ -191,6 +188,7 @@ MediaPlayer.propTypes = {
   color: PropTypes.string,
   setIsPlayingLogo: PropTypes.func,
   setBorder: PropTypes.func,
+  setIsExpandedPlayer: PropTypes.func,
 };
 MediaPlayer.defaultProps = {
   songs: [],

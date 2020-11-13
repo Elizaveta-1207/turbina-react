@@ -53,7 +53,9 @@ const FormInput = styled.input`
   font-weight: normal;
   font-size: 16px;
   line-height: 1.2;
-  color: #000;
+  color: ${(props) => (props.error === false
+    ? 'black'
+    : 'red')};
 
   &::placeholder {
     color: #00000080;
@@ -117,7 +119,10 @@ export default function SubmitForm({ onFormSubmit }) {
   const [checked, setChecked] = useState(false);
   const [anyInputInvalid, setAnyInputInvalid] = useState(true);
   const [showError, setShowError] = useState({});
-
+  const [buttonText, setButtonText] = useState('Отправить форму');
+  const [submitFailed, setSubmitFailed] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+ 
   const checkFormValidity = () => {
     const any = Object
       .values(errors)
@@ -127,6 +132,9 @@ export default function SubmitForm({ onFormSubmit }) {
 
   useEffect(() => {
     setErrors(validate(values));
+    setButtonText('отправить форму');
+    setSubmitFailed(false);
+    setSubmitError(null);
   }, [values]);
 
   useEffect(() => {
@@ -143,25 +151,31 @@ export default function SubmitForm({ onFormSubmit }) {
   };
 
   const handleFormSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
-    onFormSubmit();
+    onFormSubmit(values)
+      .then((res) => {
+        setButtonText(res.successMessage);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSubmitFailed(true);
+        setSubmitError(err.error);
+      });
   };
 
   return (
-    <StyledForm onSubmit={handleFormSubmit} action="POST">
+    <StyledForm onSubmit={(e) => handleFormSubmit(e)} action="POST">
     <InputWrapper>
       <FormInput
+      error={errors.name}
       value={values.name}
       onChange={handleInputChange}
-      error={errors.name}
       onFocus={() => setShowError({ ...showError, name: true })}
       onBlur={() => setShowError({})}
       type="text"
       name="name"
       placeholder="Имя и фамилия автора"
       id="name"
-      autoComplete="off"
       noValidate ></FormInput>
       {errors.name && <ErrorIndicator/>}
       {(errors.name && showError.name) && <ErrorMessage>{errors.name}</ErrorMessage>}
@@ -175,9 +189,9 @@ export default function SubmitForm({ onFormSubmit }) {
       onBlur={() => setShowError({})}
       type="email"
       placeholder="Почта"
+      error={errors.email}
       name="email"
       id="email"
-      autoComplete="off"
       noValidate />
       {errors.email && <ErrorIndicator/>}
       {(errors.email && showError.email) && <ErrorMessage>{errors.email}</ErrorMessage>}
@@ -190,10 +204,10 @@ export default function SubmitForm({ onFormSubmit }) {
       onFocus={() => setShowError({ tel: true })}
       onBlur={() => setShowError({})}
       type="tel"
+      error={errors.tel}
       name="tel"
       placeholder="Телефон"
       id="tel"
-      autoComplete="off"
       noValidate />
       {errors.tel && <ErrorIndicator/>}
       {(errors.tel && showError.tel) && <ErrorMessage>{errors.tel}</ErrorMessage>}
@@ -206,11 +220,11 @@ export default function SubmitForm({ onFormSubmit }) {
       onFocus={() => setShowError({ rhyme: true })}
       onBlur={() => setShowError({})}
       type="textarea"
+      error={errors.rhyme}
       placeholder="Стихи"
       rows="10"
       name="rhyme"
       id="rhyme"
-      autoComplete="off"
       noValidate />
       {errors.rhyme && <ErrorIndicator/>}
       {(errors.rhyme && showError.rhyme) && <ErrorMessage>{errors.rhyme}</ErrorMessage>}
@@ -229,12 +243,14 @@ export default function SubmitForm({ onFormSubmit }) {
         </CheckboxLabel>
         <CheckboxLabelText>
           Согласен с{' '}
-          <OfertLink href="#">офертой</OfertLink>
+{/*           // тут бы модалку сделать с офертой */}
+          <OfertLink href="#" target="_blank">офертой</OfertLink>
         </CheckboxLabelText>
       </OfertWrap>
       <FormButton
-        text="Отправить форму"
+        text={buttonText}
         disabled={anyInputInvalid} />
+     {submitFailed && (<ErrorMessage>{submitError}</ErrorMessage>)}
     </StyledForm>
   );
 }

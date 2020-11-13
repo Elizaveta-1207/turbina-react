@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
@@ -27,28 +28,28 @@ const StyledFormButton = styled(RoundedButton)`
     font-size: 12px;
     padding: 10px 20px;
   }
-  ${(props) => (props.disabled === true
+  ${(props) => (props.disabled === 'true'
     ? `
-  cursor: default;
+  cursor: inherit;
   opacity: .4;
   `
     : `
   &:hover {
-    font-style: italic;
+    font-style: ${(props) => (props.disabled === 'true'
+      ? 'normal' : 'italic')};
   }
   `)}
 `;
 
-export default function FormButton({ disabled = true, text }) {
-  return (
-      <StyledFormButton as="button"
-      className="form__btn"
-      disabled={disabled ? 'true' : ''}>
-        {text}
-      </StyledFormButton>
-  );
-}
+const FormButton = ({ disabled = true, text }) => (
+  <StyledFormButton
+    className="form__btn"
+    disabled={disabled ? 'true' : ''}>
+    {text}
+  </StyledFormButton>
+);
 FormButton.propTypes = {
   text: PropTypes.string,
   disabled: PropTypes.bool,
 };
+export default FormButton;

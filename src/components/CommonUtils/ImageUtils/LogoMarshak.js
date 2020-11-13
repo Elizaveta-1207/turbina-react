@@ -20,7 +20,12 @@ const PublishingLogoWrap = styled.div`
   
   @media screen and (max-width: 767px) {
     width: 40px;
-    height: 40px;  
+    height: 40px;
+    ${(props) => props.isBlurred
+      && `
+      transition: filter 2s;
+      filter: blur(5px);
+      opacity: .5;`}
   }
   
   @media screen and (max-width: 424px) {
@@ -37,8 +42,9 @@ height: 100%;
 pointer-events: all;
 `;
 
-const LogoMarshak = ({ fill }) => (
+const LogoMarshak = ({ fill, isBlurred }) => (
     <PublishingLogoWrap
+    isBlurred={isBlurred}
     rel="turbina"
     target="_blank"
     as="a"
@@ -52,10 +58,12 @@ const LogoMarshak = ({ fill }) => (
 
 LogoMarshak.propTypes = {
   fill: PropTypes.string,
+  isBlurred: PropTypes.bool,
 };
 
 LogoMarshak.defaultProps = {
   fill: '#fff',
+  isBlurred: false,
 };
 
 export default LogoMarshak;
