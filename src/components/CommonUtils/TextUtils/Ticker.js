@@ -39,11 +39,14 @@ const TickerContent = styled.div`
 
 const Ticker = (props) => {
   const { children, duration = '15s', parentWidth, childWidth } = props;
-  const [isActive, setIsActive] = React.useState(false);
+  const [isActive, setIsActive] = React.useState();
 
   React.useEffect(() => {
-    setIsActive(parentWidth <= childWidth);
-  }, [parentWidth, childWidth]);
+    setIsActive(parentWidth < childWidth);
+  }, []);
+  React.useEffect(() => {
+    setIsActive(parentWidth < childWidth);
+  }, [parentWidth]);
 
   return isActive
     ? (

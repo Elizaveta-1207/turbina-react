@@ -40,9 +40,6 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   const [audioCtx, setAudioCtx] = useState(null);
   const [audioData, setAudioData] = useState('');
 
-  // делаем привязку источника звука и выстраиваем граф звукового потока
-  //  через ноды-обработчики после начального рендера
-
   const setTickerDimensions = () => {
     if (!songtitleWrap.current || !songtitle.current) return;
     const parentWidth = songtitleWrap.current.getBoundingClientRect().width;
@@ -86,6 +83,7 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   };
 
   const handleExpandClick = () => {
+    setTickerDimensions();
     setIsExpanded(!isExpanded);
   };
 
