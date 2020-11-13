@@ -12,8 +12,8 @@ const PlayButton = styled.button`
   outline: none;
   background: none;
   ${(props) => (props.isExpanded
-    ? 'justify-self: center'
-    : 'justify-self: start')};
+    ? 'justify-self: start'
+    : 'justify-self: center')};
 
   @media screen and (max-width: 767px) {
     width: 16px;
