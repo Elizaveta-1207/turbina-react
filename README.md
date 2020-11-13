@@ -1,11 +1,12 @@
 # **Turbina**
-**Single page web application**
 
+[**visit site**](https://alex-kurkov.github.io/turbina-react/)
 ### tests and linter status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/053db1e58e79fc70e86f/maintainability)](https://codeclimate.com/github/alex-kurkov/turbina-react/maintainability)
 [![Linter CI](https://github.com/alex-kurkov/turbina-react/workflows/Linter%20CI/badge.svg)](https://github.com/alex-kurkov/turbina-react/actions)
 
-[En](#Content) [Ru](#Содержание)
+[En](#Content) [Ru](#Содержание)  
+---
 
 ### **Content**
   - [About](#About-Turbina-web-project)
@@ -71,7 +72,7 @@ The app can be configured by changing data of `turbinaconfig.js` in `/src/` dire
 > default cover for unsupplied covers
 
   made with React framework & styled-components
-  >>> Developers: Alex Kurkov, Elizabeth Timonina, Grigory Abramov
+**Developers: Alex Kurkov, Elizabeth Timonina, Grigory Abramov**
 
 ### **Содержание**
   - [О проекте](#О-проекте)
@@ -136,7 +137,7 @@ The app can be configured by changing data of `turbinaconfig.js` in `/src/` dire
 
 сделано на React с использованием styled-components
 
->>> Разработчики: Курков Алексей, Тимонина Елизавета, Абрамов Григорий
+**Разработчики: Курков Алексей, Тимонина Елизавета, Абрамов Григорий**
 
 --------
 [connect me / напишите мне](mailto:alexkourkov@yandex.ru "Email")
