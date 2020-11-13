@@ -55,10 +55,15 @@ function App() {
         })); */
       })
       .finally(() => setLoaderVisibible(false));
-
-    return Promise.resolve({
-      successMessage: 'Ура, форма отправлена!',
-    });
+    const random = Math.round(Math.random());
+    if (random) {
+      return Promise.resolve({
+        successMessage: 'Ура, форма отправлена!',
+      });
+    }
+    return Promise.reject(new Error({
+      error: 'Упс, что-то пошло не так и форма не отправилась, попробуйте ещё раз!',
+    }));
   };
 
   return (

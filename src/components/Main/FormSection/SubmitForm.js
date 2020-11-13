@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import FormButton from './FormButton';
 import validate from '../../../utils/validation';
+import { laterResolve } from '../../../utils/promisesTimeouted';
 
 const StyledForm = styled.form`
   display: flex;
@@ -110,6 +111,9 @@ color: red;
   content: '*';
 }
 `;
+const ErrorSubmitMessage = styled(ErrorMessage)`
+margin-top: 12px;
+margin-bottom: 0;`;
 
 export default function SubmitForm({ onFormSubmit }) {
   const [errors, setErrors] = useState({
@@ -155,11 +159,19 @@ export default function SubmitForm({ onFormSubmit }) {
     onFormSubmit(values)
       .then((res) => {
         setButtonText(res.successMessage);
+        laterResolve(4000).then(() => {
+          setButtonText('отправить форму');
+        });
       })
       .catch((err) => {
         console.log(err);
         setSubmitFailed(true);
-        setSubmitError(err.error);
+        setSubmitError('Упс, что-то пошло не так и форма не отправилась, попробуйте ещё раз!');
+        laterResolve(3000).then(() => {
+          setSubmitFailed(false);
+          setSubmitError(null);
+          setButtonText('отправить форму');
+        });
       });
   };
 
@@ -250,7 +262,7 @@ export default function SubmitForm({ onFormSubmit }) {
       <FormButton
         text={buttonText}
         disabled={anyInputInvalid} />
-     {submitFailed && (<ErrorMessage>{submitError}</ErrorMessage>)}
+     {submitFailed && (<ErrorSubmitMessage>{submitError}</ErrorSubmitMessage>)}
     </StyledForm>
   );
 }
