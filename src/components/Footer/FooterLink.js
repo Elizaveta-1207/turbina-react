@@ -10,9 +10,7 @@ const StyledFooterLink = styled.a`
   }
 `;
 
-export default function FooterLink({ text, link }) {
-  return (<StyledFooterLink href={link} target="_blank">{text}</StyledFooterLink>);
-}
+const FooterLink = ({ text, link }) => (<StyledFooterLink href={link} target="_blank">{text}</StyledFooterLink>);
 
 FooterLink.propTypes = {
   text: PropTypes.string,
@@ -21,3 +19,4 @@ FooterLink.propTypes = {
 FooterLink.defaultProps = {
   link: 'https://praktikum.yandex.ru',
 };
+export default FooterLink;

@@ -11,10 +11,14 @@ const PlayButton = styled.button`
   border: none;
   outline: none;
   background: none;
+  ${(props) => (props.isExpanded
+    ? 'justify-self: center'
+    : 'justify-self: start')};
 
   @media screen and (max-width: 767px) {
     width: 16px;
     height: 16px;
+    justify-self: start;
   }
 `;
 const ClickablePath = styled.path`

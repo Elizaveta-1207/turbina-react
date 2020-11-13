@@ -1,8 +1,8 @@
-import React from 'react';
 import styled from 'styled-components/macro';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const StyledCopyright = styled.p`
+const DevelopersParagraph = styled.p`
   margin: 0;
   font-weight: normal;
   font-size: 16px;
@@ -20,10 +20,10 @@ const StyledCopyright = styled.p`
     font-size: 12px;
   }
 `;
+const Developers = ({ children }) => (<DevelopersParagraph>{children}</DevelopersParagraph>);
 
-const Copyright = ({ text, children }) => (<StyledCopyright>{text}{children}</StyledCopyright>);
-Copyright.propTypes = {
-  text: PropTypes.string,
-  children: PropTypes.array,
+Developers.propTypes = {
+  children: PropTypes.object,
 };
-export default Copyright;
+
+export default Developers;

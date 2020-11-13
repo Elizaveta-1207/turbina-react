@@ -146,6 +146,7 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder, setIsExpandedPlayer }
         onEnded={handleMediaEnd} />
       <PlayerWrapper isExpanded={isExpanded} hasClip={currentSong.clip}>
       <PlaybackButton
+        isExpanded={isExpanded}
         color={color}
         isPlaying={isPlaying}
         handlePlaybackClick={handlePlaybackClick} />

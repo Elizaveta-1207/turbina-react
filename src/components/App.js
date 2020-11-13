@@ -73,7 +73,7 @@ const App = () => {
         <Header playlist={playlist} />
         <Main onFormSubmit={onFormSubmit} />
         <Footer />
-        {isLoaderVisible && (<Loader />)}
+        {isLoaderVisible && <Loader />}
       </Page>
     </AppContext.Provider>
   );

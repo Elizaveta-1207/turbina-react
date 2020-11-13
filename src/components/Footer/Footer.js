@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Copyright from './Copyright';
 import FooterLink from './FooterLink';
+import Developers from './Developers';
 
 const StyledFooter = styled.footer`
   padding: 20px 15px;
@@ -14,15 +15,15 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export default function Footer() {
+const Footer = () => {
   const today = new Date();
   const yearNow = today.getFullYear();
   return (
     <StyledFooter>
       <Copyright text={`\u00A9 Маршак, ${yearNow}.`} />
-      <Copyright text="Сделано студентами ">
-        <FooterLink href="https://praktikum.yandex.ru" text="Яндекс.Практикум" />
-      </Copyright>
+      <Developers>Сделано студентами <FooterLink href="https://praktikum.yandex.ru" text="Яндекс.Практикум" /></Developers>
     </StyledFooter>
   );
-}
+};
+
+export default Footer;
