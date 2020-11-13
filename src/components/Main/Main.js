@@ -8,8 +8,7 @@ import AppContext from '../../contexts/AppContext';
 const MainInfo = styled.section`
   background-color: #fff;
   border-radius: 10px;
-  padding: 110px 51px;
-  margin: auto 10px;
+  padding: 110px 50px;
   color: #000;
   z-index: 10;
 

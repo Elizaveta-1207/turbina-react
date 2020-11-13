@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const StyledCopyright = styled.p`
   margin: 0;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
   text-decoration: none;
 

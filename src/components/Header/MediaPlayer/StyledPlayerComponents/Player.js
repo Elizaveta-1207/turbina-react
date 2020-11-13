@@ -2,10 +2,10 @@ import styled from 'styled-components/macro';
 
 const Player = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 0;
   width: 100%;
-  padding: 0 25px;
+  padding: 0 20px;
   box-sizing: border-box;
   z-index: 2;
   transition: max-height 1s ease-in-out;

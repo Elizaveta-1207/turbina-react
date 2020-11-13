@@ -7,11 +7,11 @@ const PlayerWrapper = styled.div`
   display: grid;
   align-items: center;
   grid-template-rows: ${(props) => (props.isExpanded
-    ? '34px 6px 28px 96px'
-    : '34px 6px')};
+    ? '42px 6px 28px 96px'
+    : '42px 6px')};
   grid-template-columns: ${(props) => (props.isExpanded
     ? '176px 60px 10fr 1fr 114px 145px 40px'
-    : '44px 12fr 1fr 40px')};
+    : '38px 12fr 1fr 44px')};
   grid-template-areas: ${(props) => (props.isExpanded
     ? `'cover button title duration clip mode subtrack'
       'cover . timeline timeline . . .'

@@ -5,7 +5,7 @@ const PlayHead = styled.div.attrs((props) => ({
     width: props.width,
   },
 }))`
-  height: 6px;
+  height: 4px;
   width: 1px;
   max-width: 100%;
   background-color: ${(props) => props.color || 'white'};
