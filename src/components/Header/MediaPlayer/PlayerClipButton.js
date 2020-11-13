@@ -1,26 +1,6 @@
 import styled from 'styled-components/macro';
-// import RoundedButton from '../../CommonUtils/Templates/RoundedButton';
-
-// const ClipButton = styled(RoundedButton)`
-//   grid-area: clip;
-//   width: 94px;
-//   height: 35px;
-//   padding: 0 10px;
-//   font-weight: 500;
-//   font-size: 16px;
-//   border: none;
-//   background: #fff;
-//   justify-self: end;
-
-//   @media screen and (max-width: 767px) {
-//     width: 100%;
-//     margin-top: 20px;
-//   }
-//   @media screen and (max-width: 424px) {
-//     font-size: 12px;
-//     height: 31px;
-//   }
-// `;
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const ClipButton = styled.button`
   grid-area: clip;
@@ -52,8 +32,6 @@ const ClipButton = styled.button`
   }
 `;
 
-<<<<<<< HEAD
-=======
 const ClickablePath = styled.path`
 cursor: pointer;
 `;
@@ -65,7 +43,7 @@ const SvgButton = styled.svg`
 const PlayerClipButton = ({ color }) => (
   <ClipButton>
     <SvgButton
-        viewBox="0 0 94 35"
+      viewBox="0 0 94 35"
         fill='none' >
         <mask id="path-1-inside-1" fill={color}>
         <path fillRule="evenodd" clipRule="evenodd" d="M17.5 0C7.83502 0 0 7.83502 0 17.5C0 27.165 7.83502 35 17.5 35H76.5C86.165 35 94 27.165 94 17.5C94 7.83502 86.165 0 76.5 0H17.5ZM42.4986 23.0001H44.6406L39.8395 16.6251L44.669 11.3638H42.4929L37.9645 16.2785H37.3622V11.3638H35.6065V23.0001H37.3622V17.7842H38.5668L42.4986 23.0001ZM45.5952 23.0001H46.1406C48.044 23.0001 48.7429 21.591 48.8793 18.7047L49.0156 15.7388H51.8679V23.0001H53.5327V14.2729H47.4418L47.2884 18.1365C47.1804 20.8297 46.8736 21.5285 45.902 21.5285H45.5895L45.5952 23.0001ZM57.4631 20.6195V14.2729H55.7983V23.0001H57.6449L61.4744 16.6479V23.0001H63.1392V14.2729H61.3097L57.4631 20.6195ZM65.4233 23.0001H67.0767V15.7388H70.8778V23.0001H72.5426V14.2729H65.4233V23.0001ZM25.5825 16.7441C26.1392 17.1021 26.1392 17.8982 25.5825 18.2562L18.4412 22.8489C17.8233 23.2462 17 22.8143 17 22.0928V12.9074C17 12.1859 17.8233 11.754 18.4412 12.1514L25.5825 16.7441Z"/>
@@ -77,9 +55,7 @@ const PlayerClipButton = ({ color }) => (
 );
 
 PlayerClipButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
   color: PropTypes.string,
 };
 
->>>>>>> cee419e19413a7dc4f26c7bea08347d9fdb86bfa
 export default PlayerClipButton;
