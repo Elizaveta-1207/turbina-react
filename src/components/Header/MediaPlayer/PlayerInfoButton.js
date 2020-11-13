@@ -18,7 +18,7 @@ const InfoButton = styled(RoundedButton)`
     font-style: italic;;
   }
   @media screen and (max-width: 767px) {
-    width: 100%;
+    width: 95%;
     margin-top: 20px;
   }
   @media screen and (max-width: 424px) {

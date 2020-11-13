@@ -83,9 +83,9 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   };
 
   const handleExpandClick = () => {
-    setTickerDimensions();
     setIsExpanded(!isExpanded);
   };
+  useEffect(() => setTickerDimensions(), [isExpanded]);
 
   const handleTimeUpdate = (evt) => {
     const songTime = Math.floor(evt.target.currentTime);

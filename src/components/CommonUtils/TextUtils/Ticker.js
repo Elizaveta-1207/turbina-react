@@ -43,10 +43,7 @@ const Ticker = (props) => {
 
   React.useEffect(() => {
     setIsActive(parentWidth < childWidth);
-  }, []);
-  React.useEffect(() => {
-    setIsActive(parentWidth < childWidth);
-  }, [parentWidth]);
+  }, [parentWidth, childWidth]);
 
   return isActive
     ? (
