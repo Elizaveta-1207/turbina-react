@@ -23,7 +23,7 @@ import throttle from '../../../utils/throttle';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 
-const MediaPlayer = ({ color }) => {
+const MediaPlayer = ({ color, setIsPlayingLogo, setBorder }) => {
   const audio = React.useRef(null);
   const songtitle = React.useRef(null);
   const songtitleWrap = React.useRef(null);
@@ -70,8 +70,11 @@ const MediaPlayer = ({ color }) => {
 
     processor.onaudioprocess = () => {
       analyser.getByteFrequencyData(dataArray);
-      const data = dataArray.toString();
-      setAudioData(data);
+      const analysed = dataArray
+        .reduce((acc, i) => acc + i, 0) / dataArray.length;
+      const border = 100 - (analysed / 128 * 100);
+      setBorder(border);
+      setAudioData(border);
     };
   }, []);
 
@@ -79,6 +82,7 @@ const MediaPlayer = ({ color }) => {
 
   const handlePlaybackClick = () => {
     setPlaying(!isPlaying);
+    setIsPlayingLogo(!isPlaying);
   };
 
   const handleExpandClick = () => {
@@ -187,6 +191,11 @@ const MediaPlayer = ({ color }) => {
 MediaPlayer.propTypes = {
   songs: PropTypes.array.isRequired,
   color: PropTypes.string,
+  setIsPlayingLogo: PropTypes.func,
+  setBorder: PropTypes.func,
 };
-
+MediaPlayer.defaultProps = {
+  songs: [],
+  color: '#fff',
+};
 export default MediaPlayer;

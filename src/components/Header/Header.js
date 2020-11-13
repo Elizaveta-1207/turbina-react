@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import LogoMarshak from '../CommonUtils/ImageUtils/LogoMarshak';
@@ -25,22 +25,28 @@ const AppHeader = styled.header`
   }
 `;
 
-export default function Header({ playlist }) {
+const Header = ({ playlist }) => {
   const { header } = React.useContext(AppContext);
   const { color } = header.style;
+  const [isPlayingLogo, setIsPlayingLogo] = useState();
+  const [border, setBorder] = useState();
 
   return (
     <AppHeader>
       <LogoMarshak fill={color}/>
       <VerticalLinksBar color={color} />
-      <LogoTurbina fill={color} />
+      <LogoTurbina fill={color} isPlaying={isPlayingLogo} border={border} />
       <MediaPlayer
         songs={playlist}
-        color={color}/>
+        color={color}
+        setIsPlayingLogo={setIsPlayingLogo}
+        setBorder={setBorder}/>
     </AppHeader>
   );
-}
+};
 
 Header.propTypes = {
   playlist: PropTypes.array.isRequired,
 };
+
+export default Header;
