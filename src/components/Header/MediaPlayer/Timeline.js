@@ -54,7 +54,7 @@ const Timeline = ({ handleTimelineChange, duration, playHeadWidth, color }) => {
 };
 
 Timeline.propTypes = {
-  playHeadWidth: PropTypes.number,
+  playHeadWidth: PropTypes.string,
   duration: PropTypes.number,
   color: PropTypes.string,
   handleTimelineChange: PropTypes.func.isRequired,

@@ -9,7 +9,7 @@ import AppContext from '../contexts/AppContext';
 import api from '../utils/api';
 import config from '../turbinaconfig';
 
-const Page = styled.div`
+const Page = styled.main`
   min-width: 320px;
   max-width: 1280px;
   margin: 0 auto;

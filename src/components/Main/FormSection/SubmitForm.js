@@ -142,8 +142,14 @@ export default function SubmitForm({ onFormSubmit }) {
     setValues({ ...values, [key]: value });
   };
 
+  const handleFormSubmit = (e) => {
+    console.log(e);
+    e.preventDefault();
+    onFormSubmit();
+  };
+
   return (
-    <StyledForm action="#">
+    <StyledForm onSubmit={handleFormSubmit} action="POST">
     <InputWrapper>
       <FormInput
       value={values.name}
@@ -228,7 +234,6 @@ export default function SubmitForm({ onFormSubmit }) {
       </OfertWrap>
       <FormButton
         text="Отправить форму"
-        onClick={onFormSubmit}
         disabled={anyInputInvalid} />
     </StyledForm>
   );

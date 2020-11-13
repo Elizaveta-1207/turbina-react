@@ -5,7 +5,7 @@ import FormSection from './FormSection/FormSection';
 import Article from './ArticleSection/Article';
 import AppContext from '../../contexts/AppContext';
 
-const MainInfo = styled.main`
+const MainInfo = styled.section`
   background-color: #fff;
   border-radius: 10px;
   padding: 110px 51px;

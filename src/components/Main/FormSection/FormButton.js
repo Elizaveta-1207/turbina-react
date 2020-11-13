@@ -27,7 +27,7 @@ const StyledFormButton = styled(RoundedButton)`
     font-size: 12px;
     padding: 10px 20px;
   }
-  ${(props) => (props.disabled === 'true'
+  ${(props) => (props.disabled === true
     ? `
   cursor: default;
   opacity: .4;

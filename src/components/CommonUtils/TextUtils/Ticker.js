@@ -59,9 +59,8 @@ const Ticker = (props) => {
 };
 
 Ticker.propTypes = {
-  duration: PropTypes.string.isRequired,
-  children: PropTypes.array.isRequired,
-  active: PropTypes.bool.isRequired,
+  duration: PropTypes.string,
+  children: PropTypes.object.isRequired,
   parentWidth: PropTypes.number.isRequired,
   childWidth: PropTypes.number.isRequired,
 };

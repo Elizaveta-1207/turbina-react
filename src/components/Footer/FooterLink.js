@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 
-const StyledFooterLink = styled.footer`
+const StyledFooterLink = styled.a`
   color: #fff;
 
   &:hover {
