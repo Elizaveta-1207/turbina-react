@@ -1,5 +1,8 @@
 export default {
+  // ссылки хедера
+  // ссылка на сайт издательства
   marshakLink: 'https://marshakbooks.ru/',
+  // названия кнопок и ссылки в верхнем меню Стриминги
   links: [
     { link: 'https://music.yandex.ru/home',
       title: 'Яндекс.Музыка ↗',
@@ -18,6 +21,7 @@ export default {
       id: '123833218rn',
     },
   ],
+  // здесь можно задать неограниченное число текстовых информационных блоков в секции мэйн
   texts: {
     article1: {
       title: 'О проекте.',
@@ -42,9 +46,10 @@ export default {
       ],
     },
   },
+  // настройки стилей фона, хедера и плеера
   background: {
-    isStatic: true,
     customImg: false,
+    // если customBackground == false, то на фоне будет 'живой градиент'
     // если customBackground == true, на фон применится картинка по адресу ниже:
     customImgUrl: 'url(https://img2.akspic.ru/image/113523-sinij-nebo-muzyka-liniya-atmosfera-1920x1080.jpg)',
   },

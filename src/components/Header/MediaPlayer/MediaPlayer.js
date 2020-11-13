@@ -173,7 +173,7 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder, setIsExpandedPlayer }
       {isExpanded
         && (<PlayerInfoButton onClick={toggleContentState} contentIsText={contentIsText} />)}
       {isExpanded
-        && (<PlayerClipButton hasClip={!!currentSong.clip} color={color} href={currentSong.clip} target="_blank"/>)}
+        && (<PlayerClipButton hasClip={!!currentSong.clip} color={color} link={currentSong.clip} target="_blank"/>)}
       {isExpanded
         && (<MediaInfoBlock
         handleSongChange={handleSongChange}

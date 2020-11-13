@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import AppContext from '../../../contexts/AppContext';
-import defaultBackground from '../../../images/background-bottom.jpg';
 
 const LiveBackground = styled.div`
 @keyframes rotation {
@@ -9,8 +8,6 @@ const LiveBackground = styled.div`
     background-position: 0 300px;
   }
 }
-  background: url("../../images/background-top.jpg") top center no-repeat,
-    url("../../images/background-bottom.jpg") bottom center no-repeat;
   transition: background-position 0.5s ease-out;
   position: fixed;
   background-size: cover;
@@ -20,18 +17,19 @@ const LiveBackground = styled.div`
   background: linear-gradient(#212d80, #275b82, #4e7b6c, #9c9089, #eaa4a6, #a08590,#212d80);
   animation: rotation 15s linear infinite alternate;
   object-fit: cover;
+  ${(props) => !!props.url && `
+  background: ${props.url};
+  animation: none;
+  transition: none;
+  background-size: cover;
+  `}
 `;
 
 const Background = () => {
   const { background } = React.useContext(AppContext);
-
-  return background.isStatic
-    ? (
+  return (
     <LiveBackground
-      url={background.customImg
-        ? background.customImgUrl
-        : `url(${defaultBackground})`} />)
-    : (<>no bg yet</>);
+      url={background.customImg && background.customImgUrl}/>
+  );
 };
-
 export default Background;

@@ -46,8 +46,8 @@ const LogoMarshak = ({ link, fill, isBlurred }) => (
     <PublishingLogoWrap
     isBlurred={isBlurred}
     rel="turbina"
-    target="_blank"
     as="a"
+    target="_blank"
     href={link}>
       <SvgButton
         viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">

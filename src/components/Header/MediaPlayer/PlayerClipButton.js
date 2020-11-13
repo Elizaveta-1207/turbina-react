@@ -48,8 +48,8 @@ const SvgButton = styled.svg`
   height: 100%;
 `;
 
-const PlayerClipButton = ({ color, hasClip }) => (
-  <ClipButton hasClip={!!hasClip}>
+const PlayerClipButton = ({ link, color, hasClip }) => (
+  <ClipButton as="a" href={link} target="_blank" hasClip={!!hasClip}>
     <SvgButton
       viewBox="0 0 94 35"
         fill='none' >
@@ -64,6 +64,7 @@ const PlayerClipButton = ({ color, hasClip }) => (
 
 PlayerClipButton.propTypes = {
   color: PropTypes.string,
+  link: PropTypes.string,
   hasClip: PropTypes.oneOfType([bool, string]),
 };
 

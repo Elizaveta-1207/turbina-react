@@ -10,12 +10,12 @@
 ### **Content**
   - [About](#About-Turbina-web-project)
   - [Cofiguring app](#Cofiguring-app)
-  - [Submitting new poem](#Submitting-new-poem)
-  - [Further development](#Further-development)
+  - [Form Validation](#Form-Validation)
+  - [Features](#Features)
 
 
 ## About Turbina web project
-blah-blah-blah
+A non-commercial project by [Marshak](https://marshakbooks.ru/) publishing House and [Yandex.Praktikum](https://praktikum.yandex.ru/)
 
 ## Cofiguring app
 The app can be configured by changing data of `turbinaconfig.js` in `/src/` directory
@@ -29,44 +29,114 @@ The app can be configured by changing data of `turbinaconfig.js` in `/src/` dire
     },
   },
 ```
-- Customize background logo by changing `customBackground` key and providing custom image url in `background` key
+- Customize background image by changing `customBackground` key and providing custom image url in `background` key
 ```js
   background: {
-    isStatic: true,
     customBackground: false,
     style: {
       background: 'url([your url here])',
     },
   },
 ```
-! As of Nov, 06, 2020 the field `isStatic` is not active !
+- define publishing logo link
 
-- Provide your custom texts and titles for three InfoBlocks in subsequent article keys
+- set Streamings menu links and button-titles 
 
-## Submitting new poem
- 
+- Provide your custom texts and titles for as many as you want InfoBlocks in subsequent article keys
 
-## Further development
+## Form Validation
+  The provided submit form enables live validation and disables submit button while any of inputs is invalid.
+  The validated parameters are partially tested by regular Expressions and partially by text length.
+  While live validation indicates error messages of only the active input field, other invalid inputs are highlighted by red asterisks.
+  *Still waiting for the backend readiness to develop server interaction*
 
+## Features
+  - live gradient Background
+  - music-dependant Logo live color filling
+  - colors configuered
+  - running-line (ticker) in player's song title adapting to window size
+  - default cover for unsupplied covers
+  - adaptive disign
+  - loader upon api fetch requests
+  - song playback position change by click or grag&drop on the player timeline (progress-bar)
+  - smaller UX/UI features:
+> clip button disabled, but shown, if no clip is provided to trigger user interest to other tracks
+>
+> red asterisk indication of invalid input forms
+>
+> svg and other images compressed to boost loading
+>
+> as of Nov, 14, 2020, server-responses are imitated
+>
+> default cover for unsupplied covers
+
+  made with React framework & styled-components
+  >>> Developers: Alex Kurkov, Elizabeth Timonina, Grigory Abramov
 
 ### **Содержание**
   - [О проекте](#О-проекте)
   - [Конфигурация приложения](#Конфигурация-приложения)
-  - [Отправка стихотворения](#Отправка-стихотворения)
-  - [Развитие проекта](#Развитие-проекта)
+  - [Валидация формы](#Валидация-формы)
+  - [Особенности](#Особенности)
 
 
 ## О проекте
-врыа
+Некоммерческий проект издательства Маршак и Яндекс.Практикум
 
 ## Конфигурация приложения
-ффффф
+Приложение может быть сконфигурировано путем изменения полей в файле `turbinaconfig.js` в директории `/src/` перед деплой-сборкой, также предполагается дальнейшая настройка через страницу администратора
 
-## Отправка стихотворения
-ааааа 
+### Вы можете: ###
+- Установить цвет всех логотипов, кнопок и текстов меню, кнопок, текстов, бегунка времени в плеере, поменяв это свойство: 
+```js
+  header: {
+    style: {
+      color: '#fff',
+    },
+  },
+```
+- Также возможна установка любого изображения на статичный фон страницы путем установки ключа `customBackground` в true и записи ссылки на изображение в `background`
+```js
+  background: {
+    customBackground: false,
+    style: {
+      background: 'url([your url here])',
+    },
+  },
+```
+Также можно сконфигурировать через `turbinaconfig.js`:
+- ссылку на сайт издательства
 
-## Развитие проекта
-ыавп
- 
+- названия и ссылки кнопок меню Стриминги 
+
+- тексты и заголовки неограниченного количества статей в инфоблоке
+
+## Валидация формы
+Форма отправки использует "живую валидацию" активного поля, показывая пользователю возможные ошибки, при этом другие невалидные поля не отображают ошибки, но помечаются небольшим красным индикатором. Кнопка "Отправить" до тех пор, пока все поля не валидны. *В настоящее время серверная часть приложения находится в процессе разработки, поэтому применена кодовая имитация обмена данными с сервером с рандомной выдачей результата обмена.*
+
+
+## Особенности
+  - живой градиентный фон по-умолчанию
+  - градиентная заливка логотипа в зависимости от частот музыкального трека
+  - конфигурационный файл (см [выше](#Конфигурация-приложения))
+  - Бегущая строка названия трека, адаптирующаяся к размеру окна 
+  - адаптивный дизайн
+  - индикация загрузки
+  - перемотка трека путем клика либо перетаскивания бегунка на индикаторе проигрывания плеера 
+  - небольшие фишки UX/UI:
+> затемнение и отключение кнопки клип, при отсутсвии клипа (рендер кнопки сохранен для пробуждения внимания к другим трекам, у которых есть клип)
+>
+> живая индикация валидности формы в режимах активного и неактивного ввода
+>
+> компрессия изображений, где возможно - применена легкая векторная графика
+>
+> имитация работы сервера (до готовности бэкэнда)
+>
+> дефолтная обложка музыкального трека при невозможности загрузить оригинал
+
+сделано на React с использованием styled-components
+
+>>> Разработчики: Курков Алексей, Тимонина Елизавета, Абрамов Григорий
+
 --------
 [connect me / напишите мне](mailto:alexkourkov@yandex.ru "Email")
