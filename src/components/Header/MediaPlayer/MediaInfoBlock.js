@@ -40,7 +40,7 @@ const MediaInfoBlock = ({ playlist, currentSong, contentIsText, handleSongChange
         setContent(
           (<>
           <Subtitle>Текст песни:</Subtitle>
-          <BlockContent> {`${currentSong.text}`} </BlockContent></>),
+          <BlockContent>{currentSong.text}</BlockContent></>),
         );
         break;
       default:

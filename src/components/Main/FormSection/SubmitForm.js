@@ -136,9 +136,6 @@ const SubmitForm = ({ onFormSubmit }) => {
 
   useEffect(() => {
     setErrors(validate(values));
-    setButtonText('отправить форму');
-    setSubmitFailed(false);
-    setSubmitError(null);
   }, [values]);
 
   useEffect(() => {
@@ -176,7 +173,7 @@ const SubmitForm = ({ onFormSubmit }) => {
   };
 
   return (
-    <StyledForm onSubmit={(e) => handleFormSubmit(e)} action="POST">
+    <StyledForm onSubmit={(e) => handleFormSubmit(e)}>
     <InputWrapper>
       <FormInput
       error={errors.name}

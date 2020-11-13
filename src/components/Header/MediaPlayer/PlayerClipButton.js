@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import PropTypes from 'prop-types';
+import PropTypes, { bool, string } from 'prop-types';
 import React from 'react';
 
 const ClipButton = styled.button`
@@ -14,12 +14,17 @@ const ClipButton = styled.button`
   align-self: center;
   justify-self: end;
   height: 35px;
+  ${(props) => !props.hasClip && `
+  cursor: inherit;
+  opacity: .3
+  `};
 
   justify-self: end;
-
+  ${(props) => !props.hasClip && `
   &:hover {
     opacity: .6;
   }
+  `};
 
   @media screen and (max-width: 767px) {
     justify-self: start;
@@ -40,8 +45,8 @@ const SvgButton = styled.svg`
   height: 100%;
 `;
 
-const PlayerClipButton = ({ color }) => (
-  <ClipButton>
+const PlayerClipButton = ({ color, hasClip }) => (
+  <ClipButton hasClip={!!hasClip}>
     <SvgButton
       viewBox="0 0 94 35"
         fill='none' >
@@ -56,6 +61,7 @@ const PlayerClipButton = ({ color }) => (
 
 PlayerClipButton.propTypes = {
   color: PropTypes.string,
+  hasClip: PropTypes.oneOfType([bool, string]),
 };
 
 export default PlayerClipButton;
