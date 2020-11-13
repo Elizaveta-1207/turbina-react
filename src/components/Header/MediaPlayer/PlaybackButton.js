@@ -11,10 +11,6 @@ const PlayButton = styled.button`
   border: none;
   outline: none;
   background: none;
-  transition: opacity 0.3s ease-in-out;
-  &:hover {
-    opacity: .6;
-  }
 
   @media screen and (max-width: 767px) {
     width: 16px;
@@ -23,6 +19,10 @@ const PlayButton = styled.button`
 `;
 const ClickablePath = styled.path`
 cursor: pointer;
+transition: opacity 0.3s ease-in-out;
+&:hover {
+  opacity: .6;
+}
 `;
 const SvgButton = styled.svg`
 width: 100%;
