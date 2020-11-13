@@ -115,7 +115,7 @@ const ErrorSubmitMessage = styled(ErrorMessage)`
 margin-top: 12px;
 margin-bottom: 0;`;
 
-export default function SubmitForm({ onFormSubmit }) {
+const SubmitForm = ({ onFormSubmit }) => {
   const [errors, setErrors] = useState({
     tel: '',
   });
@@ -265,7 +265,9 @@ export default function SubmitForm({ onFormSubmit }) {
      {submitFailed && (<ErrorSubmitMessage>{submitError}</ErrorSubmitMessage>)}
     </StyledForm>
   );
-}
+};
 SubmitForm.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
 };
+
+export default SubmitForm;

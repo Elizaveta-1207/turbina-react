@@ -10,10 +10,9 @@ const Paragraph = styled.p`
   }
 `;
 
-export default function ArticleParagraph({ content }) {
-  return (<Paragraph>{content}</Paragraph>);
-}
+const ArticleParagraph = ({ content }) => (<Paragraph>{content}</Paragraph>);
 
 ArticleParagraph.propTypes = {
   content: PropTypes.string,
 };
+export default ArticleParagraph;

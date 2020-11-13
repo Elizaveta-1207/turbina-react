@@ -24,7 +24,7 @@ const Page = styled.main`
   -moz-text-size-adjust: 100%;
 `;
 
-function App() {
+const App = () => {
   const [playlist, setPlaylist] = React.useState([]);
   const [isLoaderVisible, setLoaderVisibible] = React.useState(false);
 
@@ -77,6 +77,6 @@ function App() {
       </Page>
     </AppContext.Provider>
   );
-}
+};
 
 export default App;

@@ -22,17 +22,16 @@ const InfoArticle = styled.article`
   }
 `;
 
-export default function Article({ title, content }) {
-  return (
+const Article = ({ title, content }) => (
     <InfoArticle>
       <BlockTitle title={title} />
         {content.map((paragraph, i) => (
           <ArticleParagraph content={paragraph} key={`${title}-${i}`} />
         ))}
     </InfoArticle>
-  );
-}
+);
 Article.propTypes = {
   title: PropTypes.string,
   content: PropTypes.array,
 };
+export default Article;

@@ -29,8 +29,7 @@ width: 100%;
 height: 100%;
 `;
 
-export default function ExpandButton({ color, isExpanded, onClick }) {
-  return (
+const ExpandButton = ({ color, isExpanded, onClick }) => (
     <PlayButton>
       <SvgButton onClick={() => onClick()}
         viewBox="0 0 24 24"
@@ -42,10 +41,10 @@ export default function ExpandButton({ color, isExpanded, onClick }) {
         }
       </SvgButton>
     </PlayButton>
-  );
-}
+);
 ExpandButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   isExpanded: PropTypes.bool.isRequired,
   color: PropTypes.string.isRequired,
 };
+export default ExpandButton;

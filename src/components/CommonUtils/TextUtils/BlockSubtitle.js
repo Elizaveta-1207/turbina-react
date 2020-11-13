@@ -21,10 +21,10 @@ const StyledSubtitle = styled.h3`
   }
 `;
 
-export default function BlockSubtitle({ subtitle }) {
-  return <StyledSubtitle>{subtitle}</StyledSubtitle>;
-}
+const BlockSubtitle = ({ subtitle }) => <StyledSubtitle>{subtitle}</StyledSubtitle>;
 
 BlockSubtitle.propTypes = {
   subtitle: PropTypes.string,
 };
+
+export default BlockSubtitle;

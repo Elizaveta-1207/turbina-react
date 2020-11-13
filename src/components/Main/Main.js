@@ -22,7 +22,7 @@ const MainInfo = styled.section`
   }
 `;
 
-export default function Main({ onFormSubmit }) {
+const Main = ({ onFormSubmit }) => {
   const { texts } = React.useContext(AppContext);
   return (
     <MainInfo>
@@ -38,7 +38,8 @@ export default function Main({ onFormSubmit }) {
       <FormSection onFormSubmit={onFormSubmit} />
     </MainInfo>
   );
-}
+};
 Main.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
 };
+export default Main;
