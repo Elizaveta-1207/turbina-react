@@ -42,13 +42,13 @@ height: 100%;
 pointer-events: all;
 `;
 
-const LogoMarshak = ({ fill, isBlurred }) => (
+const LogoMarshak = ({ link, fill, isBlurred }) => (
     <PublishingLogoWrap
     isBlurred={isBlurred}
     rel="turbina"
     target="_blank"
     as="a"
-    href="https://marshakbooks.ru/">
+    href={link}>
       <SvgButton
         viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <ClickablePath d="M0 1.98864V26.1364V50H50L48.2249 0H42.3077L40.8284 17.0455H29.2899L28.4024 1.98864L20.1183 1.42045L21.3018 17.0455H8.87574L6.80473 1.42045L0 1.98864Z" fill={fill}/>
@@ -59,11 +59,13 @@ const LogoMarshak = ({ fill, isBlurred }) => (
 LogoMarshak.propTypes = {
   fill: PropTypes.string,
   isBlurred: PropTypes.bool,
+  link: PropTypes.string,
 };
 
 LogoMarshak.defaultProps = {
   fill: '#fff',
   isBlurred: false,
+  link: '#',
 };
 
 export default LogoMarshak;

@@ -28,14 +28,14 @@ const StyledFormButton = styled(RoundedButton)`
     font-size: 12px;
     padding: 10px 20px;
   }
-  ${(props) => (props.disabled === 'true'
+  ${(props) => (props.disabled === true
     ? `
   cursor: inherit;
   opacity: .4;
   `
     : `
   &:hover {
-    font-style: ${(props) => (props.disabled === 'true'
+    font-style: ${(props) => (props.disabled
       ? 'normal' : 'italic')};
   }
   `)}
@@ -44,7 +44,7 @@ const StyledFormButton = styled(RoundedButton)`
 const FormButton = ({ disabled = true, text }) => (
   <StyledFormButton
     className="form__btn"
-    disabled={disabled ? 'true' : ''}>
+    disabled={disabled}>
     {text}
   </StyledFormButton>
 );

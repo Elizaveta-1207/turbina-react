@@ -23,7 +23,7 @@ const DevelopersParagraph = styled.p`
 const Developers = ({ children }) => (<DevelopersParagraph>{children}</DevelopersParagraph>);
 
 Developers.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
 };
 
 export default Developers;

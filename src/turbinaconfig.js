@@ -1,4 +1,5 @@
 export default {
+  marshakLink: 'https://marshakbooks.ru/',
   links: [
     { link: 'https://music.yandex.ru/home',
       title: 'Яндекс.Музыка ↗',

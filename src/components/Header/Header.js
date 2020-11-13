@@ -26,7 +26,7 @@ const AppHeader = styled.header`
 `;
 
 const Header = ({ playlist }) => {
-  const { header } = React.useContext(AppContext);
+  const { header, marshakLink } = React.useContext(AppContext);
   const { color } = header.style;
   const [isPlayingLogo, setIsPlayingLogo] = useState();
   const [border, setBorder] = useState();
@@ -34,7 +34,7 @@ const Header = ({ playlist }) => {
 
   return (
     <AppHeader>
-      <LogoMarshak isBlurred={isExpandedPlayer} fill={color}/>
+      <LogoMarshak link={marshakLink} isBlurred={isExpandedPlayer} fill={color}/>
       <VerticalLinksBar isBlurred={isExpandedPlayer} color={color} />
       <LogoTurbina
         isBlurred={isExpandedPlayer}

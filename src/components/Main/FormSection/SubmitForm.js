@@ -119,7 +119,12 @@ const SubmitForm = ({ onFormSubmit }) => {
   const [errors, setErrors] = useState({
     tel: '',
   });
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({
+    tel: '',
+    name: '',
+    email: '',
+    rhyme: '',
+  });
   const [checked, setChecked] = useState(false);
   const [anyInputInvalid, setAnyInputInvalid] = useState(true);
   const [showError, setShowError] = useState({});
