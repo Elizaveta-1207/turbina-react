@@ -30,7 +30,7 @@ const LinksLayoutButton = ({ onClick, linksVisible }) => (
     <Styledbutton
         onClick={onClick}
         linksVisible={!!linksVisible}>{linksVisible
-          ? '\u2716'
+          ? '\u00D7'
           : 'Стриминги'}
     </Styledbutton>
 );
