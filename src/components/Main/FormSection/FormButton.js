@@ -33,12 +33,11 @@ const StyledFormButton = styled(RoundedButton)`
   cursor: inherit;
   opacity: .4;
   `
-    : `
+    : '')}
   &:hover {
     font-style: ${(props) => (props.disabled
-      ? 'normal' : 'italic')};
+    ? 'normal' : 'italic')};
   }
-  `)}
 `;
 
 const FormButton = ({ disabled = true, text }) => (

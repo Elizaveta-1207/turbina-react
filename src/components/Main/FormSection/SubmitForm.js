@@ -113,6 +113,7 @@ color: red;
 `;
 const ErrorSubmitMessage = styled(ErrorMessage)`
 margin-top: 12px;
+text-align: center;
 margin-bottom: 0;`;
 
 const SubmitForm = ({ onFormSubmit }) => {
@@ -162,7 +163,7 @@ const SubmitForm = ({ onFormSubmit }) => {
       .then((res) => {
         setButtonText(res.successMessage);
         laterResolve(4000).then(() => {
-          setButtonText('отправить форму');
+          setButtonText('Отправить форму');
         });
       })
       .catch((err) => {
@@ -172,7 +173,7 @@ const SubmitForm = ({ onFormSubmit }) => {
         laterResolve(3000).then(() => {
           setSubmitFailed(false);
           setSubmitError(null);
-          setButtonText('отправить форму');
+          setButtonText('Отправить форму');
         });
       });
   };

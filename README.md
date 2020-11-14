@@ -10,7 +10,7 @@
 
 ### **Content**
   - [About](#About-Turbina-web-project)
-  - [Cofiguring app](#Cofiguring-app)
+  - [Configuring app](#Configuring-app)
   - [Form Validation](#Form-Validation)
   - [Features](#Features)
 
@@ -18,7 +18,7 @@
 ## About Turbina web project
 A non-commercial project by [Marshak](https://marshakbooks.ru/) publishing House and [Yandex.Praktikum](https://praktikum.yandex.ru/)
 
-## Cofiguring app
+## Configuring app
 The app can be configured by changing data of `turbinaconfig.js` in `/src/` directory
 
 ### You can: ###
