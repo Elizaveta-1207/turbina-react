@@ -104,7 +104,9 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder, setIsExpandedPlayer }
   useEffect(() => {
     if (isPlaying) {
       audio.current.play();
-      audioCtx.resume();
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
     }
     if (!isPlaying) {
       audio.current.pause();
@@ -138,6 +140,7 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder, setIsExpandedPlayer }
     <Player isExpanded={isExpanded} color={color}>
       <audio
         ref={audio}
+        preload="auto"
         src={currentSong.audioFile}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}

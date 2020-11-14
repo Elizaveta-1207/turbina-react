@@ -40,7 +40,7 @@ const PlayerWrapper = styled.div`
     grid-template-rows: ${(props) => (props.isExpanded
     ? '24px 6px 20px minmax(240px, 1fr) 20px 31px 30px 80px'
     : '24px 6px')};
-    grid-template-columns: 24px minmax(94px,1fr) 7fr 1fr 24px;
+    grid-template-columns: 24px minmax(94px, 1fr) 7fr 1fr 24px;
     grid-template-areas: ${(props) => (props.isExpanded
     ? `'button title title duration subtrack'
         '. timeline timeline timeline .'
@@ -59,17 +59,17 @@ const PlayerWrapper = styled.div`
     grid-template-rows: ${(props) => (props.isExpanded
     ? '24px 6px 20px minmax(240px, 1fr) 20px 31px 30px 80px'
     : '24px 6px')};
-    grid-template-columns: 24px minmax(84px,1fr) 3fr 24px;
+    grid-template-columns: 24px minmax(84px, 1fr) 7fr 1fr 24px;
     grid-template-areas: ${(props) => (props.isExpanded
     ? `'button title duration subtrack'
-        '. timeline timeline .'
-        '. . . .'
-        '. cover cover .'
-        '. . . .'
-        '. clip mode .'
-        '. . . .'
-        '. infoblock infoblock .'`
-    : `'button title duration subtrack'
+        '. timeline timeline timeline .'
+        '. . . . .'
+        '. cover cover cover .'
+        '. . . . .'
+        '. clip mode mode .'
+        '. . . . .'
+        '. infoblock infoblock infoblock.'`
+    : `'button title title duration subtrack'
         '. timeline timeline .'`)}
   }
 `;
