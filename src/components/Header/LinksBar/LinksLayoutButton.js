@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import CloseButton from './CloseBtn';
 
 const Styledbutton = styled.button`
   display: block;
@@ -26,18 +27,16 @@ const Styledbutton = styled.button`
   }
 `;
 
-const LinksLayoutButton = ({ onClick, linksVisible }) => (
-    <Styledbutton
-        onClick={onClick}
-        linksVisible={!!linksVisible}>{linksVisible
-          ? '\u00D7'
-          : 'Стриминги'}
-    </Styledbutton>
+const LinksLayoutButton = ({ color, onClick, linksVisible }) => (
+  linksVisible
+    ? <CloseButton onClick={onClick} fill={color}/>
+    : <Styledbutton onClick={onClick}>Стриминги</Styledbutton>
 );
 
 LinksLayoutButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   linksVisible: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 export default LinksLayoutButton;
