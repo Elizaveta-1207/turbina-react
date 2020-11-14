@@ -52,6 +52,7 @@ const VerticalLinksBar = ({ color, isBlurred }) => {
     <StyledLinksBar isBlurred={isBlurred} color={color}>
       {isMobileLayout
         && <LinksLayoutButton
+            color={color}
             onClick={handleLinksLayoutButtonClick}
             linksVisible={linksVisible} />
       }

@@ -63,6 +63,8 @@ The app can be configured by changing data of `turbinaconfig.js` in `/src/` dire
   - smaller UX/UI features:
 > clip button disabled, but shown, if no clip is provided to trigger user interest to other tracks
 >
+> player time indicator switches between 3 modes upon click: elased/current/current+duration
+>
 > red asterisk indication of invalid input forms
 >
 > svg and other images compressed to boost loading
@@ -128,6 +130,8 @@ The app can be configured by changing data of `turbinaconfig.js` in `/src/` dire
 > затемнение и отключение кнопки клип, при отсутсвии клипа (рендер кнопки сохранен для пробуждения внимания к другим трекам, у которых есть клип)
 >
 > живая индикация валидности формы в режимах активного и неактивного ввода
+>
+> индикатор времени в плеере работает в 3 режимах: истекщее время трека, текущее время и текущее/длительность. Переключение - по клику.
 >
 > компрессия изображений, где возможно - применена легкая векторная графика
 >

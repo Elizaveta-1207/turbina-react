@@ -16,7 +16,7 @@ const Styledbutton = styled.button`
   background: none;
   width: ${(props) => (props.linksVisible && '32px')};
   font-size: ${(props) => !props.linksVisible && '12px'};
-  padding: ${(props) => !props.linksVisible && '7px 16px'};
+  padding: ${(props) => !props.linksVisible && '7px auto'};
 
   &::before {
     color: inherit;
@@ -29,7 +29,9 @@ const Styledbutton = styled.button`
 const LinksLayoutButton = ({ onClick, linksVisible }) => (
     <Styledbutton
         onClick={onClick}
-        linksVisible={!!linksVisible}>{linksVisible ? 'X' : 'Стриминги'}
+        linksVisible={!!linksVisible}>{linksVisible
+          ? '\u2716'
+          : 'Стриминги'}
     </Styledbutton>
 );
 
