@@ -76,9 +76,10 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder, setIsExpandedPlayer }
     setIsPlayingLogo(!isPlaying);
   };
 
-  const handleExpandClick = () => {
-    setIsExpanded(!isExpanded);
-  };
+  const handleExpandClick = () => setIsExpanded(!isExpanded);
+
+  useEffect(() => setTickerDimensions(), [currentSong]);
+
   useEffect(() => {
     setTickerDimensions();
     setIsExpandedPlayer(isExpanded);
