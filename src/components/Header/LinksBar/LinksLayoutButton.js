@@ -20,7 +20,6 @@ const Styledbutton = styled.button`
 
   &::before {
     color: inherit;
-    content: ${(props) => (props.linksVisible ? '\'\u2716\'' : '\'Стриминги\'')};
   }
   &:hover {
     font-style: ${(props) => !props.linksVisible && 'italic'};
@@ -30,7 +29,7 @@ const Styledbutton = styled.button`
 const LinksLayoutButton = ({ onClick, linksVisible }) => (
     <Styledbutton
         onClick={onClick}
-        linksVisible={linksVisible}>
+        linksVisible={!!linksVisible}>{linksVisible ? 'X' : 'Стриминги'}
     </Styledbutton>
 );
 
