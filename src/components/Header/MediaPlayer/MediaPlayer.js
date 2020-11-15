@@ -99,6 +99,7 @@ const MediaPlayer = ({ color, setIsPlayingLogo, setBorder, setIsExpandedPlayer }
     setCurrentSong(song);
     audio.current.src = song.audioFile;
     audio.current.autoplay = true;
+    // а это надо точно устанавливать autoplay каждый раз?
     setPlaying(true);
   };
 

@@ -260,6 +260,7 @@ const SubmitForm = ({ onFormSubmit }) => {
           Согласен с{' '}
 {/*           // тут бы модалку сделать с офертой */}
           <OfertLink href="#" target="_blank">офертой</OfertLink>
+        {/* тут адрес на оферту надо брать из конфига */}
         </CheckboxLabelText>
       </OfertWrap>
       <FormButton

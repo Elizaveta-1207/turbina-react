@@ -46,6 +46,7 @@ const MediaInfoBlock = ({ playlist, currentSong, contentIsText, handleSongChange
       default:
         setContent(generateSongsList());
     }
+    // switch-case для двух альтернатив выглядит немного усложняющим сам компонент) скорее тут if-else больше подойдет
   }, [contentIsText, currentSong]);
 
   return (<InfoBlock>{content}</InfoBlock>);
