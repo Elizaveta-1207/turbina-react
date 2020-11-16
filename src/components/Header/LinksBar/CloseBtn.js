@@ -31,6 +31,7 @@ width: 100%;
 height: 100%;
 pointer-events: all;
 `;
+// тут тоже добавить бы табуляцию
 
 const CloseButton = ({ onClick, fill }) => (
     <CloseButtonWrap

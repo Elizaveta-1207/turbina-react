@@ -18,5 +18,6 @@ FooterLink.propTypes = {
 };
 FooterLink.defaultProps = {
   link: 'https://praktikum.yandex.ru',
+  // в идеале вынести бы куда-нибудь по внешний конфиг
 };
 export default FooterLink;

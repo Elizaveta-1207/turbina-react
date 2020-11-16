@@ -12,5 +12,6 @@ border-color: inherit;
 color: inherit;
 background: none;
 `;
+// табуляции не хватает для стилей)
 
 export default RoundedButton;

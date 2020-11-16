@@ -8,6 +8,7 @@ const Loader = styled.div`
   width: 30px;
   height: 30px;
   background-color:  white;
+  // цвет указыватьч ерез название - плохая практика) возьмите как #FFF
   border-radius: 100%;
   animation: loader-1 30s infinite linear;
   &:before {

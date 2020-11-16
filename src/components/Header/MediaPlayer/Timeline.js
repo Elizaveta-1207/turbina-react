@@ -27,6 +27,7 @@ const Timeline = ({ handleTimelineChange, duration, playHeadWidth, color }) => {
     } else {
       targetX = evt.clientX;
     }
+    // определение targetX лучше вынести в отдельную функцию) чтобы не создавать переопределяемую переменную 
     const songProgressPercentage = (targetX - left) / width;
     const songProgressSeconds = Math.floor(duration * songProgressPercentage);
     handleTimelineChange(songProgressSeconds);
@@ -37,6 +38,7 @@ const Timeline = ({ handleTimelineChange, duration, playHeadWidth, color }) => {
     window.addEventListener('mouseup', () => {
       mouseDown = false;
       window.removeEventListener('mouseup', () => {});
+      // блин он не не уберет так обработчик, это же совершенно другая функция в коллбеке у вас тут лежит. удалять надо по ссылке
     });
     window.addEventListener('mousemove', (evt) => {
       if (mouseDown) handleTimelineClick(evt);
