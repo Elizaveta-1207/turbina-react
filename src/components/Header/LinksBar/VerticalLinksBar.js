@@ -36,16 +36,20 @@ const VerticalLinksBar = ({ color, isBlurred }) => {
       setLinksVisible(false);
     }
   };
-  // 
+  //
   React.useEffect(() => {
     setLinksLayout();
+    window.addEventListener('resize', () => {
+      setLinksLayout();
+    });
+    return () => window.removeEventListener('resize', () => {
+      setLinksLayout();
+    });
   }, []);
+  // fixed. Дааа, помутнение нашло + нехватка опыта;)
 
-  window.addEventListener('resize', () => {
-    setLinksLayout();
-    window.removeEventListener('onresize', () => {});
-  });
-  // так, вот тут что-то неадекватное) при ресайзе вы пытаетесь убрать другой эвент с другим коллбеком... а зачем? может я чего-то не знаю?
+  // так, вот тут что-то неадекватное) при ресайзе вы пытаетесь убрать
+  // другой эвент с другим коллбеком... а зачем? может я чего-то не знаю?
   // чисто логически это надо уносить в эффект и там снимать при анмаунте + юзать throttling
   const handleLinksLayoutButtonClick = () => {
     setLinksVisible(!linksVisible);

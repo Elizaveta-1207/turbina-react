@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import AppContext from '../../contexts/AppContext';
 
 const StyledFooterLink = styled.a`
   color: #fff;
@@ -10,14 +11,16 @@ const StyledFooterLink = styled.a`
   }
 `;
 
-const FooterLink = ({ text, link }) => (<StyledFooterLink href={link} target="_blank">{text}</StyledFooterLink>);
+const FooterLink = ({ text, link }) => {
+  const { footer } = React.useContext(AppContext);
+  const defaultLink = footer.link;
+  return <StyledFooterLink href={link || defaultLink} target="_blank">{text}</StyledFooterLink>;
+};
 
 FooterLink.propTypes = {
   text: PropTypes.string,
   link: PropTypes.string,
 };
-FooterLink.defaultProps = {
-  link: 'https://praktikum.yandex.ru',
-  // в идеале вынести бы куда-нибудь по внешний конфиг
-};
+// в идеале вынести бы куда-нибудь по внешний конфиг
+// fixed - link при отсутствии в пропсах цепляется из конфига
 export default FooterLink;
