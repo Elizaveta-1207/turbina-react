@@ -35,18 +35,19 @@ const MediaInfoBlock = ({ playlist, currentSong, contentIsText, handleSongChange
   };
 
   React.useEffect(() => {
-    switch (contentIsText) {
-      case true:
-        setContent(
-          (<>
+    if (contentIsText) {
+      setContent(
+        <>
           <Subtitle>Текст песни:</Subtitle>
-          <BlockContent>{currentSong.text}</BlockContent></>),
-        );
-        break;
-      default:
-        setContent(generateSongsList());
+          <BlockContent>{currentSong.text}</BlockContent>
+        </>,
+      );
+    } else {
+      setContent(generateSongsList());
     }
-    // switch-case для двух альтернатив выглядит немного усложняющим сам компонент) скорее тут if-else больше подойдет
+    // switch-case для двух альтернатив выглядит немного усложняющим
+    // сам компонент) скорее тут if-else больше подойдет
+    // fixed
   }, [contentIsText, currentSong]);
 
   return (<InfoBlock>{content}</InfoBlock>);

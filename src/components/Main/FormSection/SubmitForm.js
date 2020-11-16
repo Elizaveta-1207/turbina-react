@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import FormButton from './FormButton';
 import validate from '../../../utils/validation';
+import AppContext from '../../../contexts/AppContext';
 import { laterResolve } from '../../../utils/promisesTimeouted';
 
 const StyledForm = styled.form`
@@ -92,29 +93,31 @@ const FormInput = styled.input`
   }
 `;
 const ErrorMessage = styled.div`
-width: 100%;
-height: fit-content;
-font-family: Inter, Arial, sans-serif;
-font-weight: 400;
-font-size: 16px;
-color: red;
-margin-bottom: 12px`;
+  width: 100%;
+  height: fit-content;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: red;
+  margin-bottom: 12px
+`;
 const InputWrapper = styled.div`
-position: relative;
+  position: relative;
 `;
 const ErrorIndicator = styled.div`
-position: absolute;
-top: 20px;
-left: -5px;
-color: red;
-&::before {
-  content: '*';
-}
+  position: absolute;
+  top: 20px;
+  left: -5px;
+  color: red;
+  &::before {
+    content: '*';
+  }
 `;
 const ErrorSubmitMessage = styled(ErrorMessage)`
-margin-top: 12px;
-text-align: center;
-margin-bottom: 0;`;
+  margin-top: 12px;
+  text-align: center;
+  margin-bottom: 0;
+`;
 
 const SubmitForm = ({ onFormSubmit }) => {
   const [errors, setErrors] = useState({
@@ -132,6 +135,8 @@ const SubmitForm = ({ onFormSubmit }) => {
   const [buttonText, setButtonText] = useState('Отправить форму');
   const [submitFailed, setSubmitFailed] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+
+  const { ofertLink } = React.useContext(AppContext);
 
   const checkFormValidity = () => {
     const any = Object
@@ -259,8 +264,8 @@ const SubmitForm = ({ onFormSubmit }) => {
         <CheckboxLabelText>
           Согласен с{' '}
 {/*           // тут бы модалку сделать с офертой */}
-          <OfertLink href="#" target="_blank">офертой</OfertLink>
-        {/* тут адрес на оферту надо брать из конфига */}
+          <OfertLink href={ofertLink} target="_blank">офертой</OfertLink>
+        {/* fixed! тут адрес на оферту надо брать из конфига */}
         </CheckboxLabelText>
       </OfertWrap>
       <FormButton

@@ -59,4 +59,9 @@ export default {
       color: '#fff',
     },
   },
+  // ссылка футера
+  footer: {
+    link: 'https://praktikum.yandex.ru',
+  },
+  ofertLink: '#',
 };

@@ -24,14 +24,15 @@ const CloseButtonWrap = styled.div`
   }
 `;
 const ClickablePath = styled.path`
-cursor: pointer;
+  cursor: pointer;
 `;
 const SvgButton = styled.svg`
-width: 100%;
-height: 100%;
-pointer-events: all;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
 `;
 // тут тоже добавить бы табуляцию
+// fixed
 
 const CloseButton = ({ onClick, fill }) => (
     <CloseButtonWrap

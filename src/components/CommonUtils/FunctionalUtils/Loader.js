@@ -7,7 +7,8 @@ const Loader = styled.div`
   left: 50%;
   width: 30px;
   height: 30px;
-  background-color:  white;
+  background-color: #fff;
+  // fixed
   // цвет указыватьч ерез название - плохая практика) возьмите как #FFF
   border-radius: 100%;
   animation: loader-1 30s infinite linear;

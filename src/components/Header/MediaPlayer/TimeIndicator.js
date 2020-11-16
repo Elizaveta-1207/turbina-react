@@ -31,13 +31,16 @@ const TimeIndicator = ({ currentTime, duration }) => {
   const [indicationMode, setIndicationMode] = React.useState('elapsed');
 
   React.useEffect(() => {
-    const sElapsed = `${Math.floor(currentTime % 60)}`.padStart(2, '0');
+    const generateSecondsString = (secs) => `${Math.floor(secs % 60)}`.padStart(2, '0');
+    const sElapsed = generateSecondsString(currentTime);
     const mElapsed = Math.floor(currentTime / 60);
     const remained = duration - currentTime;
-    const secRemained = `${Math.floor(remained % 60)}`.padStart(2, '0');
+    const secRemained = generateSecondsString(currentTime);
     const minRemained = Math.floor(remained / 60);
-    const secDuration = `${Math.floor(duration % 60)}`.padStart(2, '0');
-    // может вот `${Math.floor(X % 60)}`.padStart(2, '0'); вынести в отдельный хелпер чтобы каждый раз не писать?)
+    const secDuration = generateSecondsString(currentTime);
+    // может вот `${Math.floor(X % 60)}`.padStart(2, '0');
+    // вынести в отдельный хелпер чтобы каждый раз не писать?)
+    // fixed
     const minDuration = Math.floor(duration / 60);
     switch (indicationMode) {
       case 'elapsed':

@@ -26,11 +26,12 @@ const StyledBlockTitle = styled.h2`
   }
 `;
 
-export default function BlockTitle({ title }) {
-  return (<StyledBlockTitle>{title}</StyledBlockTitle>);
-}
+const BlockTitle = ({ title }) => <StyledBlockTitle>{title}</StyledBlockTitle>;
 // выглядит так будто лишние скобки)
+// fixed
 
 BlockTitle.propTypes = {
   title: PropTypes.string,
 };
+
+export default BlockTitle;
